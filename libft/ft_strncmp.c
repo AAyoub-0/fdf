@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 20:03:52 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/02 02:10:50 by aayoub           ###   ########.fr       */
+/*   Created: 2024/11/06 14:45:56 by aboumall          #+#    #+#             */
+/*   Updated: 2024/11/22 22:16:31 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-int     main(void)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-        printf("Hello World\n");
-        return (0);
+	size_t	i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (((unsigned char)s1[i] == (unsigned char)s2[i]) && (s1[i] && s2[i])
+		&& (i < n - 1))
+		i++;
+	return (((unsigned char)s1[i] - (unsigned char)s2[i]));
 }

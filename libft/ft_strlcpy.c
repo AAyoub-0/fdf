@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 20:03:52 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/02 02:10:50 by aayoub           ###   ########.fr       */
+/*   Created: 2024/11/05 15:28:47 by aboumall          #+#    #+#             */
+/*   Updated: 2024/11/22 21:49:50 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-int     main(void)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-        printf("Hello World\n");
-        return (0);
+	size_t	i;
+
+	if (size == 0)
+		return (ft_strlen(src));
+	i = 0;
+	while (src[i] && (size - 1) > i)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }

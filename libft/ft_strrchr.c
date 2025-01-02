@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 20:03:52 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/02 02:10:50 by aayoub           ###   ########.fr       */
+/*   Created: 2024/11/13 15:43:13 by aboumall          #+#    #+#             */
+/*   Updated: 2024/11/21 20:18:59 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-int     main(void)
+char	*ft_strrchr(const char *s, int c)
 {
-        printf("Hello World\n");
-        return (0);
+	int	i;
+
+	i = ft_strlen(s);
+	c = (unsigned char)c;
+	while (i >= 0)
+	{
+		if ((unsigned char)s[i] == c)
+			return ((char *)&s[i]);
+		i--;
+	}
+	return (NULL);
 }

@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 20:03:52 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/02 02:10:50 by aayoub           ###   ########.fr       */
+/*   Created: 2024/11/18 14:37:39 by aboumall          #+#    #+#             */
+/*   Updated: 2024/11/22 21:32:15 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-int     main(void)
+t_list	*ft_lstlast(t_list *lst)
 {
-        printf("Hello World\n");
-        return (0);
+	t_list	*current;
+
+	current = NULL;
+	while (lst)
+	{
+		current = lst;
+		lst = lst->next;
+	}
+	return (current);
 }

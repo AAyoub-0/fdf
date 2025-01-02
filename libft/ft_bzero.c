@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 20:03:52 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/02 02:10:50 by aayoub           ###   ########.fr       */
+/*   Created: 2024/11/05 15:02:21 by aboumall          #+#    #+#             */
+/*   Updated: 2024/11/22 20:53:33 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-int     main(void)
+void	ft_bzero(void *s, size_t n)
 {
-        printf("Hello World\n");
-        return (0);
+	unsigned char	*tab;
+
+	tab = (unsigned char *)s;
+	tab = ft_memset(tab, 0, n);
 }

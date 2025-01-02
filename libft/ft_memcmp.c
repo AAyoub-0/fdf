@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 20:03:52 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/02 02:10:50 by aayoub           ###   ########.fr       */
+/*   Created: 2024/11/06 16:43:55 by aboumall          #+#    #+#             */
+/*   Updated: 2024/11/22 21:32:51 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-int     main(void)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-        printf("Hello World\n");
-        return (0);
+	unsigned char	*str1;
+	unsigned char	*str2;
+
+	if (n == 0)
+		return (0);
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	while ((*str1 == *str2) && (n > 1))
+	{
+		str1++;
+		str2++;
+		n--;
+	}
+	return (*str1 - *str2);
 }
