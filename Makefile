@@ -6,7 +6,7 @@
 #    By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/01 20:15:38 by aayoub            #+#    #+#              #
-#    Updated: 2025/01/02 18:23:08 by aayoub           ###   ########.fr        #
+#    Updated: 2025/01/02 18:24:49 by aayoub           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ fclean: clean
 	@rm -f $(NAME)
 	@$(MAKE) fclean -C $(LIBFT_DIR) > /dev/null
 	@$(MAKE) clean -C $(MLX_DIR) > /dev/null
-	@$(MAKE) clean -C $(GNL_DIR) > /dev/null
+	@$(MAKE) fclean -C $(GNL_DIR) > /dev/null
 
 re: fclean all
 
