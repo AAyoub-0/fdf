@@ -6,7 +6,7 @@
 #    By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 17:59:46 by aayoub            #+#    #+#              #
-#    Updated: 2025/01/02 18:01:09 by aayoub           ###   ########.fr        #
+#    Updated: 2025/01/02 22:23:42 by aayoub           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = get_next_line.c get_next_line_utils.c
+SRC = get_next_line.c
 
 OBJ_DIR = obj
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)

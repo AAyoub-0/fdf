@@ -5,99 +5,93 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 02:33:30 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/02 17:55:57 by aayoub           ###   ########.fr       */
+/*   Created: 2021/05/04 11:05:16 by sgoffaux          #+#    #+#             */
+/*   Updated: 2025/01/02 22:25:47 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// Source : https://github.com/goffauxs/fdf/tree/main/get_next_line
+
 #include "get_next_line.h"
 
-char	*get_left(char *buffer, size_t size)
+static char	*ft_malloc_size(char **line, char *buf)
 {
-	char	*temp;
-	size_t	j;
+	char	*ret;
+	int		line_len;
+	int		buf_len;
 
-	temp = ft_calloc((BUFFER_SIZE + ft_strchr_gnl(buffer + size, '\n') + 1),
-			sizeof(char));
-	if (!temp)
-	{
-		free(buffer);
-		buffer = NULL;
+	line_len = 0;
+	while (*line && (*line)[line_len] && (*line)[line_len] != '\n')
+		line_len++;
+	buf_len = 0;
+	while (buf[buf_len] && buf[buf_len] != '\n')
+		buf_len++;
+	ret = (char *)malloc(sizeof(char) * (buf_len + line_len + 1));
+	if (!ret)
 		return (NULL);
-	}
+	return (ret);
+}
+
+static int	ft_add_to_line(char **line, char *buf)
+{
+	char	*tmp;
+	int		i;
+	int		j;
+
+	tmp = ft_malloc_size(line, buf);
+	if (!tmp)
+		return (-1);
+	i = 0;
 	j = 0;
-	while (buffer[size + j])
-	{
-		temp[j] = buffer[size + j];
-		j++;
-	}
-	if (buffer[size + j] == '\n')
-		temp[j++] = '\n';
-	buffer[j] = '\0';
-	free(buffer);
-	return (temp);
+	while (*line && (*line)[i] && (*line)[i] != '\n')
+		tmp[i++] = (*line)[j++];
+	j = 0;
+	while (buf[j] && buf[j] != '\n')
+		tmp[i++] = buf[j++];
+	tmp[i] = buf[j];
+	free(*line);
+	*line = tmp;
+	i = 0;
+	while (buf[j])
+		buf[i++] = buf[++j];
+	buf[i] = '\0';
+	i = 0;
+	while ((*line)[i] && (*line)[i] != '\n')
+		i++;
+	return (i);
 }
 
-char	*read_line(int fd, char *buffer, char *result, int *nb_read)
+static int	ft_get_next_line(int fd, char **line)
 {
-	while (*nb_read != 0)
+	static char		buf[FD_MAX][BUFFER_SIZE + 1];
+	int				ret;
+
+	*line = NULL;
+	ret = ft_add_to_line(line, buf[fd]);
+	while (ret != -1 && (*line)[ret] != '\n')
 	{
-		*nb_read = read(fd, buffer, BUFFER_SIZE);
-		if (*nb_read == -1)
+		ret = read(fd, buf[fd], BUFFER_SIZE);
+		if (ret < 1)
 		{
-			free(result);
-			return (NULL);
+			if (ret < 0)
+			{
+				free(*line);
+				*line = NULL;
+			}
+			return (ret);
 		}
-		buffer[*nb_read] = '\0';
-		result = ft_strjoin_gnl(buffer, result, '\n');
-		if (ft_strchr(result, '\n'))
-			return (result);
+		buf[fd][ret] = '\0';
+		ret = ft_add_to_line(line, buf[fd]);
 	}
-	return (result);
+	if (ret == -1)
+		return (-1);
+	(*line)[ret] = '\0';
+	return (1);
 }
 
-char	*read_file(int fd, char *buffer)
+int	get_next_line(int fd, char **line)
 {
-	int		nb_read;
-	char	*result;
-
-	nb_read = -1;
-	result = NULL;
-	if (buffer[0] != '\0')
-		result = ft_strjoin_gnl(buffer, result, '\n');
-	if (ft_strchr(result, '\n'))
-		return (result);
-	result = read_line(fd, buffer, result, &nb_read);
-	if (!result)
-		return (NULL);
-	if (result && result[0] != '\0' && nb_read == 0)
-		return (result);
-	if (buffer && buffer[0] == '\0' && nb_read == 0)
-	{
-		free(result);
-		return (NULL);
-	}
-	return (result);
-}
-
-char	*get_next_line(int fd)
-{
-	char		*line;
-	static char	*buffer;
-
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	if (buffer == NULL)
-		buffer = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
-	if (!buffer)
-		return (NULL);
-	line = read_file(fd, buffer);
-	if (line == NULL)
-	{
-		free(buffer);
-		buffer = NULL;
-		return (line);
-	}
-	buffer = get_left(buffer, ft_strlen_gnl(buffer, '\n'));
-	return (line);
+	if (fd < 0 || fd > FD_MAX || !line || BUFFER_SIZE < 1)
+		return (-1);
+	return (ft_get_next_line(fd, line));
 }

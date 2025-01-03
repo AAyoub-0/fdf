@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:26:45 by aboumall          #+#    #+#             */
-/*   Updated: 2024/11/22 21:54:45 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/02 22:08:22 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int					ft_isdigit(int c);
 int					ft_isprint(int c);
 int					ft_lstsize(t_list *lst);
 int					ft_atoi(const char *nptr);
+unsigned int		ft_atoi_base(const char *nptr, const char *base);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t				ft_strlen(const char *tab);
@@ -64,6 +65,7 @@ void				*ft_memchr(const void *s, int c, size_t n);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				*ft_calloc(size_t nmemb, size_t size);
+void    			*ft_realloc(void *ptr, size_t size);
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putendl_fd(char *s, int fd);

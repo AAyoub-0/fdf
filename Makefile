@@ -6,7 +6,7 @@
 #    By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/01 20:15:38 by aayoub            #+#    #+#              #
-#    Updated: 2025/01/02 18:24:49 by aayoub           ###   ########.fr        #
+#    Updated: 2025/01/03 17:58:39 by aayoub           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ HEAD = main.h
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -DNO_SHARED_MEMORY=0
 
 UNAME := $(shell uname)
 
@@ -25,9 +25,9 @@ ifeq ($(UNAME), Darwin)
     MLX = $(MLX_DIR)/libmlx.a
     MLX_FLAGS = -framework OpenGL -framework AppKit
 else
-    MLX_DIR = ./minilibx-linux
+    MLX_DIR = ./minilibx_linux
     MLX = $(MLX_DIR)/libmlx.a
-    MLX_FLAGS = -lX11 -lXext -lm -lGL
+    MLX_FLAGS = -lX11 -lXext -lm -lGL -lz
 endif
 
 LIBFT_DIR = ./libft
@@ -37,7 +37,7 @@ GNL_DIR = ./gnl
 GNL = $(GNL_DIR)/gnl.a
 
 SRC_DIR = src
-SRC = 	$(SRC_DIR)/parse_map.c
+SRC = 	$(SRC_DIR)/parse_map.c $(SRC_DIR)/draw.c $(SRC_DIR)/window.c
 
 OBJ_DIR = obj
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -45,7 +45,7 @@ OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ) $(HEAD) $(MLX) $(GNL)
-	$(CC) main.c $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(MLX) $(GNL) $(MLX_FLAGS)
+	$(CC) $(OBJ) main.c $(CFLAGS) $(LIBFT) $(GNL) $(MLX) $(MLX_FLAGS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEAD) Makefile | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@

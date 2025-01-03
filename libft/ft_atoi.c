@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:27:51 by aboumall          #+#    #+#             */
-/*   Updated: 2024/11/22 20:54:04 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/02 21:48:44 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,29 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	return (result * sign);
+}
+
+unsigned int ft_atoi_base(const char *nptr, const char *base)
+{
+	unsigned int    result;
+	int             i;
+	int             j;
+
+	i = 0;
+	result = 0;
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
+		i++;
+	while (nptr[i] == '0')
+		i++;
+	while (nptr[i])
+	{
+		j = 0;
+		while (base[j] && base[j] != nptr[i])
+			j++;
+		if (!base[j])
+			break ;
+		result = result * ft_strlen(base) + j;
+		i++;
+	}
+	return (result);
 }

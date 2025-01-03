@@ -3,30 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sgoffaux <sgoffaux@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 02:33:35 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/02 17:54:04 by aayoub           ###   ########.fr       */
+/*   Created: 2021/05/04 11:03:07 by sgoffaux          #+#    #+#             */
+/*   Updated: 2021/08/27 16:48:12 by sgoffaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-
-# include <fcntl.h>
-# include <stddef.h>
-# include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "../libft/libft.h"
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 10000
 # endif
 
-int		ft_strchr_gnl(char *s, int c);
-char	*ft_strjoin_gnl(char *buffer, char *result, char c);
-size_t	ft_strlen_gnl(char *str, char c);
-char	*get_next_line(int fd);
+# ifndef FD_MAX
+#  define FD_MAX 8192
+# endif
+
+int	get_next_line(int fd, char **line);
 
 #endif
