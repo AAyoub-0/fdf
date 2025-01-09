@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:11:50 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/02 23:39:13 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/09 17:33:06 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static t_point   *get_point(char *line, int x, int y)
     while (ft_isdigit(*line))
         line++;
     // point->color = ft_atoi_base(line, "0123456789ABCDEF");
-    point->color = 0x00FF00;
+    point->color = 0xFFFFFF;
     return (point);
 }
 

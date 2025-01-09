@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+         #
+#    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/01 20:15:38 by aayoub            #+#    #+#              #
-#    Updated: 2025/01/03 17:58:39 by aayoub           ###   ########.fr        #
+#    Updated: 2025/01/08 16:49:08 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ HEAD = main.h
 
 CC = cc
 
-CFLAGS = -g -DNO_SHARED_MEMORY=0
+CFLAGS = -g
 
 UNAME := $(shell uname)
 
@@ -37,14 +37,15 @@ GNL_DIR = ./gnl
 GNL = $(GNL_DIR)/gnl.a
 
 SRC_DIR = src
-SRC = 	$(SRC_DIR)/parse_map.c $(SRC_DIR)/draw.c $(SRC_DIR)/window.c
+SRC = 	$(SRC_DIR)/parse_map.c $(SRC_DIR)/draw.c $(SRC_DIR)/window.c \
+		$(SRC_DIR)/event.c
 
 OBJ_DIR = obj
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ) $(HEAD) $(MLX) $(GNL)
+$(NAME): $(LIBFT) $(OBJ) $(HEAD) $(MLX) $(GNL) $(SRC) main.c
 	$(CC) $(OBJ) main.c $(CFLAGS) $(LIBFT) $(GNL) $(MLX) $(MLX_FLAGS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEAD) Makefile | $(OBJ_DIR)

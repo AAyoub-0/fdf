@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 20:03:52 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/03 17:17:22 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/08 19:35:29 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,29 @@ void    print_map(t_map *map)
     }
 }
 
+int	draw_pixels(t_mlx *mlx)
+{
+	mlx_pixel_put(mlx->mlx, mlx->win, 10, 10, 0xFFFFFF);
+	mlx_pixel_put(mlx->mlx, mlx->win, 10, 11, 0xFFFFFF);
+	mlx_pixel_put(mlx->mlx, mlx->win, 10, 12, 0xFFFFFF);
+	return (0);
+}
+
 int     main(void)
 {
         t_map  *map;
         t_mlx  *mlx;
         int     fd;
 
-        
-        mlx = malloc(sizeof(t_mlx));
         fd = open("map.txt", O_RDONLY);
-        map = parse_map(fd);
-        init_window(mlx);
+        init_window(&mlx, fd);
+        mlx_loop_hook(mlx->mlx, &handle_no_event, &mlx);
+        mlx_hook(mlx->win, KEYDOWN, KEYDOWN_MASK, &handle_keydown, &mlx);
+        mlx_hook(mlx->win, KEYUP, KEYUP_MASK, &handle_keyup, &mlx);
+        mlx_hook(mlx->win, DESTROY, 0, &handle_destroy, &mlx);
+        mlx_loop_hook(mlx->mlx, &draw_map, mlx);
         mlx_loop(mlx->mlx);
+        mlx_clear_window(mlx->mlx, mlx->win);
         close(fd);
         return (0);
 }
