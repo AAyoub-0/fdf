@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 23:17:40 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/10 18:23:58 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:41:15 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ t_point	*project_pixels(t_point *p, int map_width)
     return (point);
 }
 
-int get_y(t_point start, t_point end, int x)
+int get_y(t_point *start, t_point *end, int x)
 {
-    if (end.x == start.x)
-        return (start.y);
-    return (start.y + ((end.y - start.y) * (x - start.x)) / (end.x - start.x));
+    if ((*end).x == (*start).x)
+        return ((*start).y);
+    return ((*start).y + (((*end).y - (*start).y) * (x - (*start).x)) / ((*end).x - (*start).x));
 }
 
 void    draw_line(t_mlx **mlx, t_point *start, t_point *end)
@@ -49,16 +49,15 @@ void    draw_line(t_mlx **mlx, t_point *start, t_point *end)
     int x;
     int dx;
     int dy;
-    float y;
+    int y;
 
-    dx = (float)((*end)).x - (*start).x;
-    dy = (float)((*end)).y - (*start).y;
+    dx = (float)((*end).x - (*start).x);
+    dy = (float)((*end).y - (*start).y);
     x = (*start).x;
-    y = (float)(*start).y;
+    y = (*start).y;
     while (x < (*end).x)
     {
-        mlx_pixel_put((*mlx)->mlx, (*mlx)->win, x, (int)y, (*start).color);
-        y += (dy / dx);
+        mlx_pixel_put((*mlx)->mlx, (*mlx)->win, x, get_y(start, end, x), (*start).color);
         x++;
     }
 }
@@ -71,11 +70,11 @@ int	draw_map(t_mlx *mlx)
     point.color = 0xFFFFFF;
     point.x = 100;
     point.y = 100;
-    point.z = 0;
+    point.z = 300;
     point1.color = 0xFFFFFF;
-    point1.x = 500;
-    point1.y = 100;
-    point1.z = 0;
+    point1.x = 1080;
+    point1.y = 500;
+    point1.z = 300;
     draw_line(&mlx, &point, &point1);
     return (0);
 }
