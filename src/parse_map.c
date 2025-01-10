@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:11:50 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/10 13:56:19 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:21:32 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,25 +65,6 @@ static void     fill_map(t_map *map, char *line, int y)
     }
 }
 
-static void fill_lines(t_map *map)
-{
-    int i;
-    int j;
-    t_line *line;
-
-    i = 0;
-    map->lines = malloc(sizeof(t_line *));
-    while (i < map->height)
-    {
-        j = 0;
-        while (j < map->width)
-        {
-            
-        }
-        i++;
-    }   
-}
-
 t_map   *parse_map(int fd)
 {
     t_map   *map;
@@ -104,6 +85,5 @@ t_map   *parse_map(int fd)
         map->height++;
         free(line);
     }
-    fill_lines(map);
     return (map);
 }

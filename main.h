@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/10 13:41:08 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:21:52 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,12 @@ typedef struct s_point
 	int		x;
 	int		y;
 	int		z;
-	int		x_p;
-	int		y_p;
-    int     z_p;
-	int		x_pp;
-    int     y_pp;
 	int		color;
 }			t_point;
-
-typedef struct s_line
-{
-    t_point start;
-    t_point end;
-    int		color;
-}   t_line;
 
 typedef struct s_map
 {
 	t_point	**points;
-    t_line *lines;
 	int		width;
 	int		height;
 }			t_map;
