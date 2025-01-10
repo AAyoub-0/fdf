@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 23:17:40 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/09 17:34:12 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:37:19 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,9 @@ void	project_pixels(t_point *p, int map_width)
     p->y_pp = (p->y_p * f) / (p->z_p + 5);
 }
 
-void	draw_line(t_mlx *mlx, int x, int y)
+void    draw_line(t_point start, t_point end)
 {
-	t_point	point;
-	int		y;
-	int		drawed;
-
-	y = 0;
-	while (y < mlx->map->width - 1)
-	{
-		point = mlx->map->points[x][y];
-		drawed = 0;
-		while (drawed < LINE_SIZE)
-		{
-			mlx_pixel_put(mlx->mlx, mlx->win, x++, y, point.color);
-			drawed++;
-		}
-		y++;
-	}
+    
 }
 
 int	draw_map(t_mlx *mlx)
