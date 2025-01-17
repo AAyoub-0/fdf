@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:26:45 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/02 22:08:22 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/15 18:14:15 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <limits.h>
+# include <stdarg.h>
 # include <stddef.h>
 # include <stdint.h>
 # include <stdlib.h>
@@ -34,7 +35,7 @@ int					ft_isdigit(int c);
 int					ft_isprint(int c);
 int					ft_lstsize(t_list *lst);
 int					ft_atoi(const char *nptr);
-unsigned int		ft_atoi_base(const char *nptr, const char *base);
+int					ft_atoi_cursor(char *nptr, int *cursor, int *error);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t				ft_strlen(const char *tab);
@@ -65,12 +66,55 @@ void				*ft_memchr(const void *s, int c, size_t n);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				*ft_calloc(size_t nmemb, size_t size);
-void    			*ft_realloc(void *ptr, size_t size);
+void 				*ft_realloc(void *ptr, size_t size);
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+void				ft_print_array_int(int *array, int size);
 void				ft_bzero(void *s, size_t n);
+
+typedef struct s_flags
+{
+	int				minus;
+	int				plus;
+	int				zero;
+	int				space;
+	int				hash;
+	int				padding;
+	int				precision;
+	char			specifier;
+}					t_flags;
+
+typedef struct s_num
+{
+	unsigned long	num;
+	int				is_negative;
+}					t_num;
+
+int					print_nchar(char c, int n);
+size_t				num_len_base(long long num, int base_len);
+void				set_flags(t_flags *flags);
+int					get_number(const char **str);
+int					write_padding_num(t_flags flags, t_num num, char *base,
+						int len);
+int					write_padding_str(t_flags flags, char *str, int len);
+int					print_flags_unbase(t_flags flags, unsigned long num,
+						char *base);
+int					print_nbase(unsigned long num, char *base, t_flags flags);
+int					print_flags_snbase(t_flags flags, long num, char *base);
+int					print_flags_str(t_flags flags, va_list args);
+int					ft_printf(const char *format, ...);
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10000
+# endif
+
+# ifndef FD_MAX
+#  define FD_MAX 8192
+# endif
+
+int					get_next_line(int fd, char **line);
 
 #endif

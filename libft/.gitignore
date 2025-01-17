@@ -21,6 +21,7 @@
 /release/
 /dist/
 /libftTester/
+obj/
 
 # Ignore les fichiers générés par CMake
 CMakeFiles/

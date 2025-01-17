@@ -33,9 +33,6 @@ endif
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-GNL_DIR = ./gnl
-GNL = $(GNL_DIR)/gnl.a
-
 SRC_DIR = src
 SRC = 	$(SRC_DIR)/parse_map.c $(SRC_DIR)/draw.c $(SRC_DIR)/window.c \
 		$(SRC_DIR)/event.c
@@ -45,8 +42,8 @@ OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ) $(HEAD) $(MLX) $(GNL) $(SRC) main.c
-	$(CC) $(OBJ) main.c $(CFLAGS) $(LIBFT) $(GNL) $(MLX) $(MLX_FLAGS) -o $(NAME)
+$(NAME): $(OBJ) $(HEAD) $(LIBFT) $(MLX) $(SRC) main.c
+	$(CC) $(OBJ) main.c $(CFLAGS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEAD) Makefile | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -62,25 +59,19 @@ $(MLX):
 	@echo "Making mlx lib..."
 	@$(MAKE) -C $(MLX_DIR) > /dev/null
 
-$(GNL):
-	@echo "Making gnl lib..."
-	@$(MAKE) -C $(GNL_DIR) > /dev/null
-
 clean:
 	@echo "Cleaning object files..."
 	@rm -f $(OBJ)
 	@rm -rf $(OBJ_DIR)
 	@$(MAKE) clean -C $(LIBFT_DIR) > /dev/null
 	@$(MAKE) clean -C $(MLX_DIR) > /dev/null
-	@$(MAKE) clean -C $(GNL_DIR) > /dev/null
 
 fclean: clean
 	@echo "Removing executable and libraries..."
 	@rm -f $(NAME)
 	@$(MAKE) fclean -C $(LIBFT_DIR) > /dev/null
 	@$(MAKE) clean -C $(MLX_DIR) > /dev/null
-	@$(MAKE) fclean -C $(GNL_DIR) > /dev/null
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libft mlx

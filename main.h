@@ -13,7 +13,6 @@
 #ifndef MAIN_H
 # define MAIN_H
 
-# include "./gnl/get_next_line.h"
 # include "./libft/libft.h"
 # include "./minilibx_linux/mlx.h"
 # include <X11/keysym.h>
