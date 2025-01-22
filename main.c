@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 20:03:52 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/10 18:16:20 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:22:49 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,11 @@ void    print_map(t_map *map)
         x = 0;
         while (x < map->width)
         {
-            printf("x: %d, y: %d, z: %d, color: %x\n", map->points[y][x].x, map->points[y][x].y, map->points[y][x].z, map->points[y][x].color);
+            printf("x: %.2f, y: %.2f, z: %.2f, color: %x\n", map->points[y][x].x, map->points[y][x].y, map->points[y][x].z, map->points[y][x].color);
             x++;
         }
         y++;
     }
-}
-
-int	draw_pixels(t_mlx *mlx)
-{
-	mlx_pixel_put(mlx->mlx, mlx->win, 10, 10, 0xFFFFFF);
-	mlx_pixel_put(mlx->mlx, mlx->win, 10, 11, 0xFFFFFF);
-	mlx_pixel_put(mlx->mlx, mlx->win, 10, 12, 0xFFFFFF);
-	return (0);
 }
 
 int     main(void)

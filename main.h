@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/10 18:21:52 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:45:38 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,31 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define R_X 30
-# define R_Y 0
-# define R_Z 30
-# define FOV 1
+#define _USE_MATH_DEFINES
+#define M_PI 3.14159265358979323846
+#define DEG_TO_RAD(angle) ((angle) * M_PI / 180.0)
+
+# define R_X DEG_TO_RAD(0)
+# define R_Y DEG_TO_RAD(0)
+# define R_Z DEG_TO_RAD(0)
+
+# define FOV 60
+# define SCREEN_WIDTH  800
+# define SCREEN_HEIGHT 600
 
 typedef struct s_point
 {
-	int		x;
-	int		y;
-	int		z;
+	float		x;
+	float		y;
+	float		z;
 	int		color;
 }			t_point;
+
+typedef struct s_point2d
+{
+    int x;
+    int y;
+}           t_point2d;
 
 typedef struct s_map
 {
@@ -70,6 +83,9 @@ enum
 };
 
 t_map		*parse_map(int fd);
+
+void        print_point2d(t_point2d *point);
+void        print_point3d(t_point *point);
 
 int			draw_map(t_mlx *mlx);
 
