@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 20:03:52 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/22 14:22:49 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/27 20:36:02 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,17 @@ int     main(void)
         t_map  *map;
         t_mlx  *mlx;
         int     fd;
+        t_point2d **point2d;
 
         fd = open("map.txt", O_RDONLY);
         init_window(&mlx, fd);
-        mlx_loop_hook(mlx->mlx, &handle_no_event, &mlx);
-        mlx_hook(mlx->win, KEYDOWN, KEYDOWN_MASK, &handle_keydown, &mlx);
-        mlx_hook(mlx->win, KEYUP, KEYUP_MASK, &handle_keyup, &mlx);
-        mlx_hook(mlx->win, DESTROY, 0, &handle_destroy, &mlx);
-        mlx_loop_hook(mlx->mlx, &draw_map, mlx);
-        mlx_loop(mlx->mlx);
-        mlx_clear_window(mlx->mlx, mlx->win);
+        // mlx_loop_hook(mlx->mlx, &handle_no_event, &mlx);
+        // mlx_hook(mlx->win, KEYDOWN, KEYDOWN_MASK, &handle_keydown, &mlx);
+        // mlx_hook(mlx->win, KEYUP, KEYUP_MASK, &handle_keyup, &mlx);
+        // mlx_hook(mlx->win, DESTROY, 0, &handle_destroy, &mlx);
+        // mlx_loop_hook(mlx->mlx, &draw_map, mlx);
+        // mlx_loop(mlx->mlx);
+        // mlx_clear_window(mlx->mlx, mlx->win);
         close(fd);
         return (0);
 }

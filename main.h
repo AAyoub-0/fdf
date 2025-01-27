@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/26 20:20:28 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/27 16:57:03 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ t_map		*parse_map(int fd);
 void        print_point2d(t_point2d *point);
 void        print_point3d(t_point *point);
 
+t_point2d **create_point2d(t_mlx *mlx);
 int			draw_map(t_mlx *mlx);
 
 void		init_window(t_mlx **mlx, int fd);

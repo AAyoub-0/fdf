@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 23:17:40 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/26 20:21:32 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/27 20:36:32 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,85 +151,45 @@ void draw_origins(t_mlx *mlx)
     draw_line(mlx, origin_2d, z_axis_2d, BLUE);   // Ligne bleue pour Z
 }
 
+t_point2d **create_point2d(t_mlx *mlx)
+{
+    t_point2d **points2d;
+    t_point **points;
+    int x;
+    int y;
+
+    points2d = malloc(sizeof(t_point2d *));
+    points = mlx->map->points;
+    x = 0;
+    int f = 50; // changer ca
+    while (x < mlx->map->height)
+    {
+        y = 0;
+        points2d[x] = malloc(sizeof(t_point2d) * mlx->map->width);
+        while (y < mlx->map->width)
+        {
+            scale_point3d(&points[x][y], *(mlx->camera), f);
+            points2d[x][y] = project_point(rotate_point(points[x][y]));
+            y++;
+        }
+        x++;
+        points2d = ft_realloc(points2d, sizeof(t_point2d *) * (x + 1));
+    }
+    return (points2d);
+}
 
 int	draw_map(t_mlx *mlx)
 {
+    t_point2d **point2d;
+    
+    point2d = create_point2d(mlx);
     ft_bzero(mlx->addr, SCREEN_WIDTH * SCREEN_HEIGHT * (mlx->bits_per_pixel / 8));
-    t_point p1 = {0, 0, 0, WHITE};
-    t_point p2 = {1, 0, 0, GREEN};
-    t_point p3 = {0, 1, 0, GREEN};
-    t_point p4 = {1, 1, 2, GREEN};
-    t_point p5 = {0, 2, 0, GREEN};
-    t_point p6 = {1, 2, 0, GREEN};
-    t_point p7 = {0, 3, 0, GREEN};
-    t_point p8 = {1, 3, 0, GREEN};
-    t_point2d pp1;
-    t_point2d pp2;
-    t_point2d pp3;
-    t_point2d pp4;
-    t_point2d pp5;
-    t_point2d pp6;
-    t_point2d pp7;
-    t_point2d pp8;
-    float f = 50;
-    scale_point3d(&p1, *(mlx->camera), f);
-    scale_point3d(&p2, *(mlx->camera), f);
-    scale_point3d(&p3, *(mlx->camera), f);
-    scale_point3d(&p4, *(mlx->camera), f);
-    scale_point3d(&p5, *(mlx->camera), f);
-    scale_point3d(&p6, *(mlx->camera), f);
-    scale_point3d(&p7, *(mlx->camera), f);
-    scale_point3d(&p8, *(mlx->camera), f);
-    p1 = rotate_point(p1);
-    p2 = rotate_point(p2);
-    p3 = rotate_point(p3);
-    p4 = rotate_point(p4);
-    p5 = rotate_point(p5);
-    p6 = rotate_point(p6);
-    p7 = rotate_point(p7);
-    p8 = rotate_point(p8);
-    pp1 = project_point(p1);
-    pp2 = project_point(p2);
-    pp3 = project_point(p3);
-    pp4 = project_point(p4);
-    pp5 = project_point(p5);
-    pp6 = project_point(p6);
-    pp7 = project_point(p7);
-    pp8 = project_point(p8);
-    scale_point2d(&pp1, *(mlx->camera), f);
-    scale_point2d(&pp2, *(mlx->camera), f);
-    scale_point2d(&pp3, *(mlx->camera), f);
-    scale_point2d(&pp4, *(mlx->camera), f);
-    scale_point2d(&pp5, *(mlx->camera), f);
-    scale_point2d(&pp6, *(mlx->camera), f);
-    scale_point2d(&pp7, *(mlx->camera), f);
-    scale_point2d(&pp8, *(mlx->camera), f);
-    draw_line(mlx, pp1, pp2, p1.color);
-    draw_line(mlx, pp1, pp3, p1.color);
-    draw_line(mlx, pp2, pp4, p1.color);
-    draw_line(mlx, pp3, pp4, p1.color);
-    draw_line(mlx, pp3, pp5, p1.color);
-    draw_line(mlx, pp5, pp6, p1.color);
-    draw_line(mlx, pp4, pp6, p1.color);
-    draw_line(mlx, pp6, pp8, p1.color);
-    draw_line(mlx, pp8, pp7, p1.color);
-    draw_line(mlx, pp7, pp5, p1.color);
-    draw_circle(mlx, pp1.x, pp1.y, 5, RED);
-    draw_circle(mlx, pp2.x, pp2.y, 5, BLUE);
-    draw_circle(mlx, pp3.x, pp3.y, 5, WHITE);
-    draw_circle(mlx, pp4.x, pp4.y, 5, YELLOW);
-    draw_circle(mlx, pp5.x, pp5.y, 5, CYAN);
-    draw_circle(mlx, pp6.x, pp6.y, 5, MAGENTA);
-    draw_circle(mlx, pp7.x, pp7.y, 5, GRAY);
-    draw_circle(mlx, pp8.x, pp8.y, 5, ORANGE);
+    
     draw_origins(mlx);
     if (mlx->map->needs_redraw)
     {
         mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
         mlx->map->needs_redraw = false;
     }
-    draw_origins_name(mlx, 10, 10, "X", RED);
-    draw_origins_name(mlx, 10, 30, "Y", GREEN);
-    draw_origins_name(mlx, 10, 50, "Z", BLUE);
     return (0);
 }
