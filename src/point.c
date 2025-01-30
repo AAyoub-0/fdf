@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:33:20 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/30 19:54:52 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/30 20:38:46 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_point(void *p, t_bool is3d)
 	ft_printf("}\n");
 }
 
-t_point3d	*init_point3d(int x, int y, int z, t_colors color)
+t_point3d	*init_point3d(int x, int y, int z, t_color color)
 {
 	t_point3d	*point;
 

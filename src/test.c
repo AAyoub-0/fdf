@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:08:16 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/30 19:58:33 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/30 20:40:50 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,20 @@ void	unit_test_map_parse_map_good_fd(void)
 	close(fd);
 }
 
+void	unit_test_window_open_window(void)
+{
+	t_mlx	*mlx;
+
+	mlx = init_window("Fdf - 42");
+	if (mlx)
+		ft_putendl_fd("Window creation test: \033[0;32mOK\033[0m", 2);
+	else
+		ft_putendl_fd("Window creation test: \033[0;31mKO\033[0m", 2);
+	init_hooks(mlx);
+	mlx_loop(mlx->mlx);
+	free_window(mlx);
+}
+
 void	exec_tests(void)
 {
 	// points tests
@@ -129,4 +143,7 @@ void	exec_tests(void)
 	// unit_test_map_init_map();
 	// unit_test_map_parse_map_wrong_fd();
 	// unit_test_map_parse_map_good_fd();
+
+	// window tests
+	unit_test_window_open_window();
 }

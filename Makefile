@@ -6,7 +6,7 @@
 #    By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/01 20:15:38 by aayoub            #+#    #+#              #
-#    Updated: 2025/01/30 18:27:43 by ayoub            ###   ########.fr        #
+#    Updated: 2025/01/30 21:35:21 by ayoub            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,17 +31,16 @@ else
     MLX_FLAGS = -lX11 -lXext -lm -lGL -lz
 endif
 
-LIBFT_DIR 	= libft
-SRC_DIR 	= src
-OBJ_DIR 	= obj
+LIBFT_DIR 	= 	libft
+SRC_DIR 	= 	src
+OBJ_DIR 	= 	obj
 
-SRC_SRC 	= test.c map.c point.c main.c
+SRC_SRC 	= 	test.c map.c point.c project.c \
+				window.c hooks.c main.c
 
-LIBFT 		= $(addprefix $(LIBFT_DIR)/, $(LIBFT_A))
-SRC 		= $(addprefix $(SRC_DIR)/, $(SRC_SRC))
-OBJ 		= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-
-
+LIBFT 		= 	$(addprefix $(LIBFT_DIR)/, $(LIBFT_A))
+SRC 		= 	$(addprefix $(SRC_DIR)/, $(SRC_SRC))
+OBJ 		= 	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 

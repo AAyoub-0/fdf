@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:20:33 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/30 19:58:39 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/30 20:05:27 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,6 @@ t_map	*init_map(void)
 	map->pts_2d = NULL;
 	map->height = 0;
 	map->width = 0;
-	map->zoom = 20;
-	map->z_div = 1;
-	map->r_x = 0;
-	map->r_y = 0;
-	map->r_z = 0;
 	return (map);
 }
 
