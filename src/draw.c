@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 21:36:13 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/30 23:06:18 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/30 23:56:15 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,36 @@ void	draw_line(t_mlx *mlx, t_point2d p0, t_point2d p1)
 			p0.y += sign.y;
 		}
 	}
+}
+
+int	draw_map(t_mlx *mlx)
+{	
+	t_point2d	i;
+	t_point2d	p[2];
+
+	if (!mlx->map->need_update)
+		return (0);
+	i.y = 0;
+	while (i.y < mlx->map->height)
+	{
+		i.x = 0;
+		while (i.x < mlx->map->width)
+		{
+			p[0] = project_point3d(mlx->map->pts_3d[i.y][i.x], *mlx->map, *mlx->camera);	
+			if (i.x + 1 < mlx->map->width)
+			{
+				p[1] = project_point3d(mlx->map->pts_3d[i.y][i.x + 1], *mlx->map, *mlx->camera);	
+				draw_line(mlx, p[0], p[1]);
+			}
+			if (i.y + 1 < mlx->map->height)
+			{
+				p[1] = project_point3d(mlx->map->pts_3d[i.y + 1][i.x], *mlx->map, *mlx->camera);
+				draw_line(mlx, p[0], p[1]);
+			}
+			i.x++;
+		}
+		i.y++;
+	}
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
+	mlx->map->need_update = false;
 }

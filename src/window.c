@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:01:48 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/30 20:24:50 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/30 23:57:36 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static t_camera	*init_camera(void)
 	camera = malloc(sizeof(t_camera));
 	if (!camera)
 		return (NULL);
-	camera->zoom = 1;
-	camera->r_x = 0;
-	camera->r_y = 0;
-	camera->r_z = 0;
+	camera->zoom = 30;
+	camera->r_x = -0.615472907;
+	camera->r_y = -0.523599;
+	camera->r_z = 0.615472907;
 	camera->x_offset = 0;
 	camera->y_offset = 0;
-	camera->z_offset = 0;
+	camera->z_offset = 5;
 	camera->iso = 1;
 	return (camera);
 }

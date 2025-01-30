@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/30 23:06:32 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/30 23:30:42 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_map
 	t_point2d	**pts_2d;
 	int		width;
 	int		height;
+	t_bool		need_update;
 }           t_map;
 
 typedef struct s_camera
@@ -124,6 +125,7 @@ t_bool		parse_map(t_map *map, int fd);
 t_bool		free_map(t_map *map);
 
 void		draw_line(t_mlx *mlx, t_point2d p0, t_point2d p1);
+int			draw_map(t_mlx *mlx);
 
 t_mlx		*init_window(char *name);
 void		free_window(t_mlx *mlx);

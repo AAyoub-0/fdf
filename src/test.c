@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:08:16 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/30 20:40:50 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/31 00:00:08 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,37 @@ void	unit_test_window_open_window(void)
 		ft_putendl_fd("Window creation test: \033[0;31mKO\033[0m", 2);
 	init_hooks(mlx);
 	mlx_loop(mlx->mlx);
-	free_window(mlx);
+}
+
+void	unit_test_draw_draw_line(void)
+{
+	t_mlx	*mlx;
+	t_point2d	p0;
+	t_point2d	p1;
+
+	mlx = init_window("Fdf - 42");
+	p0.x = 0;
+	p0.y = 0;
+	p1.x = 100;
+	p1.y = 100;
+	draw_line(mlx, p0, p1);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
+	init_hooks(mlx);
+	mlx_loop(mlx->mlx);
+}
+
+void	unit_test_draw_draw_map(void)
+{
+	t_mlx	*mlx;
+
+	mlx = init_window("Fdf - 42");
+	mlx->map = init_map();
+	parse_map(mlx->map, open("maps/42.fdf", O_RDONLY));
+	// draw_map(mlx);
+	// mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
+	init_hooks(mlx);
+	mlx_loop_hook(mlx->mlx, draw_map, mlx);
+	mlx_loop(mlx->mlx);
 }
 
 void	exec_tests(void)
@@ -145,5 +175,9 @@ void	exec_tests(void)
 	// unit_test_map_parse_map_good_fd();
 
 	// window tests
-	unit_test_window_open_window();
+	// unit_test_window_open_window();
+
+	// draw tests
+	// unit_test_draw_draw_line();
+	// unit_test_draw_draw_map();
 }
