@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:33:20 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/30 17:37:04 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/30 19:54:52 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_bool  free_points2d(t_point2d **point, size_t size)
 	int i;
 
 	if (!point)
-	    return (false);
+		return (false);
 	i = 0;
 	while (i < size)
 	{

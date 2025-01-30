@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:08:16 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/30 18:20:53 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/30 19:58:33 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	unit_test_map_init_map(void)
 		ft_putendl_fd("Map creation test: \033[0;32mOK\033[0m", 2);
 	else
 		ft_putendl_fd("Map creation test: \033[0;31mKO\033[0m", 2);
-	free(map);
+	free_map(map);
 }
 
 void	unit_test_map_parse_map_wrong_fd(void)
@@ -75,7 +75,7 @@ void	unit_test_map_parse_map_wrong_fd(void)
 		ft_putendl_fd("Map parsing test: \033[0;32mOK\033[0m", 2);
 	else
 		ft_putendl_fd("Map parsing test: \033[0;31mKO\033[0m", 2);
-	free(map);
+	free_map(map);
 }
 
 void	print_map(t_map *map)
@@ -102,13 +102,18 @@ void	unit_test_map_parse_map_good_fd(void)
 	int	fd;
 
 	fd = open("maps/42.fdf", O_RDONLY);
+	if (fd <= 0)
+	{
+		perror("Error");
+		return ;
+	}
 	map = init_map();
 	if (parse_map(map, fd) == true)
 		ft_putendl_fd("Map parsing test: \033[0;32mOK\033[0m", 2);
 	else
 		ft_putendl_fd("Map parsing test: \033[0;31mKO\033[0m", 2);
 	// print_map(map);
-	free(map);
+	free_map(map);
 	close(fd);
 }
 

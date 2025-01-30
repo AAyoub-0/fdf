@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:20:33 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/30 18:20:36 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/30 19:58:39 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,19 +87,23 @@ t_bool	parse_map(t_map *map, int fd)
 		return (false);
 	while (get_next_line(fd, &line) >= 0 && *line != '\0')
 	{
+		printf("height: %d\n", map->height);
 		if (map->width == 0)
 			map->width = get_map_width(line);
-		map->pts_3d = ft_realloc(map->pts_3d, sizeof(t_point3d *) * (map->height + 1));
+		map->pts_3d = ft_realloc(map->pts_3d, sizeof(t_point3d *) * (map->height), sizeof(t_point3d *) * (map->height + 1));
 		if (!map->pts_3d)
 			return (free_map(map), free(line), false);
+		printf("Point allocated\n");
 		map->pts_3d[map->height] = malloc(sizeof(t_point3d) * map->width);
 		if (!map->pts_3d[map->height])
 			return (free_map(map), free(line), false);
+		printf("Point allocated 1\n");
 		if (!fill_map(map, line, map->height))
 			return (free_map(map), free(line), false);
 		map->height++;
 		free(line);
 	}
+	free(line);
 	return (true);
 }
 
@@ -107,8 +111,8 @@ t_bool	free_map(t_map *map)
 {
 	if (!map)
 		return (false);
-	free_points3d(map->pts_3d, map->height);
-	free_points2d(map->pts_2d, map->height);
-	free(map);	
+	free_points3d(map->pts_3d, map->height + 1);
+	free_points2d(map->pts_2d, map->height + 1);
+	free(map);
 	return (true);
 }

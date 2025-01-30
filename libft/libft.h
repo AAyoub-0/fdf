@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:26:45 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/22 15:30:28 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/30 18:47:23 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void				*ft_memchr(const void *s, int c, size_t n);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				*ft_calloc(size_t nmemb, size_t size);
-void 				*ft_realloc(void *ptr, size_t size);
+void 				*ft_realloc(void *ptr, size_t old_size, size_t size);
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putendl_fd(char *s, int fd);
