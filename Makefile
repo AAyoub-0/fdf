@@ -3,22 +3,23 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
+#    By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/01 20:15:38 by aayoub            #+#    #+#              #
-#    Updated: 2025/01/22 13:03:59 by aboumall         ###   ########.fr        #
+#    Updated: 2025/01/30 17:11:01 by ayoub            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fdf
+NAME 	= fdf
 
-HEAD = main.h
+HEAD 	= fdf.h
+LIBFT_A = libft.a
 
-CC = cc
+CC 		= cc
 
-CFLAGS = -g
+CFLAGS 	= -g
 
-UNAME := $(shell uname)
+UNAME 	:= $(shell uname)
 
 ifeq ($(UNAME), Darwin)
     MLX_DIR = ./minilibx
@@ -30,20 +31,22 @@ else
     MLX_FLAGS = -lX11 -lXext -lm -lGL -lz
 endif
 
-LIBFT_DIR = ./libft
-LIBFT = $(LIBFT_DIR)/libft.a
+LIBFT_DIR 	= libft
+SRC_DIR 	= src
+OBJ_DIR 	= obj
 
-SRC_DIR = src
-SRC = 	$(SRC_DIR)/parse_map.c $(SRC_DIR)/draw.c $(SRC_DIR)/window.c \
-		$(SRC_DIR)/event.c $(SRC_DIR)/point.c
+SRC_SRC 	= test.c map.c point.c main.c
 
-OBJ_DIR = obj
-OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+LIBFT 		= $(addprefix $(LIBFT_DIR)/, $(LIBFT_A))
+SRC 		= $(addprefix $(SRC_DIR)/, $(SRC_SRC))
+OBJ 		= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(HEAD) $(LIBFT) $(MLX) $(SRC) main.c
-	$(CC) $(OBJ) main.c $(CFLAGS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
+$(NAME): $(OBJ) $(HEAD) $(LIBFT) $(MLX) $(SRC)
+	$(CC) $(OBJ) $(CFLAGS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEAD) Makefile | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -74,4 +77,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re libft mlx
+.PHONY: all clean fclean re libft mlx obj
