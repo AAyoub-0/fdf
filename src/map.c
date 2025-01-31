@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:20:33 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/30 23:28:34 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/31 16:55:29 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ t_map	*init_map(void)
 	map->pts_2d = NULL;
 	map->height = 0;
 	map->width = 0;
+	map->z_min = 0;
+	map->z_mid = 0;
+	map->z_max = 0;
+	map->c_max = MAGENTA;
+	map->c_mid = YELLOW;
+	map->c_min = WHITE;
 	map->need_update = true;
 	return (map);
 }
@@ -46,6 +52,15 @@ static int  get_map_width(char *line)
     return (width);
 }
 
+static void	set_z_max_min(t_map *map, int z)
+{
+	if (z > map->z_max)
+		map->z_max = z;
+	if (z < map->z_min)
+		map->z_min = z;
+	map->z_mid = (map->z_max + map->z_min) / 2;
+}
+
 static t_bool     fill_map(t_map *map, char *line, int y)
 {
     int     x;
@@ -59,6 +74,7 @@ static t_bool     fill_map(t_map *map, char *line, int y)
             tmp = init_point3d(x, y, ft_atoi(line), WHITE);
 			if (!tmp)
 				return (false);
+			set_z_max_min(map, tmp->z);
 			map->pts_3d[y][x] = *tmp;
 			free(tmp);
             x++;

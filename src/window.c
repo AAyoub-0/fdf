@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:01:48 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/30 23:57:36 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/31 16:59:00 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static t_camera	*init_camera(void)
 	camera->r_z = 0.615472907;
 	camera->x_offset = 0;
 	camera->y_offset = 0;
-	camera->z_offset = 5;
+	camera->z_offset = 10;
 	camera->iso = 1;
 	return (camera);
 }

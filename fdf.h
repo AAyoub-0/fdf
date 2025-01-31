@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/30 23:30:42 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/31 17:06:19 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define SCREEN_WIDTH  800
-# define SCREEN_HEIGHT 600
+# define SCREEN_WIDTH  1920
+# define SCREEN_HEIGHT 1080
 
 typedef enum e_color
 {
@@ -73,6 +73,12 @@ typedef struct s_map
 	t_point2d	**pts_2d;
 	int		width;
 	int		height;
+	int		z_min;
+	int		z_mid;
+	int		z_max;
+	t_color	c_max;
+	t_color	c_mid;
+	t_color	c_min;
 	t_bool		need_update;
 }           t_map;
 
@@ -124,7 +130,9 @@ t_map		*init_map(void);
 t_bool		parse_map(t_map *map, int fd);
 t_bool		free_map(t_map *map);
 
-void		draw_line(t_mlx *mlx, t_point2d p0, t_point2d p1);
+uint32_t 	get_gradient_color(t_map map, int step, t_point2d delta, t_point2d p3d_z);
+
+void		draw_line(t_mlx *mlx, t_point2d p0, t_point2d p1, t_point2d p3d_coor);
 int			draw_map(t_mlx *mlx);
 
 t_mlx		*init_window(char *name);

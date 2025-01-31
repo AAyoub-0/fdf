@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:08:16 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/31 00:00:08 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/31 14:12:01 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ void	unit_test_draw_draw_line(void)
 	p0.y = 0;
 	p1.x = 100;
 	p1.y = 100;
-	draw_line(mlx, p0, p1);
+	draw_line(mlx, p0, p1, p0);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	init_hooks(mlx);
 	mlx_loop(mlx->mlx);
@@ -153,12 +153,14 @@ void	unit_test_draw_draw_map(void)
 
 	mlx = init_window("Fdf - 42");
 	mlx->map = init_map();
-	parse_map(mlx->map, open("maps/42.fdf", O_RDONLY));
+	int fd = open("maps/42.fdf", O_RDONLY);
+	parse_map(mlx->map, fd);
 	// draw_map(mlx);
 	// mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	init_hooks(mlx);
 	mlx_loop_hook(mlx->mlx, draw_map, mlx);
 	mlx_loop(mlx->mlx);
+	close(fd);
 }
 
 void	exec_tests(void)
@@ -179,5 +181,5 @@ void	exec_tests(void)
 
 	// draw tests
 	// unit_test_draw_draw_line();
-	// unit_test_draw_draw_map();
+	unit_test_draw_draw_map();
 }
