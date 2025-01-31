@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 21:36:13 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/31 17:05:50 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/31 23:13:48 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,7 @@ int	draw_map(t_mlx *mlx)
 	t_point2d	p[2];
 	t_point2d	p3d_z;
 
-	if (!mlx->map->need_update)
-		return (0);
+	ft_bzero(mlx->addr, SCREEN_WIDTH * SCREEN_HEIGHT * (mlx->bpp / 8));
 	i.y = 0;
 	while (i.y < mlx->map->height)
 	{

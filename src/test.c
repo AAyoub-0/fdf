@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:08:16 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/31 14:12:01 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/31 23:04:53 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,10 +155,9 @@ void	unit_test_draw_draw_map(void)
 	mlx->map = init_map();
 	int fd = open("maps/42.fdf", O_RDONLY);
 	parse_map(mlx->map, fd);
-	// draw_map(mlx);
-	// mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
+	
 	init_hooks(mlx);
-	mlx_loop_hook(mlx->mlx, draw_map, mlx);
+	draw_map(mlx);
 	mlx_loop(mlx->mlx);
 	close(fd);
 }
@@ -180,6 +179,7 @@ void	exec_tests(void)
 	// unit_test_window_open_window();
 
 	// draw tests
+	// unit_test_window_open_window();
 	// unit_test_draw_draw_line();
 	unit_test_draw_draw_map();
 }

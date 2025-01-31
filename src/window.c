@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:01:48 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/31 16:59:00 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/31 18:53:39 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static t_mouse	*init_mouse(void)
 	mouse->y = 0;
 	mouse->prev_x = 0;
 	mouse->prev_y = 0;
+	mouse->button = 0;
 	mouse->is_pressed = false;
 	return (mouse);
 }

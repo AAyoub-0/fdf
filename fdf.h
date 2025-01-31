@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/31 17:06:19 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/31 19:21:01 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define SCREEN_WIDTH  1920
-# define SCREEN_HEIGHT 1080
+# define SCREEN_WIDTH  		800
+# define SCREEN_HEIGHT 		600
+
+# define MOUSE_LEFT 		1
+# define MOUSE_RIGHT 		2
+# define MOUSE_WHEEL_UP 	4
+# define MOUSE_WHEEL_DOWN 	5
 
 typedef enum e_color
 {
@@ -45,13 +50,11 @@ typedef enum e_hook
 {
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
-	ON_DESTROY = 17
+	ON_DESTROY = 17,
+	ON_MOSEUP = 5,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEMOVE = 6,
 }			t_hook;
-
-typedef enum e_key
-{
-	ESCAPE = 53
-} t_key;
 
 typedef struct s_point3d
 {
@@ -101,6 +104,7 @@ typedef struct s_mouse
 	int		y;
 	int		prev_x;
 	int		prev_y;
+	int		button;
 	t_bool		is_pressed;
 }           t_mouse;
 
@@ -138,6 +142,10 @@ int			draw_map(t_mlx *mlx);
 t_mlx		*init_window(char *name);
 void		free_window(t_mlx *mlx);
 
+void		keyboard_events(int key, t_mlx *mlx);
+int			mouse_down(int button, int x, int y, t_mlx *mlx);
+int			mouse_up(int button, int x, int y, t_mlx *mlx);
+int			mouse_move(int x, int y, t_mlx *mlx);
 void		init_hooks(t_mlx *mlx);
 
 void		exec_tests(void);
