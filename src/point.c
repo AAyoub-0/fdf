@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   point.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:33:20 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/30 20:38:46 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/02/03 15:36:22 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ t_bool  free_points3d(t_point3d **point, size_t size)
 	if (!point)
 		return (false);
 	i = 0;
-	while (i < size)
+	while (i < size - 1)
 	{
-		free(point[i]);
+        free(point[i]);
 		i++;
 	}
 	free(point);
