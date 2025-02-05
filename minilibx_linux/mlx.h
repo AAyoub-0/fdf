@@ -134,6 +134,9 @@ int	mlx_mouse_move(void *mlx_ptr, void *win_ptr, int x, int y);
 int	mlx_mouse_hide(void *mlx_ptr, void *win_ptr);
 int	mlx_mouse_show(void *mlx_ptr, void *win_ptr);
 
+void	mlx_cursor_change(void *mlx_ptr, void *win_ptr, int cursor_shape);
+void	mlx_cursor_reset(void *mlx_ptr, void *win_ptr);
+
 int	mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
 
 #endif /* MLX_H */
