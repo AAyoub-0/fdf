@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:06:07 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/06 13:00:24 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:58:50 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	init_instructions(t_mlx *mlx)
 {
 	mlx->ins = ft_calloc(8, sizeof(t_frame *));
+	mlx->ins[0] = init_frame((t_point2d){10, 10}, 30, 35, WHITE);
+	mlx->ins[0]->class = ft_strdup("menu");
 	mlx->ins[1] = init_frame((t_point2d){0, 0}, SCREEN_WIDTH * 0.23, SCREEN_HEIGHT,
 			WHITE);
 	mlx->ins[1]->class = ft_strdup("body");
@@ -32,27 +34,16 @@ void	init_instructions(t_mlx *mlx)
 
 void	draw_menu_icon(t_mlx *mlx)
 {
-	t_point2d	p0[2];
-	t_point2d	p1[2];
-	t_point2d	p2[2];
-	
-	p0[0].x = 10;
-	p0[1].x = 40;
-	p1[0].x = 10;
-	p1[1].x = 40;
-	p2[0].x = 10;
-	p2[1].x = 40;
-	p0[0].y = 10;
-	p0[1].y = 10;
-	p1[0].y = 15;
-	p1[1].y = 15;
-	p2[0].y = 20;
-	p2[1].y = 20;
-	mlx->ins[0] = init_frame((t_point2d){10, 10}, 30, 30, WHITE);
-	mlx->ins[0]->class = ft_strdup("menu");
-	draw_line_simple(mlx, p0[0], p0[1], WHITE);
-	draw_line_simple(mlx, p1[0], p1[1], WHITE);
-	draw_line_simple(mlx, p2[0], p2[1], WHITE);
+	t_frame	f0;
+	t_frame	f1;
+	t_frame	f2;
+
+	f0 = *init_frame((t_point2d){10, 10}, 30, 5, WHITE);
+	f1 = *init_frame((t_point2d){10, 20}, 30, 5, WHITE);
+	f2 = *init_frame((t_point2d){10, 30}, 30, 5, WHITE);
+	draw_frame(mlx, &f0);
+	draw_frame(mlx, &f1);
+	draw_frame(mlx, &f2);
 }
 
 void	draw_instructions(t_mlx *mlx)

@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:27:14 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/06 17:51:40 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:52:42 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int	key_down(int keycode, void *params)
 static int	no_event(void *data)
 {
 	t_mlx	*mlx;
+	int	mouse_pos;
 
 	mlx = (t_mlx *)data;
-	int mouse_pos;
 	mouse_pos = mlx_mouse_get_pos(mlx->mlx, mlx->win, &mlx->mouse->x, &mlx->mouse->y);
 	if (mlx->ins)
 	{
