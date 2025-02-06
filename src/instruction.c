@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:06:07 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/06 17:58:50 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:59:51 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,13 @@ void	init_instructions(t_mlx *mlx)
 {
 	mlx->ins = ft_calloc(8, sizeof(t_frame *));
 	mlx->ins[0] = init_frame((t_point2d){10, 10}, 30, 35, WHITE);
-	mlx->ins[0]->class = ft_strdup("menu");
 	mlx->ins[1] = init_frame((t_point2d){0, 0}, SCREEN_WIDTH * 0.23, SCREEN_HEIGHT,
 			WHITE);
-	mlx->ins[1]->class = ft_strdup("body");
 	mlx->ins[2] = init_frame((t_point2d){20, 20}, 120, 45, RED);
-	mlx->ins[2]->class = ft_strdup("vue-de-face");
 	mlx->ins[3] = init_frame((t_point2d){155, 20}, 120, 45, RED);
-	mlx->ins[3]->class = ft_strdup("vue-de-droite");
 	mlx->ins[4] = init_frame((t_point2d){290, 20}, 120, 45, RED);
-	mlx->ins[4]->class = ft_strdup("vue-de-gauche");
 	mlx->ins[5] = init_frame((t_point2d){20, 80}, 120, 45, RED);
-	mlx->ins[5]->class = ft_strdup("vue-de-dessous");
 	mlx->ins[6] = init_frame((t_point2d){155, 80}, 120, 45, RED);
-	mlx->ins[6]->class = ft_strdup("vue-de-dessus");
 }
 
 void	draw_menu_icon(t_mlx *mlx)

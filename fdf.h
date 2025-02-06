@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/06 17:50:37 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:59:42 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ typedef struct s_point2d
 
 typedef struct s_frame
 {
-	char *class;
 	t_point2d	coord;
 	int	height;
 	int	width;
