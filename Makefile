@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+         #
+#    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/01 20:15:38 by aayoub            #+#    #+#              #
-#    Updated: 2025/01/31 18:44:49 by ayoub            ###   ########.fr        #
+#    Updated: 2025/02/04 13:24:31 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ OBJ_DIR 	= 	obj
 
 SRC_SRC 	= 	test.c map.c point.c project.c \
 				window.c hooks.c draw.c color.c \
-				controls.c main.c
+				controls.c instruction.c frame.c \
+				main.c
 
 LIBFT 		= 	$(addprefix $(LIBFT_DIR)/, $(LIBFT_A))
 SRC 		= 	$(addprefix $(SRC_DIR)/, $(SRC_SRC))

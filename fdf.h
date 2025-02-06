@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/31 19:21:01 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/02/05 17:55:54 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define SCREEN_WIDTH  		800
-# define SCREEN_HEIGHT 		600
+# define SCREEN_WIDTH  		1920
+# define SCREEN_HEIGHT 		1080
 
 # define MOUSE_LEFT 		1
 # define MOUSE_RIGHT 		2
@@ -35,6 +35,7 @@
 typedef enum e_color
 {
 	RED = 0xB22222,
+	RED_OV = 0xFA8072,
 	GREEN = 0x90EE90,
 	BLUE = 0x0000FF,
 	WHITE = 0xFFFFFF,
@@ -69,6 +70,18 @@ typedef struct s_point2d
 	int		x;
 	int		y;
 }           t_point2d;
+
+typedef struct s_frame
+{
+	char *class;
+	t_point2d	coord;
+	int	height;
+	int	width;
+	int	border;
+	t_color	bg;
+	t_color b_clr;
+	t_bool	m_over;
+}	t_frame;
 
 typedef struct s_map
 {
@@ -120,6 +133,8 @@ typedef struct s_mlx
 	t_map	*map;
 	t_camera	*camera;
 	t_mouse	*mouse;
+	t_frame **ins;
+	t_bool	show_ins;
 }           t_mlx;
 
 void		print_point(void *p, t_bool is3d);
@@ -137,6 +152,7 @@ t_bool		free_map(t_map *map);
 uint32_t 	get_gradient_color(t_map map, int step, t_point2d delta, t_point2d p3d_z);
 
 void		draw_line(t_mlx *mlx, t_point2d p0, t_point2d p1, t_point2d p3d_coor);
+void		draw_line_simple(t_mlx *mlx, t_point2d p0, t_point2d p1, t_color color);
 int			draw_map(t_mlx *mlx);
 
 t_mlx		*init_window(char *name);
@@ -147,6 +163,11 @@ int			mouse_down(int button, int x, int y, t_mlx *mlx);
 int			mouse_up(int button, int x, int y, t_mlx *mlx);
 int			mouse_move(int x, int y, t_mlx *mlx);
 void		init_hooks(t_mlx *mlx);
+
+t_frame		*init_frame(t_point2d coor, int width, int height, t_color bg);
+void		draw_frame(t_mlx *mlx, t_frame *frame);
+void		init_instructions(t_mlx *mlx);
+void		draw_instructions(t_mlx *mlx);
 
 void		exec_tests(void);
 

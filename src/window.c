@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:01:48 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/31 18:53:39 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/02/05 20:22:44 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ void	free_window(t_mlx *mlx)
 		free(mlx->camera);
 	if (mlx->mouse)
 		free(mlx->mouse);
+	free(mlx->mlx);
 	free(mlx);
 }

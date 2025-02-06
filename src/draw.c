@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 21:36:13 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/31 23:13:48 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/02/03 17:10:18 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,33 @@ void	draw_line(t_mlx *mlx, t_point2d p0, t_point2d p1, t_point2d p3d_z)
 	}
 }
 
+void	draw_line_simple(t_mlx *mlx, t_point2d p0, t_point2d p1, t_color color)
+{
+	t_point2d	delta;
+	t_point2d	sign;
+	int			error[2];
+	
+	delta.x = abs(p1.x - p0.x);
+	delta.y = abs(p1.y - p0.y);
+	sign = get_sign(p0, p1);
+	error[0] = delta.x - delta.y;
+	while (p0.x != p1.x || p0.y != p1.y)
+	{
+		ft_put_pixel(mlx, p0.x, p0.y, color);
+		error[1] = error[0] * 2;
+		if (error[1] > -delta.y)
+		{
+			error[0] -= delta.y;
+			p0.x += sign.x;
+		}
+		if (error[1] < delta.x)
+		{
+			error[0] += delta.x;
+			p0.y += sign.y;
+		}
+	}
+}
+
 int	draw_map(t_mlx *mlx)
 {	
 	t_point2d	i;
@@ -102,4 +129,5 @@ int	draw_map(t_mlx *mlx)
 	}
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	mlx->map->need_update = false;
+	return (0);
 }

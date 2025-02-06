@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:08:16 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/31 23:04:53 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/02/05 16:47:43 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,20 @@ void	unit_test_draw_draw_map(void)
 	close(fd);
 }
 
+void	unit_test_instruction_draw()
+{
+	t_mlx	*mlx;
+
+	mlx = init_window("Fdf - 42");
+	mlx->map = init_map();
+	
+	init_hooks(mlx);
+	init_instructions(mlx);
+	mlx->show_ins = false;
+	draw_instructions(mlx);
+	mlx_loop(mlx->mlx);
+}
+
 void	exec_tests(void)
 {
 	// points tests
@@ -181,5 +195,8 @@ void	exec_tests(void)
 	// draw tests
 	// unit_test_window_open_window();
 	// unit_test_draw_draw_line();
-	unit_test_draw_draw_map();
+	// unit_test_draw_draw_map();
+
+	// instruction tests
+	unit_test_instruction_draw();
 }

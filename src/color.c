@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 17:05:40 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/31 17:10:54 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/02/04 14:44:19 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static uint32_t	interpolate_colors(t_color *c_rgb, double rt)
     f_rgb.y = (int)(s_rgb.y + rt * (e_rgb.y - s_rgb.y));
     f_rgb.z = (int)(s_rgb.z + rt * (e_rgb.z - s_rgb.z));
     return ((f_rgb.x << 16) | (f_rgb.y << 8) | f_rgb.z);
-}	
+}
 
 uint32_t get_gradient_color(t_map map, int step, t_point2d delta, t_point2d p3d_z)
 {
