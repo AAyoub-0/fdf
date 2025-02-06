@@ -6,7 +6,7 @@
 #    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/01 20:15:38 by aayoub            #+#    #+#              #
-#    Updated: 2025/02/06 17:47:31 by aboumall         ###   ########.fr        #
+#    Updated: 2025/02/06 20:10:04 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,11 @@ UNAME 	:= $(shell uname)
 ifeq ($(UNAME), Darwin)
     MLX_DIR = ./minilibx
     MLX = $(MLX_DIR)/libmlx.a
-    MLX_FLAGS = -framework OpenGL -framework AppKit
+    MLX_FLAGS = -framework OpenGL -framework AppKit -O3
 else
     MLX_DIR = ./minilibx_linux
     MLX = $(MLX_DIR)/libmlx.a
-    MLX_FLAGS = -lX11 -lXext -lm -lGL -lz
+    MLX_FLAGS = -lX11 -lXext -lm -lGL -lz -O3
 endif
 
 LIBFT_DIR 	= 	libft
@@ -38,7 +38,7 @@ OBJ_DIR 	= 	obj
 SRC_SRC 	= 	test.c map.c point.c project.c \
 				window.c hooks.c draw.c color.c \
 				controls.c instruction.c frame.c \
-				view_ctl.c main.c
+				view_ctl.c rotation_ctl.c main.c
 
 LIBFT 		= 	$(addprefix $(LIBFT_DIR)/, $(LIBFT_A))
 SRC 		= 	$(addprefix $(SRC_DIR)/, $(SRC_SRC))

@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:48:04 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/06 17:25:18 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/06 20:00:16 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,44 @@ int	mouse_down(int button, int x, int y, t_mlx *mlx)
 	return (0);
 }
 
+void	view_event_click(t_mlx *mlx, int id, t_fpoint3d n_rt)
+{
+	if (mouse_over_frame(*(mlx->mouse), *(mlx->ins[id])) && mlx->show_ins)
+	{
+		mlx->camera->r_x = n_rt.x;
+		mlx->camera->r_y = n_rt.y;
+		mlx->camera->r_z = n_rt.z;
+		draw_map(mlx);
+		draw_instructions(mlx);
+	}
+}
+
+void	rot_event_click(t_mlx *mlx, int id, t_fpoint3d n_rt)
+{
+	if (mouse_over_frame(*(mlx->mouse), *(mlx->ins[id])) && mlx->show_ins)
+	{
+		mlx->camera->r_x += n_rt.x;
+		mlx->camera->r_y += n_rt.y;
+		mlx->camera->r_z += n_rt.z;
+		draw_map(mlx);
+		draw_instructions(mlx);
+	}
+}
+
 int	mouse_up(int button, int x, int y, t_mlx *mlx)
 {
 	(void)x;
 	(void)y;
 	if (button == MOUSE_LEFT || button == MOUSE_RIGHT)
 	{
+		view_event_click(mlx, 2, (t_fpoint3d){-1.5708, 0, 0});
+		view_event_click(mlx, 3, (t_fpoint3d){0, 1.5708, 0});
+		view_event_click(mlx, 4, (t_fpoint3d){0, -1.5708, 0});
+		view_event_click(mlx, 5, (t_fpoint3d){0, 0, 0});
+		view_event_click(mlx, 6, (t_fpoint3d){0, -3.14159, 0});
+		rot_event_click(mlx, 7, (t_fpoint3d){0.1, 0, 0});
+		rot_event_click(mlx, 8, (t_fpoint3d){0, 0.1, 0});
+		rot_event_click(mlx, 9, (t_fpoint3d){0, 0, 0.1});
 		mlx->mouse->is_pressed = false;
 		mlx->mouse->button = 0;
 	}

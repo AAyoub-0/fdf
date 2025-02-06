@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:20:33 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/31 16:55:29 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/02/06 19:00:58 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_map	*init_map(void)
 	if (!map)
 		return (NULL);
 	map->pts_3d = NULL;
-	map->pts_2d = NULL;
 	map->height = 0;
 	map->width = 0;
 	map->z_min = 0;
@@ -121,7 +120,6 @@ t_bool	free_map(t_map *map)
 	if (!map)
 		return (false);
 	free_points3d(map->pts_3d, map->height + 1);
-	free_points2d(map->pts_2d, map->height + 1);
 	free(map);
 	return (true);
 }

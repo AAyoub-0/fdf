@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   project.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 21:02:34 by ayoub             #+#    #+#             */
-/*   Updated: 2025/01/30 23:38:45 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/02/06 19:17:34 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_point2d	project_point3d(t_point3d p3d, t_map map, t_camera c)
 	// apply zoom
 	p3d.x *= c.zoom;
 	p3d.y *= c.zoom;
-	p3d.z *= c.zoom / c.z_offset;
+	p3d.z *= (c.zoom / c.z_offset) * 0.87878;
 	p3d.x -= (map.width * c.zoom) / 2;
 	p3d.y -= (map.height * c.zoom) / 2;
 	// apply rotation

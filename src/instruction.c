@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:06:07 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/06 17:59:51 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/06 19:26:08 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_instructions(t_mlx *mlx)
 {
-	mlx->ins = ft_calloc(8, sizeof(t_frame *));
+	mlx->ins = ft_calloc(11, sizeof(t_frame *));
 	mlx->ins[0] = init_frame((t_point2d){10, 10}, 30, 35, WHITE);
 	mlx->ins[1] = init_frame((t_point2d){0, 0}, SCREEN_WIDTH * 0.23, SCREEN_HEIGHT,
 			WHITE);
@@ -23,20 +23,26 @@ void	init_instructions(t_mlx *mlx)
 	mlx->ins[4] = init_frame((t_point2d){290, 20}, 120, 45, RED);
 	mlx->ins[5] = init_frame((t_point2d){20, 80}, 120, 45, RED);
 	mlx->ins[6] = init_frame((t_point2d){155, 80}, 120, 45, RED);
+	mlx->ins[7] = init_frame((t_point2d){20, 140}, 120, 45, BLUE);
+	mlx->ins[8] = init_frame((t_point2d){155, 140}, 120, 45, BLUE);
+	mlx->ins[9] = init_frame((t_point2d){290, 140}, 120, 45, BLUE);
 }
 
 void	draw_menu_icon(t_mlx *mlx)
 {
-	t_frame	f0;
-	t_frame	f1;
-	t_frame	f2;
+	t_frame	*f0;
+	t_frame	*f1;
+	t_frame	*f2;
 
-	f0 = *init_frame((t_point2d){10, 10}, 30, 5, WHITE);
-	f1 = *init_frame((t_point2d){10, 20}, 30, 5, WHITE);
-	f2 = *init_frame((t_point2d){10, 30}, 30, 5, WHITE);
-	draw_frame(mlx, &f0);
-	draw_frame(mlx, &f1);
-	draw_frame(mlx, &f2);
+	f0 = init_frame((t_point2d){10, 10}, 30, 5, WHITE);
+	f1 = init_frame((t_point2d){10, 20}, 30, 5, WHITE);
+	f2 = init_frame((t_point2d){10, 30}, 30, 5, WHITE);
+	draw_frame(mlx, f0);
+	draw_frame(mlx, f1);
+	draw_frame(mlx, f2);
+	free(f0);
+	free(f1);
+	free(f2);
 }
 
 void	draw_instructions(t_mlx *mlx)
@@ -53,12 +59,18 @@ void	draw_instructions(t_mlx *mlx)
 	draw_frame(mlx, mlx->ins[4]);
 	draw_frame(mlx, mlx->ins[5]);
 	draw_frame(mlx, mlx->ins[6]);
+	draw_frame(mlx, mlx->ins[7]);
+	draw_frame(mlx, mlx->ins[8]);
+	draw_frame(mlx, mlx->ins[9]);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	mlx_string_put(mlx->mlx, mlx->win, 30, 40, WHITE, "Vue de face");
 	mlx_string_put(mlx->mlx, mlx->win, 165, 40, WHITE, "Vue de droite");
 	mlx_string_put(mlx->mlx, mlx->win, 300, 40, WHITE, "Vue de gauche");
 	mlx_string_put(mlx->mlx, mlx->win, 30, 100, WHITE, "Vue de dessous");
 	mlx_string_put(mlx->mlx, mlx->win, 165, 100, WHITE, "Vue de dessous");
+	mlx_string_put(mlx->mlx, mlx->win, 30, 160, WHITE, "Rotation X");
+	mlx_string_put(mlx->mlx, mlx->win, 165, 160, WHITE, "Rotation Y");
+	mlx_string_put(mlx->mlx, mlx->win, 300, 160, WHITE, "Rotation Z");
 	return ;
 }
 

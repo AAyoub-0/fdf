@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/06 17:59:42 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/06 19:32:45 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ typedef enum e_color
 	RED = 0xB22222,
 	RED_OV = 0xFA8072,
 	GREEN = 0x90EE90,
-	BLUE = 0x0000FF,
+	BLUE = 0x4169E1,
+	BLUE_OV = 0x87CEEB,
 	WHITE = 0xFFFFFF,
 	BLACK = 0x000000,
 	YELLOW = 0xFFFF00,
@@ -62,6 +63,13 @@ typedef struct s_point3d
 	t_color		color;
 }           t_point3d;
 
+typedef struct s_fpoint3d
+{
+	float		x;
+	float		y;
+	float		z;
+}			t_fpoint3d;
+
 typedef struct s_point2d
 {
 	int		x;
@@ -77,12 +85,11 @@ typedef struct s_frame
 	t_color	bg;
 	t_color b_clr;
 	t_bool	m_over;
-}	t_frame;
+}			t_frame;
 
 typedef struct s_map
 {
 	t_point3d	**pts_3d;
-	t_point2d	**pts_2d;
 	int		width;
 	int		height;
 	int		z_min;
@@ -162,6 +169,7 @@ void		init_hooks(t_mlx *mlx);
 
 t_frame		*init_frame(t_point2d coor, int width, int height, t_color bg);
 void		draw_frame(t_mlx *mlx, t_frame *frame);
+t_bool		free_frames(t_frame **frame);
 
 void		init_instructions(t_mlx *mlx);
 t_bool		mouse_over_frame(t_mouse m, t_frame f);
@@ -173,6 +181,9 @@ void		view_right_event_hover(t_mlx *mlx);
 void		view_left_event_hover(t_mlx *mlx);
 void		view_up_event_hover(t_mlx *mlx);
 void		view_down_event_hover(t_mlx *mlx);
+void		rot_x_event_hover(t_mlx *mlx);
+void		rot_y_event_hover(t_mlx *mlx);
+void		rot_z_event_hover(t_mlx *mlx);
 
 void		exec_tests(void);
 

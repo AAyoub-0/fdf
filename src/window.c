@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:01:48 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/05 20:22:44 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:58:38 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void	free_window(t_mlx *mlx)
 		free(mlx->camera);
 	if (mlx->mouse)
 		free(mlx->mouse);
+	free_frames(mlx->ins);
+	mlx_destroy_display(mlx->mlx);
 	free(mlx->mlx);
 	free(mlx);
 }
