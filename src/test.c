@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:08:16 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/05 16:47:43 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:35:18 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ void	unit_test_draw_draw_map(void)
 	close(fd);
 }
 
-void	unit_test_instruction_draw()
+void	unit_test_instruction_draw(void)
 {
 	t_mlx	*mlx;
 
@@ -174,6 +174,24 @@ void	unit_test_instruction_draw()
 	mlx->show_ins = false;
 	draw_instructions(mlx);
 	mlx_loop(mlx->mlx);
+}
+
+void	unit_test_inctruction_map_draw(void)
+{
+	t_mlx	*mlx;
+
+	mlx = init_window("Fdf - 42");
+	mlx->map = init_map();
+	int fd = open("maps/42.fdf", O_RDONLY);
+	parse_map(mlx->map, fd);
+	
+	init_hooks(mlx);
+	init_instructions(mlx);
+	mlx->show_ins = false;
+	draw_map(mlx);
+	draw_instructions(mlx);
+	mlx_loop(mlx->mlx);
+	close(fd);
 }
 
 void	exec_tests(void)
@@ -198,5 +216,8 @@ void	exec_tests(void)
 	// unit_test_draw_draw_map();
 
 	// instruction tests
-	unit_test_instruction_draw();
+	// unit_test_instruction_draw();
+
+	// instruction + map tests
+	unit_test_inctruction_map_draw();
 }

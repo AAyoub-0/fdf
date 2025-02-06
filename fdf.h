@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/05 17:55:54 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:50:37 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,9 @@ typedef enum e_color
 
 typedef enum e_hook
 {
-	ON_KEYDOWN = 2,
-	ON_KEYUP = 3,
 	ON_DESTROY = 17,
-	ON_MOSEUP = 5,
 	ON_MOUSEDOWN = 4,
-	ON_MOUSEMOVE = 6,
+	ON_MOSEUP = 5
 }			t_hook;
 
 typedef struct s_point3d
@@ -166,8 +163,17 @@ void		init_hooks(t_mlx *mlx);
 
 t_frame		*init_frame(t_point2d coor, int width, int height, t_color bg);
 void		draw_frame(t_mlx *mlx, t_frame *frame);
+
 void		init_instructions(t_mlx *mlx);
+t_bool		mouse_over_frame(t_mouse m, t_frame f);
 void		draw_instructions(t_mlx *mlx);
+
+void		menu_frame_event_hover(t_mlx *mlx);
+void		view_face_event_hover(t_mlx *mlx);
+void		view_right_event_hover(t_mlx *mlx);
+void		view_left_event_hover(t_mlx *mlx);
+void		view_up_event_hover(t_mlx *mlx);
+void		view_down_event_hover(t_mlx *mlx);
 
 void		exec_tests(void);
 
