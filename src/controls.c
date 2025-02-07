@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:48:04 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/07 14:34:47 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:52:59 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int	mouse_down(int button, int x, int y, t_mlx *mlx)
 
 void	view_event_click(t_mlx *mlx, int id, t_fpoint3d n_rt)
 {
+	if (id == 10)
+		mlx->camera->iso = 1;
 	if (mouse_over_frame(mlx->mouse, mlx->ins[id]) && mlx->show_ins)
 	{
 		mlx->camera->r_x = n_rt.x;
@@ -96,7 +98,7 @@ int	mouse_up(int button, int x, int y, t_mlx *mlx)
 		rot_event_click(mlx, 7, (t_fpoint3d){0.1, 0, 0});
 		rot_event_click(mlx, 8, (t_fpoint3d){0, 0.1, 0});
 		rot_event_click(mlx, 9, (t_fpoint3d){0, 0, 0.1});
-		view_event_click(mlx, 10, (t_fpoint3d){-0.615472907, -0.523599, 0.615472907});
+		view_event_click(mlx, 10, (t_fpoint3d){0, 0, 0});
 		view_event_click(mlx, 11, (t_fpoint3d){0.349, 0.785, 0.0});
 		view_event_click(mlx, 12, (t_fpoint3d){0.0, 0.785, 0.0});
 		mlx->mouse->is_pressed = false;

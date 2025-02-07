@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 21:02:34 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/07 14:24:31 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:47:05 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,34 @@ static void	rotate_point3d(t_point3d *p, t_camera *c)
 	p->y = tmp_x * sin(c->r_z) + tmp_y * cos(c->r_z);
 }
 
-t_point2d	project_point3d(t_point3d p3d, t_map *map, t_camera *c)
+static t_point2d	project_isometric(t_point3d p3d, t_map *map, t_camera *c)
 {
 	t_point2d	p2d;
 
 	// apply zoom
 	p3d.x *= c->zoom;
 	p3d.y *= c->zoom;
-	p3d.z *= (c->zoom / c->z_offset) * 0.87878;
+	p3d.z *= (c->zoom / c->z_offset);
+	p3d.x -= (map->width * c->zoom) / 2;
+	p3d.y -= (map->height * c->zoom) / 2;
+	// apply rotation
+	rotate_point3d(&p3d, c);
+	// apply scaling
+	p3d.x += (SCREEN_WIDTH / 2 + c->x_offset) * 1.2;
+	p3d.y += ((SCREEN_HEIGHT + map->height / 2 * c->zoom) / 2 + c->y_offset) * 0.009;
+	p2d.x = (p3d.x - p3d.y) * cos(0.523599);
+	p2d.y = (p3d.y + p3d.x) * sin(0.523599) - p3d.z;
+	return (p2d);
+}
+
+static t_point2d	project_perspective(t_point3d p3d, t_map *map, t_camera *c)
+{
+	t_point2d	p2d;
+
+	// apply zoom
+	p3d.x *= c->zoom;
+	p3d.y *= c->zoom;
+	p3d.z *= (c->zoom / c->z_offset);
 	p3d.x -= (map->width * c->zoom) / 2;
 	p3d.y -= (map->height * c->zoom) / 2;
 	// apply rotation
@@ -52,4 +72,12 @@ t_point2d	project_point3d(t_point3d p3d, t_map *map, t_camera *c)
 	p2d.x = p3d.x;
 	p2d.y = p3d.y;
 	return (p2d);
+}
+
+t_point2d	project_point3d(t_point3d p3d, t_map *map, t_camera *c)
+{
+	if (c->iso)
+		return (project_isometric(p3d, map, c));
+	else
+		return (project_perspective(p3d, map, c));
 }

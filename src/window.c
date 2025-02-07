@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:01:48 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/06 18:58:38 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:43:30 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ static t_camera	*init_camera(void)
 	if (!camera)
 		return (NULL);
 	camera->zoom = 30;
-	camera->r_x = -0.615472907;
-	camera->r_y = -0.523599;
-	camera->r_z = 0.615472907;
+	camera->r_x = 0;
+	camera->r_y = 0;
+	camera->r_z = 0;
 	camera->x_offset = 0;
 	camera->y_offset = 0;
 	camera->z_offset = 10;
 	camera->iso = 1;
+	camera->m_rad = 10;
 	return (camera);
 }
 

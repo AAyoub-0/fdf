@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/07 14:30:12 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/07 14:59:36 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ typedef struct s_camera
 	int		y_offset;
 	int		z_offset;
 	int		iso;
+	int		m_rad;
 }           t_camera;
 
 typedef struct s_mouse
