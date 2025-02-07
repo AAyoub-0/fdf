@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:48:04 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/07 13:39:18 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/07 14:34:47 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	mouse_down(int button, int x, int y, t_mlx *mlx)
 
 void	view_event_click(t_mlx *mlx, int id, t_fpoint3d n_rt)
 {
-	if (mouse_over_frame(*(mlx->mouse), *(mlx->ins[id])) && mlx->show_ins)
+	if (mouse_over_frame(mlx->mouse, mlx->ins[id]) && mlx->show_ins)
 	{
 		mlx->camera->r_x = n_rt.x;
 		mlx->camera->r_y = n_rt.y;
@@ -72,7 +72,7 @@ void	view_event_click(t_mlx *mlx, int id, t_fpoint3d n_rt)
 
 void	rot_event_click(t_mlx *mlx, int id, t_fpoint3d n_rt)
 {
-	if (mouse_over_frame(*(mlx->mouse), *(mlx->ins[id])) && mlx->show_ins)
+	if (mouse_over_frame(mlx->mouse, mlx->ins[id]) && mlx->show_ins)
 	{
 		mlx->camera->r_x += n_rt.x;
 		mlx->camera->r_y += n_rt.y;

@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 21:36:13 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/06 13:01:48 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/07 14:28:18 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	draw_line(t_mlx *mlx, t_point2d p0, t_point2d p1, t_point2d p3d_z)
 	error[0] = delta.x - delta.y;
 	while (p0.x != p1.x || p0.y != p1.y)
 	{
-		ft_put_pixel(mlx, p0.x, p0.y, get_gradient_color(*(mlx->map), step, delta, p3d_z));
+		ft_put_pixel(mlx, p0.x, p0.y, get_gradient_color(mlx->map, step, delta, p3d_z));
 		error[1] = error[0] * 2;
 		if (error[1] > -delta.y)
 		{
@@ -109,17 +109,17 @@ int	draw_map(t_mlx *mlx)
 		i.x = 0;
 		while (i.x < mlx->map->width)
 		{
-			p[0] = project_point3d(mlx->map->pts_3d[i.y][i.x], *mlx->map, *mlx->camera);
+			p[0] = project_point3d(mlx->map->pts_3d[i.y][i.x], mlx->map, mlx->camera);
 			p3d_z.x = mlx->map->pts_3d[i.y][i.x].z;
 			if (i.x + 1 < mlx->map->width)
 			{
-				p[1] = project_point3d(mlx->map->pts_3d[i.y][i.x + 1], *mlx->map, *mlx->camera);
+				p[1] = project_point3d(mlx->map->pts_3d[i.y][i.x + 1], mlx->map, mlx->camera);
 				p3d_z.y = mlx->map->pts_3d[i.y][i.x + 1].z;
 				draw_line(mlx, p[0], p[1], p3d_z);
 			}
 			if (i.y + 1 < mlx->map->height)
 			{
-				p[1] = project_point3d(mlx->map->pts_3d[i.y + 1][i.x], *mlx->map, *mlx->camera);
+				p[1] = project_point3d(mlx->map->pts_3d[i.y + 1][i.x], mlx->map, mlx->camera);
 				p3d_z.y = mlx->map->pts_3d[i.y + 1][i.x].z;
 				draw_line(mlx, p[0], p[1], p3d_z);
 			}

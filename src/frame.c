@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 13:16:42 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/07 14:02:35 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/07 14:35:52 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,19 @@ void	draw_frame(t_mlx *mlx, t_frame *frame)
 	}
 }
 
-t_bool	mouse_over_frame(t_mouse m, t_frame f)
+t_bool	mouse_over_frame(t_mouse *m, t_frame *f)
 {
-	return (m.x >= f.coord.x && m.x <= f.coord.x + f.width
-				&& m.y >= f.coord.y && m.y <= f.height + f.coord.y);
+	return (m->x >= f->coord.x && m->x <= f->coord.x + f->width
+				&& m->y >= f->coord.y && m->y <= f->height + f->coord.y);
 }
 
 void	menu_frame_event_hover(t_mlx *mlx)
 {
-	if (mouse_over_frame(*(mlx->mouse), *(mlx->ins[1])))
+	if (mouse_over_frame(mlx->mouse, mlx->ins[1]))
 		mlx->ins[1]->m_over = true;
 	else
 		mlx->ins[1]->m_over = false;
-	if (!mouse_over_frame(*(mlx->mouse), *(mlx->ins[0])))
+	if (!mouse_over_frame(mlx->mouse, mlx->ins[0]))
 		mlx->ins[0]->m_over = false;
 	else
 		mlx->ins[0]->m_over = true;
