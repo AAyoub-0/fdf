@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/06 19:32:45 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:47:09 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ typedef enum e_color
 {
 	RED = 0xB22222,
 	RED_OV = 0xFA8072,
-	GREEN = 0x90EE90,
+	GREEN = 0x228B22,
+	GREEN_OV = 0x3CB371,
 	BLUE = 0x4169E1,
 	BLUE_OV = 0x87CEEB,
 	WHITE = 0xFFFFFF,
@@ -184,6 +185,9 @@ void		view_down_event_hover(t_mlx *mlx);
 void		rot_x_event_hover(t_mlx *mlx);
 void		rot_y_event_hover(t_mlx *mlx);
 void		rot_z_event_hover(t_mlx *mlx);
+void		proj_iso_event_hover(t_mlx *mlx);
+void		proj_1_event_hover(t_mlx *mlx);
+void		proj_2_event_hover(t_mlx *mlx);
 
 void		exec_tests(void);
 

@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 13:16:42 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/06 19:03:48 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/07 14:02:35 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,6 @@ void	menu_frame_event_hover(t_mlx *mlx)
 		mlx->ins[0]->m_over = false;
 	else
 		mlx->ins[0]->m_over = true;
-	if (mouse_over_frame(*(mlx->mouse), *(mlx->ins[0])) && mlx->show_ins == false)
-		mlx_cursor_change(mlx->mlx, mlx->win, 60);
-	if (!mouse_over_frame(*(mlx->mouse), *(mlx->ins[0])) && mlx->show_ins == false)
-		mlx_cursor_reset(mlx->mlx, mlx->win);
 }
 
 t_bool	free_frames(t_frame **frame)
