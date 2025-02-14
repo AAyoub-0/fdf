@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 21:02:34 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/07 15:47:05 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:44:08 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static t_point2d	project_isometric(t_point3d p3d, t_map *map, t_camera *c)
 	// apply scaling
 	p3d.x += (SCREEN_WIDTH / 2 + c->x_offset) * 1.2;
 	p3d.y += ((SCREEN_HEIGHT + map->height / 2 * c->zoom) / 2 + c->y_offset) * 0.009;
+	// iso projection
 	p2d.x = (p3d.x - p3d.y) * cos(0.523599);
 	p2d.y = (p3d.y + p3d.x) * sin(0.523599) - p3d.z;
 	return (p2d);

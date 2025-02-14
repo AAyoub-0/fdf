@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:20:33 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/06 19:00:58 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:48:38 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_map	*init_map(void)
 	map->c_mid = YELLOW;
 	map->c_min = WHITE;
 	map->need_update = true;
+	map->fd = -1;
 	return (map);
 }
 
@@ -115,11 +116,12 @@ t_bool	parse_map(t_map *map, int fd)
 	return (true);
 }
 
-t_bool	free_map(t_map *map)
+int	free_map(t_map *map)
 {
 	if (!map)
-		return (false);
+		return (0);
 	free_points3d(map->pts_3d, map->height + 1);
+	close(map->fd);
 	free(map);
-	return (true);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/07 14:59:36 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/14 11:55:32 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,41 +79,42 @@ typedef struct s_point2d
 
 typedef struct s_frame
 {
-	t_point2d	coord;
 	int	height;
 	int	width;
 	int	border;
 	t_color	bg;
 	t_color b_clr;
 	t_bool	m_over;
+	t_point2d	coord;
 }			t_frame;
 
 typedef struct s_map
 {
-	t_point3d	**pts_3d;
+	t_color	c_max;
+	t_color	c_mid;
+	t_color	c_min;
+	t_bool		need_update;
 	int		width;
 	int		height;
 	int		z_min;
 	int		z_mid;
 	int		z_max;
-	t_color	c_max;
-	t_color	c_mid;
-	t_color	c_min;
-	t_bool		need_update;
+	int		fd;
+	t_point3d	**pts_3d;
 }           t_map;
 
 typedef struct s_camera
 {
+	t_bool		iso;
 	int		zoom;
 	int		z_div;
-	float	r_x;
-	float	r_y;
-	float	r_z;
 	int		x_offset;
 	int		y_offset;
 	int		z_offset;
-	int		iso;
 	int		m_rad;
+	float	r_x;
+	float	r_y;
+	float	r_z;
 }           t_camera;
 
 typedef struct s_mouse
@@ -138,8 +139,8 @@ typedef struct s_mlx
 	t_map	*map;
 	t_camera	*camera;
 	t_mouse	*mouse;
-	t_frame **ins;
 	t_bool	show_ins;
+	t_frame **ins;
 }           t_mlx;
 
 void		print_point(void *p, t_bool is3d);
@@ -152,7 +153,8 @@ t_point2d	project_point3d(t_point3d p3d, t_map *map, t_camera *c);
 
 t_map		*init_map(void);
 t_bool		parse_map(t_map *map, int fd);
-t_bool		free_map(t_map *map);
+void		open_map(t_mlx *mlx, char *file);
+int			free_map(t_map *map);
 
 uint32_t 	get_gradient_color(t_map *map, int step, t_point2d delta, t_point2d p3d_z);
 
@@ -161,7 +163,7 @@ void		draw_line_simple(t_mlx *mlx, t_point2d p0, t_point2d p1, t_color color);
 int			draw_map(t_mlx *mlx);
 
 t_mlx		*init_window(char *name);
-void		free_window(t_mlx *mlx);
+int			free_window(t_mlx *mlx, int fd_out);
 
 void		keyboard_events(int key, t_mlx *mlx);
 int			mouse_down(int button, int x, int y, t_mlx *mlx);
@@ -178,6 +180,7 @@ t_bool		mouse_over_frame(t_mouse *m, t_frame *f);
 void		draw_instructions(t_mlx *mlx);
 
 void		menu_frame_event_hover(t_mlx *mlx);
+void		close_btn_event_hover(t_mlx *mlx);
 void		view_face_event_hover(t_mlx *mlx);
 void		view_right_event_hover(t_mlx *mlx);
 void		view_left_event_hover(t_mlx *mlx);
@@ -189,6 +192,8 @@ void		rot_z_event_hover(t_mlx *mlx);
 void		proj_iso_event_hover(t_mlx *mlx);
 void		proj_1_event_hover(t_mlx *mlx);
 void		proj_2_event_hover(t_mlx *mlx);
+
+void		exit_if(t_bool cond, t_mlx *mlx, int fd_out);
 
 void		exec_tests(void);
 

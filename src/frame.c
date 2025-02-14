@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 13:16:42 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/07 14:35:52 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:09:56 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_frame	*init_frame(t_point2d coor, int width, int height, t_color bg)
 	t_frame *frame;
 
 	frame = malloc(sizeof(t_frame));
+	if (!frame)
+		return (NULL);
 	frame->coord.x = coor.x;
 	frame->coord.y = coor.y;
 	frame->width = width;

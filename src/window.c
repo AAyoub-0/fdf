@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:01:48 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/07 15:43:30 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:14:59 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_mlx	*init_window(char *name)
 	return (mlx);
 }
 
-void	free_window(t_mlx *mlx)
+int	free_window(t_mlx *mlx, int fd_out)
 {
 	if (mlx->mlx)
 		mlx_destroy_window(mlx->mlx, mlx->win);
@@ -87,7 +87,9 @@ void	free_window(t_mlx *mlx)
 	if (mlx->mouse)
 		free(mlx->mouse);
 	free_frames(mlx->ins);
+	free_map(mlx->map);
 	mlx_destroy_display(mlx->mlx);
 	free(mlx->mlx);
 	free(mlx);
+	return (fd_out);
 }

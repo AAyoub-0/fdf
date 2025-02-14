@@ -6,7 +6,7 @@
 #    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/01 20:15:38 by aayoub            #+#    #+#              #
-#    Updated: 2025/02/07 11:46:31 by aboumall         ###   ########.fr        #
+#    Updated: 2025/02/14 11:55:42 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ SRC_SRC 	= 	test.c map.c point.c project.c \
 				window.c hooks.c draw.c color.c \
 				controls.c instruction.c frame.c \
 				view_ctl.c rotation_ctl.c project_ctl.c \
-				main.c
+				close_ins_ctl.c open_map.c utils.c main.c
 
 LIBFT 		= 	$(addprefix $(LIBFT_DIR)/, $(LIBFT_A))
 SRC 		= 	$(addprefix $(SRC_DIR)/, $(SRC_SRC))
@@ -75,7 +75,6 @@ fclean: clean
 	@echo "Removing executable and libraries..."
 	@rm -f $(NAME)
 	@$(MAKE) fclean -C $(LIBFT_DIR) > /dev/null
-	@$(MAKE) clean -C $(MLX_DIR) > /dev/null
 
 re: fclean all
 

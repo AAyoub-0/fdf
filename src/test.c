@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:08:16 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/07 14:01:09 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/14 13:43:21 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,17 +181,14 @@ void	unit_test_inctruction_map_draw(void)
 	t_mlx	*mlx;
 
 	mlx = init_window("Fdf - 42");
-	mlx->map = init_map();
-	int fd = open("maps/42.fdf", O_RDONLY);
-	parse_map(mlx->map, fd);
-	
+	open_map(mlx, "maps/42.fdf");
+
 	init_hooks(mlx);
 	init_instructions(mlx);
 	mlx->show_ins = false;
 	draw_map(mlx);
 	draw_instructions(mlx);
 	mlx_loop(mlx->mlx);
-	close(fd);
 }
 
 void	exec_tests(void)
