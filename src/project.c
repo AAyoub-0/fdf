@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 21:02:34 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/13 15:44:08 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/14 15:40:17 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ static t_point2d	project_isometric(t_point3d p3d, t_map *map, t_camera *c)
 	// apply zoom
 	p3d.x *= c->zoom;
 	p3d.y *= c->zoom;
-	p3d.z *= (c->zoom / c->z_offset);
+	if (c->z_offset < 1)
+		c->z_offset = 1;
+	p3d.z *= c->zoom;
+	p3d.z /= c->z_offset;
 	p3d.x -= (map->width * c->zoom) / 2;
 	p3d.y -= (map->height * c->zoom) / 2;
 	// apply rotation
@@ -62,7 +65,10 @@ static t_point2d	project_perspective(t_point3d p3d, t_map *map, t_camera *c)
 	// apply zoom
 	p3d.x *= c->zoom;
 	p3d.y *= c->zoom;
-	p3d.z *= (c->zoom / c->z_offset);
+	if (c->z_offset < 1)
+		c->z_offset = 1;
+	p3d.z *= c->zoom;
+	p3d.z /= c->z_offset;
 	p3d.x -= (map->width * c->zoom) / 2;
 	p3d.y -= (map->height * c->zoom) / 2;
 	// apply rotation

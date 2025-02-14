@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:20:33 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/13 18:48:38 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/14 13:48:24 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,32 +33,15 @@ t_map	*init_map(void)
 	return (map);
 }
 
-static int  get_map_width(char *line)
+void	open_map(t_mlx *mlx, char *file)
 {
-    int     width;
-
-    width = 0;
-    while (*line)
-    {
-        if (ft_isdigit(*line))
-        {
-            width++;
-            while (ft_isdigit(*line))
-                line++;
-        }
-        else
-            line++;
-    }
-    return (width);
-}
-
-static void	set_z_max_min(t_map *map, int z)
-{
-	if (z > map->z_max)
-		map->z_max = z;
-	if (z < map->z_min)
-		map->z_min = z;
-	map->z_mid = (map->z_max + map->z_min) / 2;
+	if (mlx->map)
+		free_map(mlx->map);
+	mlx->map = init_map();
+	exit_if(!mlx->map, mlx, EXIT_FAILURE);
+	mlx->map->fd = open(file, O_RDONLY);
+	exit_if(mlx->map->fd <= 0, mlx, EXIT_FAILURE);
+	parse_map(mlx->map, mlx->map->fd);
 }
 
 static t_bool     fill_map(t_map *map, char *line, int y)
@@ -123,5 +106,6 @@ int	free_map(t_map *map)
 	free_points3d(map->pts_3d, map->height + 1);
 	close(map->fd);
 	free(map);
+	map = NULL;
 	return (1);
 }

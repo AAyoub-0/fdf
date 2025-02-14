@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:06:07 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/13 17:11:13 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/14 19:06:27 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,68 @@ void	init_ctl_btn(t_mlx *mlx)
 	exit_if(!mlx->ins[12], mlx, EXIT_FAILURE);
 }
 
+void	init_maps_btn(t_mlx *mlx)
+{
+	int	i;
+	int	y;
+	
+	i = 14;
+	y = 440;
+	while (i < 31)
+	{
+		mlx->ins[i] = init_frame((t_point2d){20, y}, (mlx->ins[1]->width - 40), 23, WHITE);
+		exit_if(!mlx->ins[i], mlx, EXIT_FAILURE);
+		i++;
+		y += 25;
+	}
+}
+
+void	init_maps_data_first(t_mlx *mlx)
+{
+	mlx->ins[23]->data = ft_strdup(M_100_6);
+	exit_if(!mlx->ins[23]->data, mlx, EXIT_FAILURE);
+	mlx->ins[24]->data = ft_strdup(M_BAS_TEST);
+	exit_if(!mlx->ins[24]->data, mlx, EXIT_FAILURE);
+	mlx->ins[25]->data = ft_strdup(M_ELEM);
+	exit_if(!mlx->ins[25]->data, mlx, EXIT_FAILURE);
+	mlx->ins[26]->data = ft_strdup(M_MARS);
+	exit_if(!mlx->ins[26]->data, mlx, EXIT_FAILURE);
+	mlx->ins[27]->data = ft_strdup(M_PENTEN);
+	exit_if(!mlx->ins[27]->data, mlx, EXIT_FAILURE);
+	mlx->ins[28]->data = ft_strdup(M_PNP_FLAT);
+	exit_if(!mlx->ins[28]->data, mlx, EXIT_FAILURE);
+	mlx->ins[29]->data = ft_strdup(M_PYLONE);
+	exit_if(!mlx->ins[29]->data, mlx, EXIT_FAILURE);
+	mlx->ins[30]->data = ft_strdup(M_PYRAMIDE);
+	exit_if(!mlx->ins[30]->data, mlx, EXIT_FAILURE);
+}
+
+void	init_maps_data(t_mlx *mlx)
+{
+	mlx->ins[14]->data = ft_strdup(M_42);
+	exit_if(!mlx->ins[14]->data, mlx, EXIT_FAILURE);
+	mlx->ins[15]->data = ft_strdup(M_FRANCE);
+	exit_if(!mlx->ins[15]->data, mlx, EXIT_FAILURE);
+	mlx->ins[16]->data = ft_strdup(M_JAPAN);
+	exit_if(!mlx->ins[16]->data, mlx, EXIT_FAILURE);
+	mlx->ins[17]->data = ft_strdup(M_PLAT);
+	exit_if(!mlx->ins[17]->data, mlx, EXIT_FAILURE);
+	mlx->ins[18]->data = ft_strdup(M_PYRA);
+	exit_if(!mlx->ins[18]->data, mlx, EXIT_FAILURE);
+	mlx->ins[19]->data = ft_strdup(M_10_2);
+	exit_if(!mlx->ins[19]->data, mlx, EXIT_FAILURE);
+	mlx->ins[20]->data = ft_strdup(M_10_70);
+	exit_if(!mlx->ins[20]->data, mlx, EXIT_FAILURE);
+	mlx->ins[21]->data = ft_strdup(M_20_60);
+	exit_if(!mlx->ins[21]->data, mlx, EXIT_FAILURE);
+	mlx->ins[22]->data = ft_strdup(M_50_4);
+	exit_if(!mlx->ins[22]->data, mlx, EXIT_FAILURE);
+	init_maps_data_first(mlx);
+}
+
 void	init_instructions(t_mlx *mlx)
-{	
-	mlx->ins = ft_calloc(15, sizeof(t_frame *));
+{
+	mlx->ins = ft_calloc(32, sizeof(t_frame *));
 	exit_if(!mlx->ins, mlx, EXIT_FAILURE);
 	mlx->ins[0] = init_frame((t_point2d){10, 10}, 30, 35, WHITE);
 	exit_if(!mlx->ins[0], mlx, EXIT_FAILURE);
@@ -50,6 +109,8 @@ void	init_instructions(t_mlx *mlx)
 			WHITE);
 	exit_if(!mlx->ins[1], mlx, EXIT_FAILURE);
 	init_ctl_btn(mlx);
+	init_maps_btn(mlx);
+	init_maps_data(mlx);
 }
 
 void	draw_menu_icon(t_mlx *mlx)
@@ -81,6 +142,21 @@ void	draw_menu_icon(t_mlx *mlx)
 	free(f2);
 }
 
+void	draw_maps_texts(t_mlx *mlx)
+{
+	int	i;
+	int	y;
+
+	i = 14;
+	y = 455;
+	while (mlx->ins[i])
+	{
+		mlx_string_put(mlx->mlx, mlx->win, 30, y, BLACK, mlx->ins[i]->data);
+		i++;
+		y += 25;
+	}
+}
+
 void	draw_titles(t_mlx *mlx)
 {
 	mlx_string_put(mlx->mlx, mlx->win, 360, 35, BLACK, "Fermer");
@@ -102,27 +178,23 @@ void	draw_titles(t_mlx *mlx)
 
 void	draw_instructions(t_mlx *mlx)
 {
+	int	i;
+	
 	if (!mlx->show_ins)
 	{
 		draw_menu_icon(mlx);
 		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 		return ;
 	}
-	draw_frame(mlx, mlx->ins[1]);
-	draw_frame(mlx, mlx->ins[2]);
-	draw_frame(mlx, mlx->ins[3]);
-	draw_frame(mlx, mlx->ins[4]);
-	draw_frame(mlx, mlx->ins[5]);
-	draw_frame(mlx, mlx->ins[6]);
-	draw_frame(mlx, mlx->ins[7]);
-	draw_frame(mlx, mlx->ins[8]);
-	draw_frame(mlx, mlx->ins[9]);
-	draw_frame(mlx, mlx->ins[10]);
-	draw_frame(mlx, mlx->ins[11]);
-	draw_frame(mlx, mlx->ins[12]);
-	draw_frame(mlx, mlx->ins[13]);
+	i = 1;
+	while (mlx->ins[i])
+	{
+		draw_frame(mlx, mlx->ins[i]);
+		i++;
+	}
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	draw_titles(mlx);
+	draw_maps_texts(mlx);
 	return ;
 }
 

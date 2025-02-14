@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:01:48 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/13 16:14:59 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/14 13:52:42 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,10 @@ t_mlx	*init_window(char *name)
 
 int	free_window(t_mlx *mlx, int fd_out)
 {
-	if (mlx->mlx)
-		mlx_destroy_window(mlx->mlx, mlx->win);
-	if (mlx->img)
-		mlx_destroy_image(mlx->mlx, mlx->img);
-	if (mlx->camera)
-		free(mlx->camera);
-	if (mlx->mouse)
-		free(mlx->mouse);
+	mlx_destroy_window(mlx->mlx, mlx->win);
+	mlx_destroy_image(mlx->mlx, mlx->img);
+	free(mlx->camera);
+	free(mlx->mouse);
 	free_frames(mlx->ins);
 	free_map(mlx->map);
 	mlx_destroy_display(mlx->mlx);

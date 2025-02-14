@@ -6,7 +6,7 @@
 #    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/01 20:15:38 by aayoub            #+#    #+#              #
-#    Updated: 2025/02/14 11:55:42 by aboumall         ###   ########.fr        #
+#    Updated: 2025/02/14 18:53:16 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,11 +35,12 @@ LIBFT_DIR 	= 	libft
 SRC_DIR 	= 	src
 OBJ_DIR 	= 	obj
 
-SRC_SRC 	= 	test.c map.c point.c project.c \
-				window.c hooks.c draw.c color.c \
-				controls.c instruction.c frame.c \
-				view_ctl.c rotation_ctl.c project_ctl.c \
-				close_ins_ctl.c open_map.c utils.c main.c
+SRC_SRC 	= 	test.c map.c point.c project.c				\
+				window.c hooks.c draw.c color.c				\
+				controls.c instruction.c frame.c			\
+				view_ctl.c rotation_ctl.c project_ctl.c		\
+				close_ins_ctl.c map_ctl.c map_utils.c		\
+				utils.c main.c
 
 LIBFT 		= 	$(addprefix $(LIBFT_DIR)/, $(LIBFT_A))
 SRC 		= 	$(addprefix $(SRC_DIR)/, $(SRC_SRC))

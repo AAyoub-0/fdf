@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:48:04 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/14 13:27:10 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/14 19:08:37 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ void	keyboard_events(int key, t_mlx *mlx)
 		mlx->camera->zoom -= 1;
 	else if (key == XK_i)
 		mlx->camera->iso = !mlx->camera->iso;
+	else if (key == XK_z)
+		mlx->camera->z_offset -= 1;
+	else if (key == XK_x)
+		mlx->camera->z_offset += 1;
 	else
 		return ;
 	draw_map(mlx);
@@ -60,11 +64,12 @@ int	mouse_down(int button, int x, int y, t_mlx *mlx)
 
 void	view_event_click(t_mlx *mlx, int id, t_fpoint3d n_rt)
 {
-	if (id == 13 && mlx->ins[13]->m_over)
+	if (id == 13 && mlx->ins[13]->m_over && mlx->show_ins)
 	{
 		mlx->show_ins = false;
 		draw_map(mlx);
 		draw_instructions(mlx);
+		return ;
 	}
 	if (id == 10 && mlx->ins[10]->m_over)
 		mlx->camera->iso = true;

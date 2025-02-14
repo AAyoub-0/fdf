@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:08:16 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/14 13:43:21 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/14 13:58:00 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ void	unit_test_inctruction_map_draw(void)
 	t_mlx	*mlx;
 
 	mlx = init_window("Fdf - 42");
-	open_map(mlx, "maps/42.fdf");
+	open_map(mlx, "maps/pyramide.fdf");
 
 	init_hooks(mlx);
 	init_instructions(mlx);

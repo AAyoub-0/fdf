@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:27:14 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/13 17:06:47 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/14 19:08:48 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static int	no_event(void *data)
 		proj_iso_event_hover(mlx);
 		proj_1_event_hover(mlx);
 		proj_2_event_hover(mlx);
+		map_btn_event_hover(mlx);
 	}
 	if (mlx->mouse->is_pressed)
 	{
