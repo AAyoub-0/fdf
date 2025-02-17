@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:26:45 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/30 18:47:23 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/02/17 17:17:57 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ typedef struct s_list
 typedef enum e_bool
 {
     false = 0,
-    true = 1
+    true = 1,
+	null = -1
 }           t_bool;
 
 int					ft_tolower(int c);
@@ -43,6 +44,7 @@ int					ft_atoi(const char *nptr);
 int					ft_atoi_cursor(char *nptr, int *cursor, int *error);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
+t_bool				ft_strcmp(char *s1, char *s2);
 size_t				ft_strlen(const char *tab);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 size_t				ft_strlcpy(char *dst, const char *src, size_t size);
@@ -79,6 +81,7 @@ void				ft_putstr_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_print_array_int(int *array, int size);
 void				ft_bzero(void *s, size_t n);
+void				ft_free_2dm_char(char **tab, size_t size);
 
 typedef struct s_flags
 {

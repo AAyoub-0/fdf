@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:20:33 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/14 13:48:24 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:56:13 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_map	*init_map(void)
 	map->c_min = WHITE;
 	map->need_update = true;
 	map->fd = -1;
+	map->file = NULL;
 	return (map);
 }
 
@@ -41,6 +42,8 @@ void	open_map(t_mlx *mlx, char *file)
 	exit_if(!mlx->map, mlx, EXIT_FAILURE);
 	mlx->map->fd = open(file, O_RDONLY);
 	exit_if(mlx->map->fd <= 0, mlx, EXIT_FAILURE);
+	mlx->map->file = ft_strdup(file);
+	exit_if(!mlx->map->file, mlx, EXIT_FAILURE);
 	parse_map(mlx->map, mlx->map->fd);
 }
 
@@ -105,6 +108,8 @@ int	free_map(t_map *map)
 		return (0);
 	free_points3d(map->pts_3d, map->height + 1);
 	close(map->fd);
+	if (map->file)
+		free(map->file);
 	free(map);
 	map = NULL;
 	return (1);

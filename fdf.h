@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/14 19:08:13 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:44:38 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef enum e_color
 	CYAN = 0x00FFFF,
 	MAGENTA = 0xFF00FF,
 	GRAY = 0x808080,
+	GRAY_OV = 0xA0A0A0,
 	ORANGE = 0xFFA500,
 }				t_color;
 
@@ -104,6 +105,7 @@ typedef struct s_frame
 	t_color		bg;
 	t_color		b_clr;
 	t_bool		m_over;
+	t_bool		selected;
 	t_point2d	coord;
 }				t_frame;
 
@@ -119,6 +121,7 @@ typedef struct s_map
 	int			z_mid;
 	int			z_max;
 	int			fd;
+	char		*file;
 	t_point3d	**pts_3d;
 }				t_map;
 

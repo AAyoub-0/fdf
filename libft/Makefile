@@ -6,7 +6,7 @@
 #    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 17:00:10 by aayoub            #+#    #+#              #
-#    Updated: 2025/02/06 14:45:39 by aboumall         ###   ########.fr        #
+#    Updated: 2025/02/17 17:17:45 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ LST_SRC =	ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 			ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
 			ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 MEM_SRC =	ft_bzero.c ft_memcpy.c ft_memchr.c ft_memcmp.c ft_memmove.c \
-			ft_memset.c ft_calloc.c
+			ft_memset.c ft_calloc.c ft_free.c
 PF_SRC  =	ft_printf.c ft_printf_utils.c flags.c
 GNL_SRC =	get_next_line.c
 

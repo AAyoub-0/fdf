@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:06:07 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/14 19:06:27 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:59:03 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,63 +38,52 @@ void	init_ctl_btn(t_mlx *mlx)
 	exit_if(!mlx->ins[12], mlx, EXIT_FAILURE);
 }
 
+void	init_maps_data(char **maps)
+{
+	maps[0] = M_42;
+	maps[1] = M_FRANCE;
+	maps[2] = M_JAPAN;
+	maps[3] = M_PLAT;
+	maps[4] = M_PYRA;
+	maps[5] = M_10_2;
+	maps[6] = M_10_70;
+	maps[7] = M_20_60;
+	maps[8] = M_50_4;
+	maps[9] = M_100_6;
+	maps[10] = M_BAS_TEST;
+	maps[11] = M_ELEM;
+	maps[12] = M_MARS;
+	maps[13] = M_PENTEN;
+	maps[14] = M_PNP_FLAT;
+	maps[15] = M_PYLONE;
+	maps[16] = M_PYRAMIDE;
+	maps[17] = NULL;
+}
+
 void	init_maps_btn(t_mlx *mlx)
 {
 	int	i;
 	int	y;
+	t_color	color;
+	char	*maps[18];
 	
 	i = 14;
 	y = 440;
+	init_maps_data(maps);
 	while (i < 31)
 	{
 		mlx->ins[i] = init_frame((t_point2d){20, y}, (mlx->ins[1]->width - 40), 23, WHITE);
 		exit_if(!mlx->ins[i], mlx, EXIT_FAILURE);
+		mlx->ins[i]->data = ft_strdup(maps[i - 14]);
+		exit_if(!mlx->ins[i]->data, mlx, EXIT_FAILURE);
+		if (ft_strcmp(mlx->map->file + 5, mlx->ins[i]->data))
+		{
+			mlx->ins[i]->bg = MAGENTA;
+			mlx->ins[i]->selected = true;
+		}
 		i++;
 		y += 25;
 	}
-}
-
-void	init_maps_data_first(t_mlx *mlx)
-{
-	mlx->ins[23]->data = ft_strdup(M_100_6);
-	exit_if(!mlx->ins[23]->data, mlx, EXIT_FAILURE);
-	mlx->ins[24]->data = ft_strdup(M_BAS_TEST);
-	exit_if(!mlx->ins[24]->data, mlx, EXIT_FAILURE);
-	mlx->ins[25]->data = ft_strdup(M_ELEM);
-	exit_if(!mlx->ins[25]->data, mlx, EXIT_FAILURE);
-	mlx->ins[26]->data = ft_strdup(M_MARS);
-	exit_if(!mlx->ins[26]->data, mlx, EXIT_FAILURE);
-	mlx->ins[27]->data = ft_strdup(M_PENTEN);
-	exit_if(!mlx->ins[27]->data, mlx, EXIT_FAILURE);
-	mlx->ins[28]->data = ft_strdup(M_PNP_FLAT);
-	exit_if(!mlx->ins[28]->data, mlx, EXIT_FAILURE);
-	mlx->ins[29]->data = ft_strdup(M_PYLONE);
-	exit_if(!mlx->ins[29]->data, mlx, EXIT_FAILURE);
-	mlx->ins[30]->data = ft_strdup(M_PYRAMIDE);
-	exit_if(!mlx->ins[30]->data, mlx, EXIT_FAILURE);
-}
-
-void	init_maps_data(t_mlx *mlx)
-{
-	mlx->ins[14]->data = ft_strdup(M_42);
-	exit_if(!mlx->ins[14]->data, mlx, EXIT_FAILURE);
-	mlx->ins[15]->data = ft_strdup(M_FRANCE);
-	exit_if(!mlx->ins[15]->data, mlx, EXIT_FAILURE);
-	mlx->ins[16]->data = ft_strdup(M_JAPAN);
-	exit_if(!mlx->ins[16]->data, mlx, EXIT_FAILURE);
-	mlx->ins[17]->data = ft_strdup(M_PLAT);
-	exit_if(!mlx->ins[17]->data, mlx, EXIT_FAILURE);
-	mlx->ins[18]->data = ft_strdup(M_PYRA);
-	exit_if(!mlx->ins[18]->data, mlx, EXIT_FAILURE);
-	mlx->ins[19]->data = ft_strdup(M_10_2);
-	exit_if(!mlx->ins[19]->data, mlx, EXIT_FAILURE);
-	mlx->ins[20]->data = ft_strdup(M_10_70);
-	exit_if(!mlx->ins[20]->data, mlx, EXIT_FAILURE);
-	mlx->ins[21]->data = ft_strdup(M_20_60);
-	exit_if(!mlx->ins[21]->data, mlx, EXIT_FAILURE);
-	mlx->ins[22]->data = ft_strdup(M_50_4);
-	exit_if(!mlx->ins[22]->data, mlx, EXIT_FAILURE);
-	init_maps_data_first(mlx);
 }
 
 void	init_instructions(t_mlx *mlx)
@@ -110,7 +99,6 @@ void	init_instructions(t_mlx *mlx)
 	exit_if(!mlx->ins[1], mlx, EXIT_FAILURE);
 	init_ctl_btn(mlx);
 	init_maps_btn(mlx);
-	init_maps_data(mlx);
 }
 
 void	draw_menu_icon(t_mlx *mlx)
@@ -151,7 +139,10 @@ void	draw_maps_texts(t_mlx *mlx)
 	y = 455;
 	while (mlx->ins[i])
 	{
-		mlx_string_put(mlx->mlx, mlx->win, 30, y, BLACK, mlx->ins[i]->data);
+		if (mlx->ins[i]->selected)
+			mlx_string_put(mlx->mlx, mlx->win, 30, y, WHITE, mlx->ins[i]->data);
+		else
+			mlx_string_put(mlx->mlx, mlx->win, 30, y, BLACK, mlx->ins[i]->data);
 		i++;
 		y += 25;
 	}
