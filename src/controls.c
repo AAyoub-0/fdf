@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:48:04 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/14 19:08:37 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:49:20 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,20 @@ void	rot_event_click(t_mlx *mlx, int id, t_fpoint3d n_rt)
 	}
 }
 
+void	map_event_click(t_mlx *mlx, int id)
+{
+	char	*tmp;
+	if (mouse_over_frame(mlx->mouse, mlx->ins[id]) && mlx->show_ins)
+	{
+		tmp = ft_strjoin("maps/", mlx->ins[id]->data);
+		exit_if(!tmp, mlx, EXIT_FAILURE);
+		open_map(mlx, tmp);
+		draw_map(mlx);
+		draw_instructions(mlx);
+		free(tmp);
+	}
+}
+
 int	mouse_up(int button, int x, int y, t_mlx *mlx)
 {
 	(void)x;
@@ -116,6 +130,23 @@ int	mouse_up(int button, int x, int y, t_mlx *mlx)
 		view_event_click(mlx, 11, (t_fpoint3d){0.349, 0.785, 0.0});
 		view_event_click(mlx, 12, (t_fpoint3d){0.0, 0.785, 0.0});
 		view_event_click(mlx, 13, (t_fpoint3d){0, 0, 0});
+		map_event_click(mlx, 14);
+		map_event_click(mlx, 15);
+		map_event_click(mlx, 16);
+		map_event_click(mlx, 17);
+		map_event_click(mlx, 18);
+		map_event_click(mlx, 19);
+		map_event_click(mlx, 20);
+		map_event_click(mlx, 21);
+		map_event_click(mlx, 22);
+		map_event_click(mlx, 23);
+		map_event_click(mlx, 24);
+		map_event_click(mlx, 25);
+		map_event_click(mlx, 26);
+		map_event_click(mlx, 27);
+		map_event_click(mlx, 28);
+		map_event_click(mlx, 29);
+		map_event_click(mlx, 30);
 		mlx->mouse->is_pressed = false;
 		mlx->mouse->button = 0;
 	}

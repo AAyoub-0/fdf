@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/17 16:44:38 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:50:28 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 
 # define M_42 "42.fdf"
 # define M_FRANCE "France.XXL.fdf"
-# define M_JAPAN "Japan.L..fdf"
+# define M_JAPAN "Japan.L.fdf"
 # define M_PLAT "plat.fdf"
 # define M_PYRA "pyra.fdf"
 # define M_10_2 "10-2.fdf"

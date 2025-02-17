@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:06:07 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/17 17:59:03 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:35:05 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,20 @@ void	init_maps_data(char **maps)
 	maps[15] = M_PYLONE;
 	maps[16] = M_PYRAMIDE;
 	maps[17] = NULL;
+}
+
+void	set_selected_map_btn(t_mlx *mlx, int i)
+{
+	int	j;
+
+	j = 14;
+	while (j < 31)
+	{
+		mlx->ins[j]->selected = false;
+		mlx->ins[j]->bg = WHITE;
+	}
+	mlx->ins[i]->selected = true;
+	mlx->ins[i]->bg = MAGENTA;
 }
 
 void	init_maps_btn(t_mlx *mlx)
