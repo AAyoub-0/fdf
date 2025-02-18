@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/18 15:27:15 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:02:47 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,23 @@ typedef enum e_color
 	RED_OV = 0xFA8072,
 	GREEN = 0x228B22,
 	GREEN_OV = 0x3CB371,
+	GREEN_D = 0x006400,
+	BROWN = 0x8B4513,
+	BROWN_OV = 0xD2B48C,
 	BLUE = 0x4169E1,
 	BLUE_OV = 0x87CEEB,
 	WHITE = 0xFFFFFF,
 	BLACK = 0x000000,
 	YELLOW = 0xFFFF00,
 	CYAN = 0x00FFFF,
+	CYAN_OV = 0xCCFFFF,
+	CYAN_D = 0x008888,
 	MAGENTA = 0xFF00FF,
 	MAGENTA_9 = 0x990099,
 	GRAY = 0x808080,
 	GRAY_OV = 0xA0A0A0,
 	ORANGE = 0xFFA500,
-	ORANGE_OV = 0xFFC178,
+	ORANGE_OV = 0xFFC178
 }				t_color;
 
 typedef enum e_hook

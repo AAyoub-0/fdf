@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:48:04 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/18 14:46:56 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:04:26 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,18 @@ void	map_event_click(t_mlx *mlx, int id)
 	}
 }
 
+void	color_event_click(t_mlx *mlx, int id, t_point3d n_colors)
+{
+	if (mouse_over_frame(mlx->mouse, mlx->ins[id]) && mlx->show_ins)
+	{
+		mlx->map->c_min = n_colors.x;
+		mlx->map->c_mid = n_colors.y;
+		mlx->map->c_max = n_colors.z;
+		draw_map(mlx);
+		draw_instructions(mlx);
+	}
+}
+
 int	mouse_up(int button, int x, int y, t_mlx *mlx)
 {
 	(void)x;
@@ -148,6 +160,9 @@ int	mouse_up(int button, int x, int y, t_mlx *mlx)
 		map_event_click(mlx, 28);
 		map_event_click(mlx, 29);
 		map_event_click(mlx, 30);
+		color_event_click(mlx, 31, (t_point3d){WHITE, YELLOW, MAGENTA, 0});
+		color_event_click(mlx, 32, (t_point3d){CYAN, BROWN_OV, GREEN, 0});
+		color_event_click(mlx, 33, (t_point3d){GREEN_OV, BROWN_OV, BROWN, 0});
 		mlx->mouse->is_pressed = false;
 		mlx->mouse->button = 0;
 	}
