@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:26:42 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/07 14:37:23 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:24:59 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,11 @@ void	rot_z_event_hover(t_mlx *mlx)
 			draw_instructions(mlx);
 		}
 	}
+}
+
+void	rot_event_hover(t_mlx *mlx)
+{
+	rot_x_event_hover(mlx);
+	rot_y_event_hover(mlx);
+	rot_z_event_hover(mlx);
 }

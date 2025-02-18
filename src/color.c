@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 17:05:40 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/18 14:35:41 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:25:43 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ static uint32_t	interpolate_colors(t_color *c_rgb, double rt)
 	t_point3d s_rgb;
 	t_point3d e_rgb;
 	t_point3d f_rgb;
-	
+
 	s_rgb.x = (c_rgb[0] >> 16) & 0xFF;
-    s_rgb.y = (c_rgb[0] >> 8) & 0xFF;
-    s_rgb.z = c_rgb[0] & 0xFF;
-    e_rgb.x = (c_rgb[1] >> 16) & 0xFF;
-    e_rgb.y = (c_rgb[1] >> 8) & 0xFF;
-    e_rgb.z = c_rgb[1] & 0xFF;
-    f_rgb.x = (int)(s_rgb.x + rt * (e_rgb.x - s_rgb.x));
-    f_rgb.y = (int)(s_rgb.y + rt * (e_rgb.y - s_rgb.y));
-    f_rgb.z = (int)(s_rgb.z + rt * (e_rgb.z - s_rgb.z));
-    return ((f_rgb.x << 16) | (f_rgb.y << 8) | f_rgb.z);
+	s_rgb.y = (c_rgb[0] >> 8) & 0xFF;
+	s_rgb.z = c_rgb[0] & 0xFF;
+	e_rgb.x = (c_rgb[1] >> 16) & 0xFF;
+	e_rgb.y = (c_rgb[1] >> 8) & 0xFF;
+	e_rgb.z = c_rgb[1] & 0xFF;
+	f_rgb.x = (int)(s_rgb.x + rt * (e_rgb.x - s_rgb.x));
+	f_rgb.y = (int)(s_rgb.y + rt * (e_rgb.y - s_rgb.y));
+	f_rgb.z = (int)(s_rgb.z + rt * (e_rgb.z - s_rgb.z));
+	return ((f_rgb.x << 16) | (f_rgb.y << 8) | f_rgb.z);
 }
 
 uint32_t get_gradient_color(t_map *map, int step, t_point2d delta, t_point2d p3d_z)

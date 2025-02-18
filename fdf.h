@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/18 14:47:15 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:27:15 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef enum e_color
 	GRAY = 0x808080,
 	GRAY_OV = 0xA0A0A0,
 	ORANGE = 0xFFA500,
+	ORANGE_OV = 0xFFC178,
 }				t_color;
 
 typedef enum e_hook
@@ -190,7 +191,7 @@ void			draw_line_simple(t_mlx *mlx, t_point2d p0, t_point2d p1,
 					t_color color);
 int				draw_map(t_mlx *mlx);
 
-t_mlx			*init_window(char *name);
+t_mlx			*init_window(char *color_btn_event_hovername);
 int				free_window(t_mlx *mlx, int fd_out);
 
 void			keyboard_events(int key, t_mlx *mlx);
@@ -216,13 +217,10 @@ void			view_right_event_hover(t_mlx *mlx);
 void			view_left_event_hover(t_mlx *mlx);
 void			view_up_event_hover(t_mlx *mlx);
 void			view_down_event_hover(t_mlx *mlx);
-void			rot_x_event_hover(t_mlx *mlx);
-void			rot_y_event_hover(t_mlx *mlx);
-void			rot_z_event_hover(t_mlx *mlx);
-void			proj_iso_event_hover(t_mlx *mlx);
-void			proj_1_event_hover(t_mlx *mlx);
-void			proj_2_event_hover(t_mlx *mlx);
+void			rot_event_hover(t_mlx *mlx);
+void			proj_event_hover(t_mlx *mlx);
 void			map_btn_event_hover(t_mlx *mlx);
+void			color_btn_event_hover(t_mlx *mlx);
 
 void			exit_if(t_bool cond, t_mlx *mlx, int fd_out);
 

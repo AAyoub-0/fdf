@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:06:07 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/18 14:55:49 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:04:51 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ void	init_ctl_btn(t_mlx *mlx)
 	exit_if(!mlx->ins[11], mlx, EXIT_FAILURE);
 	mlx->ins[12] = init_frame((t_point2d){290, 340}, 120, 45, GREEN);
 	exit_if(!mlx->ins[12], mlx, EXIT_FAILURE);
+	mlx->ins[31] = init_frame((t_point2d){20, 925}, 120, 45, ORANGE);
+	exit_if(!mlx->ins[31], mlx, EXIT_FAILURE);
+	mlx->ins[32] = init_frame((t_point2d){155, 925}, 120, 45, ORANGE);
+	exit_if(!mlx->ins[32], mlx, EXIT_FAILURE);
+	mlx->ins[33] = init_frame((t_point2d){290, 925}, 120, 45, ORANGE);
+	exit_if(!mlx->ins[33], mlx, EXIT_FAILURE);
 }
 
 void	init_maps_data(char **maps)
@@ -103,7 +109,7 @@ void	init_maps_btn(t_mlx *mlx)
 
 void	init_instructions(t_mlx *mlx)
 {
-	mlx->ins = ft_calloc(32, sizeof(t_frame *));
+	mlx->ins = ft_calloc(35, sizeof(t_frame *));
 	exit_if(!mlx->ins, mlx, EXIT_FAILURE);
 	mlx->ins[0] = init_frame((t_point2d){10, 10}, 30, 35, WHITE);
 	exit_if(!mlx->ins[0], mlx, EXIT_FAILURE);
@@ -152,7 +158,7 @@ void	draw_maps_texts(t_mlx *mlx)
 
 	i = 14;
 	y = 455;
-	while (mlx->ins[i])
+	while (i < 31)
 	{
 		if (mlx->ins[i]->selected)
 			mlx_string_put(mlx->mlx, mlx->win, 30, y, WHITE, mlx->ins[i]->data);
@@ -181,6 +187,10 @@ void	draw_titles(t_mlx *mlx)
 	mlx_string_put(mlx->mlx, mlx->win, 165, 360, WHITE, "TEST 1");
 	mlx_string_put(mlx->mlx, mlx->win, 300, 360, WHITE, "TEST 2");
 	mlx_string_put(mlx->mlx, mlx->win, 30, 430, BLACK, "Maps");
+	mlx_string_put(mlx->mlx, mlx->win, 30, 920, BLACK, "Couleurs");
+	mlx_string_put(mlx->mlx, mlx->win, 30, 945, WHITE, "Couleurs 1");
+	mlx_string_put(mlx->mlx, mlx->win, 165, 945, WHITE, "Couleurs 2");
+	mlx_string_put(mlx->mlx, mlx->win, 300, 945, WHITE, "Couleurs 3");
 }
 
 void	draw_instructions(t_mlx *mlx)
