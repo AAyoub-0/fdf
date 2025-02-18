@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/17 18:50:28 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:47:15 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef enum e_color
 	YELLOW = 0xFFFF00,
 	CYAN = 0x00FFFF,
 	MAGENTA = 0xFF00FF,
+	MAGENTA_9 = 0x990099,
 	GRAY = 0x808080,
 	GRAY_OV = 0xA0A0A0,
 	ORANGE = 0xFFA500,
@@ -205,6 +206,8 @@ t_bool			free_frames(t_frame **frame);
 void			init_instructions(t_mlx *mlx);
 t_bool			mouse_over_frame(t_mouse *m, t_frame *f);
 void			draw_instructions(t_mlx *mlx);
+
+void			set_selected_map_btn(t_mlx *mlx, int i);
 
 void			menu_frame_event_hover(t_mlx *mlx);
 void			close_btn_event_hover(t_mlx *mlx);

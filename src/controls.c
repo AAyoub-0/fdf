@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:48:04 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/17 18:49:20 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:46:56 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void	map_event_click(t_mlx *mlx, int id)
 		tmp = ft_strjoin("maps/", mlx->ins[id]->data);
 		exit_if(!tmp, mlx, EXIT_FAILURE);
 		open_map(mlx, tmp);
+		set_selected_map_btn(mlx, id);
 		draw_map(mlx);
 		draw_instructions(mlx);
 		free(tmp);

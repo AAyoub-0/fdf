@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:06:07 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/17 18:35:05 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:55:49 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,10 @@ void	set_selected_map_btn(t_mlx *mlx, int i)
 	{
 		mlx->ins[j]->selected = false;
 		mlx->ins[j]->bg = WHITE;
+		j++;
 	}
 	mlx->ins[i]->selected = true;
-	mlx->ins[i]->bg = MAGENTA;
+	mlx->ins[i]->bg = MAGENTA_9;
 }
 
 void	init_maps_btn(t_mlx *mlx)
@@ -92,7 +93,7 @@ void	init_maps_btn(t_mlx *mlx)
 		exit_if(!mlx->ins[i]->data, mlx, EXIT_FAILURE);
 		if (ft_strcmp(mlx->map->file + 5, mlx->ins[i]->data))
 		{
-			mlx->ins[i]->bg = MAGENTA;
+			mlx->ins[i]->bg = MAGENTA_9;
 			mlx->ins[i]->selected = true;
 		}
 		i++;
@@ -179,6 +180,7 @@ void	draw_titles(t_mlx *mlx)
 	mlx_string_put(mlx->mlx, mlx->win, 30, 360, WHITE, "Isometrique");
 	mlx_string_put(mlx->mlx, mlx->win, 165, 360, WHITE, "TEST 1");
 	mlx_string_put(mlx->mlx, mlx->win, 300, 360, WHITE, "TEST 2");
+	mlx_string_put(mlx->mlx, mlx->win, 30, 430, BLACK, "Maps");
 }
 
 void	draw_instructions(t_mlx *mlx)
