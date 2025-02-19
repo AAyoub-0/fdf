@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:06:07 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/18 18:10:20 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:03:23 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	init_maps_data(char **maps)
 	maps[2] = M_JAPAN;
 	maps[3] = M_PLAT;
 	maps[4] = M_PYRA;
-	maps[5] = M_10_2;
+	maps[5] = M_WORLD;
 	maps[6] = M_10_70;
 	maps[7] = M_20_60;
 	maps[8] = M_50_4;
@@ -176,7 +176,7 @@ void	draw_titles(t_mlx *mlx)
 	mlx_string_put(mlx->mlx, mlx->win, 30, 100, WHITE, "Vue de face");
 	mlx_string_put(mlx->mlx, mlx->win, 165, 100, WHITE, "Vue de droite");
 	mlx_string_put(mlx->mlx, mlx->win, 300, 100, WHITE, "Vue de gauche");
-	mlx_string_put(mlx->mlx, mlx->win, 30, 160, WHITE, "Vue de dessous");
+	mlx_string_put(mlx->mlx, mlx->win, 30, 160, WHITE, "Vue de dessus");
 	mlx_string_put(mlx->mlx, mlx->win, 165, 160, WHITE, "Vue de dessous");
 	mlx_string_put(mlx->mlx, mlx->win, 30, 235, BLACK, "Rotation");
 	mlx_string_put(mlx->mlx, mlx->win, 30, 260, WHITE, "Rotation X");
@@ -184,7 +184,7 @@ void	draw_titles(t_mlx *mlx)
 	mlx_string_put(mlx->mlx, mlx->win, 300, 260, WHITE, "Rotation Z");
 	mlx_string_put(mlx->mlx, mlx->win, 30, 335, BLACK, "Projection");
 	mlx_string_put(mlx->mlx, mlx->win, 30, 360, WHITE, "Isometrique");
-	mlx_string_put(mlx->mlx, mlx->win, 165, 360, WHITE, "TEST 1");
+	mlx_string_put(mlx->mlx, mlx->win, 165, 360, WHITE, "Perspective");
 	mlx_string_put(mlx->mlx, mlx->win, 300, 360, WHITE, "TEST 2");
 	mlx_string_put(mlx->mlx, mlx->win, 30, 430, BLACK, "Maps");
 	mlx_string_put(mlx->mlx, mlx->win, 30, 920, BLACK, "Couleurs");

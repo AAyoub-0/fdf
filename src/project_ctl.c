@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:36:13 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/18 15:22:23 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/19 14:04:01 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	proj_event_hover_10(t_mlx *mlx)
 	{
 		mlx->ins[10]->m_over = false;
 		if (mlx->ins[10]->bg != GREEN)
-		{	
+		{
 			mlx->ins[10]->bg = GREEN;
 			draw_instructions(mlx);
 		}
@@ -49,7 +49,7 @@ void	proj_event_hover_11(t_mlx *mlx)
 	{
 		mlx->ins[11]->m_over = false;
 		if (mlx->ins[11]->bg != GREEN)
-		{	
+		{
 			mlx->ins[11]->bg = GREEN;
 			draw_instructions(mlx);
 		}
@@ -71,7 +71,7 @@ void	proj_event_hover_12(t_mlx *mlx)
 	{
 		mlx->ins[12]->m_over = false;
 		if (mlx->ins[12]->bg != GREEN)
-		{	
+		{
 			mlx->ins[12]->bg = GREEN;
 			draw_instructions(mlx);
 		}

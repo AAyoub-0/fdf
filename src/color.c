@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 17:05:40 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/18 15:25:43 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:53:14 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static uint32_t	interpolate_colors(t_color *c_rgb, double rt)
 	return ((f_rgb.x << 16) | (f_rgb.y << 8) | f_rgb.z);
 }
 
-uint32_t get_gradient_color(t_map *map, int step, t_point2d delta, t_point2d p3d_z)
+uint32_t	get_gradient_color(t_map *map, int step, t_point2d delta, t_point2d p3d_z)
 {
 	double rt;
 	t_color   c_rgb[2];

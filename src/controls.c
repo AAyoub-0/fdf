@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:48:04 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/18 18:04:26 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:50:33 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,8 +140,8 @@ int	mouse_up(int button, int x, int y, t_mlx *mlx)
 		rot_event_click(mlx, 8, (t_fpoint3d){0, 0.1, 0});
 		rot_event_click(mlx, 9, (t_fpoint3d){0, 0, 0.1});
 		view_event_click(mlx, 10, (t_fpoint3d){0, 0, 0});
-		view_event_click(mlx, 11, (t_fpoint3d){0.349, 0.785, 0.0});
-		view_event_click(mlx, 12, (t_fpoint3d){0.0, 0.785, 0.0});
+		view_event_click(mlx, 11, (t_fpoint3d){0, 0, 0});
+		view_event_click(mlx, 12, (t_fpoint3d){0, 0, 0});
 		view_event_click(mlx, 13, (t_fpoint3d){0, 0, 0});
 		map_event_click(mlx, 14);
 		map_event_click(mlx, 15);

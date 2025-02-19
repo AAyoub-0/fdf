@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/18 18:02:47 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:03:12 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 # define SCREEN_WIDTH 1920
 # define SCREEN_HEIGHT 1080
 
@@ -35,9 +39,9 @@
 # define M_42 "42.fdf"
 # define M_FRANCE "France.XXL.fdf"
 # define M_JAPAN "Japan.L.fdf"
+# define M_WORLD "World.fdf"
 # define M_PLAT "plat.fdf"
 # define M_PYRA "pyra.fdf"
-# define M_10_2 "10-2.fdf"
 # define M_10_70 "10-70.fdf"
 # define M_20_60 "20-60.fdf"
 # define M_50_4 "50-4.fdf"
