@@ -6,7 +6,7 @@
 #    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/01 20:15:38 by aayoub            #+#    #+#              #
-#    Updated: 2025/02/21 18:39:08 by aboumall         ###   ########.fr        #
+#    Updated: 2025/02/21 18:45:34 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,8 +112,5 @@ fclean: clean
 	@$(MAKE) fclean -C $(LIBFT_DIR) > /dev/null
 
 re: fclean all
-
-relink_libs:
-	
 
 .PHONY: all clean fclean re lib mlx_lib
