@@ -6,7 +6,7 @@
 #    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/01 20:15:38 by aayoub            #+#    #+#              #
-#    Updated: 2025/02/21 17:55:10 by aboumall         ###   ########.fr        #
+#    Updated: 2025/02/21 18:05:30 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ MAP_SRC		=	map.c map_utils.c
 DRAW_SRC	=	point.c project.c \
 				draw.c color.c \
 				frame.c draw_utils.c
-SRC_SRC 	= 	test.c utils.c main.c
+SRC_SRC 	= 	utils.c main.c
 
 LIBFT 		= 	$(addprefix $(LIBFT_DIR)/, $(LIBFT_A))
 
