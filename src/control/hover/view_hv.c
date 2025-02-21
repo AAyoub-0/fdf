@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   view_ctl.c                                         :+:      :+:    :+:   */
+/*   view_hv.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 17:26:12 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/07 14:38:31 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:53:07 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 void	view_face_event_hover(t_mlx *mlx)
 {
@@ -27,7 +27,7 @@ void	view_face_event_hover(t_mlx *mlx)
 	{
 		mlx->ins[2]->m_over = false;
 		if (mlx->ins[2]->bg != RED)
-		{	
+		{
 			mlx->ins[2]->bg = RED;
 			draw_instructions(mlx);
 		}
@@ -49,7 +49,7 @@ void	view_right_event_hover(t_mlx *mlx)
 	{
 		mlx->ins[3]->m_over = false;
 		if (mlx->ins[3]->bg != RED)
-		{	
+		{
 			mlx->ins[3]->bg = RED;
 			draw_instructions(mlx);
 		}
@@ -71,7 +71,7 @@ void	view_left_event_hover(t_mlx *mlx)
 	{
 		mlx->ins[4]->m_over = false;
 		if (mlx->ins[4]->bg != RED)
-		{	
+		{
 			mlx->ins[4]->bg = RED;
 			draw_instructions(mlx);
 		}
@@ -93,7 +93,7 @@ void	view_up_event_hover(t_mlx *mlx)
 	{
 		mlx->ins[5]->m_over = false;
 		if (mlx->ins[5]->bg != RED)
-		{	
+		{
 			mlx->ins[5]->bg = RED;
 			draw_instructions(mlx);
 		}
@@ -115,7 +115,7 @@ void	view_down_event_hover(t_mlx *mlx)
 	{
 		mlx->ins[6]->m_over = false;
 		if (mlx->ins[6]->bg != RED)
-		{	
+		{
 			mlx->ins[6]->bg = RED;
 			draw_instructions(mlx);
 		}

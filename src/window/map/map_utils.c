@@ -6,11 +6,11 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 13:46:02 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/14 13:57:13 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:53:07 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 void	set_z_max_min(t_map *map, int z)
 {

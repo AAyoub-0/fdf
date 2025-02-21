@@ -6,11 +6,11 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 21:02:34 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/19 15:42:39 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:52:45 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 static void	rotate_point3d(t_point3d *p, t_camera *c)
 {
@@ -82,33 +82,10 @@ static t_point2d	project_perspective(t_point3d p3d, t_map *map, t_camera *c)
 	return (p2d);
 }
 
-static t_point2d	project_stereo(t_point3d p3d, t_map *map, t_camera *c)
-{
-	t_point2d	p2d;
-
-	// apply zoom
-	p3d.x *= c->zoom;
-	p3d.y *= c->zoom;
-	p3d.z *= c->zoom;
-	if (c->z_offset < 1)
-		c->z_offset = 1;
-	p3d.z /= c->z_offset;
-	p3d.x -= (map->width * c->zoom) / 2;
-	p3d.y -= (map->height * c->zoom) / 2;
-	// apply rotation
-	rotate_point3d(&p3d, c);
-	// apply scaling
-	p3d.x += SCREEN_WIDTH / 2 + c->x_offset;
-	p3d.y += (SCREEN_HEIGHT + map->height / 2 * c->zoom) / 2 + c->y_offset;
-	p2d.x = p3d.x;
-	p2d.y = p3d.y;
-	return (p2d);
-}
-
 t_point2d	project_point3d(t_point3d p3d, t_map *map, t_camera *c)
 {
 	if (c->iso)
 		return (project_isometric(p3d, map, c));
 	else
-		return (project_stereo(p3d, map, c));
+		return (project_perspective(p3d, map, c));
 }

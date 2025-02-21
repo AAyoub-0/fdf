@@ -6,18 +6,18 @@
 #    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/01 20:15:38 by aayoub            #+#    #+#              #
-#    Updated: 2025/02/18 15:19:31 by aboumall         ###   ########.fr        #
+#    Updated: 2025/02/21 14:53:44 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	= fdf
 
-HEAD 	= fdf.h
+HEAD 	= includes/fdf.h
 LIBFT_A = libft.a
 
 CC 		= cc
 
-CFLAGS 	= -g
+CFLAGS 	= -g -Iincludes
 
 UNAME 	:= $(shell uname)
 
@@ -35,15 +35,38 @@ LIBFT_DIR 	= 	libft
 SRC_DIR 	= 	src
 OBJ_DIR 	= 	obj
 
-SRC_SRC 	= 	test.c map.c point.c project.c				\
-				window.c hooks.c draw.c color.c				\
-				controls.c instruction.c frame.c			\
-				view_ctl.c rotation_ctl.c project_ctl.c		\
-				close_ins_ctl.c map_ctl.c map_utils.c		\
-				colors_ctl.c utils.c main.c
+CONTROL_DIR	=	$(SRC_DIR)/control
+WINDOW_DIR	=	$(SRC_DIR)/window
+DRAW_DIR	=	$(SRC_DIR)/draw
+CLICK_DIR	=	$(CONTROL_DIR)/click
+HOVER_DIR	=	$(CONTROL_DIR)/hover
+INSTRU_DIR	=	$(WINDOW_DIR)/instruction
+MAP_DIR		=	$(WINDOW_DIR)/map
+
+CONTROL_SRC	=	controls.c hooks.c
+CLICK_SRC	=	click.c click_utils.c
+HOVER_SRC	=	close_ins_hv.c	colors_hv.c map_hv.c \
+				map_hv_fr.c map_hv_sr.c map_hv_tr.c \
+				project_hv.c rotation_hv.c view_hv.c
+WINDOW_SRC	=	window.c
+INSTRU_SRC	=	instruction.c instruction_utils.c
+MAP_SRC		=	map.c map_utils.c
+DRAW_SRC	=	point.c project.c \
+				draw.c color.c \
+				frame.c
+SRC_SRC 	= 	test.c utils.c main.c
 
 LIBFT 		= 	$(addprefix $(LIBFT_DIR)/, $(LIBFT_A))
-SRC 		= 	$(addprefix $(SRC_DIR)/, $(SRC_SRC))
+
+SRC 		= 	$(addprefix $(SRC_DIR)/, $(SRC_SRC)) 			\
+				$(addprefix $(CONTROL_DIR)/, $(CONTROL_SRC)) 	\
+				$(addprefix $(HOVER_DIR)/, $(HOVER_SRC)) 		\
+				$(addprefix $(CLICK_DIR)/, $(CLICK_SRC))		\
+				$(addprefix $(WINDOW_DIR)/, $(WINDOW_SRC))		\
+				$(addprefix $(INSTRU_DIR)/, $(INSTRU_SRC))		\
+				$(addprefix $(MAP_DIR)/, $(MAP_SRC))			\
+				$(addprefix $(DRAW_DIR)/, $(DRAW_SRC))
+				
 OBJ 		= 	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
@@ -52,6 +75,7 @@ $(NAME): $(OBJ) $(HEAD) $(LIBFT) $(MLX) $(SRC)
 	$(CC) $(OBJ) $(CFLAGS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEAD) Makefile | $(OBJ_DIR)
+	@mkdir -p $(dir $@) > /dev/null
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):

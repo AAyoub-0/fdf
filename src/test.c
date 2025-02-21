@@ -6,11 +6,11 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:08:16 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/19 15:14:50 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:54:28 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 void	unit_test_point3d_create(void)
 {

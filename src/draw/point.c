@@ -6,11 +6,11 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:33:20 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/03 15:36:22 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:52:45 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 void	print_point(void *p, t_bool is3d)
 {

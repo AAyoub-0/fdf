@@ -6,11 +6,11 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:01:48 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/19 15:15:06 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:52:45 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 static t_camera	*init_camera(void)
 {

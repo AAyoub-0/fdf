@@ -6,11 +6,11 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 21:36:13 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/07 14:48:20 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:52:45 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 static void	ft_put_pixel(t_mlx *mlx, int x, int y, int color)
 {

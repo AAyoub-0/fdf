@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   project_ctl.c                                      :+:      :+:    :+:   */
+/*   project_hv.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:36:13 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/19 14:04:01 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:53:07 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 void	proj_event_hover_10(t_mlx *mlx)
 {
@@ -56,31 +56,8 @@ void	proj_event_hover_11(t_mlx *mlx)
 	}
 }
 
-void	proj_event_hover_12(t_mlx *mlx)
-{
-	if (mouse_over_frame(mlx->mouse, mlx->ins[12]) && mlx->show_ins == true)
-	{
-		mlx->ins[12]->m_over = true;
-		if (mlx->ins[12]->bg != GREEN_OV)
-		{
-			mlx->ins[12]->bg = GREEN_OV;
-			draw_instructions(mlx);
-		}
-	}
-	if (!mouse_over_frame(mlx->mouse, mlx->ins[12]) && mlx->show_ins == true)
-	{
-		mlx->ins[12]->m_over = false;
-		if (mlx->ins[12]->bg != GREEN)
-		{
-			mlx->ins[12]->bg = GREEN;
-			draw_instructions(mlx);
-		}
-	}
-}
-
 void	proj_event_hover(t_mlx *mlx)
 {
 	proj_event_hover_10(mlx);
 	proj_event_hover_11(mlx);
-	proj_event_hover_12(mlx);
 }

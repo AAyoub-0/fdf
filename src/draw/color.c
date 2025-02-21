@@ -6,11 +6,11 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 17:05:40 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/18 18:53:14 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:52:45 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 static uint32_t	interpolate_colors(t_color *c_rgb, double rt)
 {

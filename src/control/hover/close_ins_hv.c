@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_ins_ctl.c                                    :+:      :+:    :+:   */
+/*   close_ins_hv.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 17:03:28 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/13 18:12:05 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:53:07 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 void	close_btn_event_hover(t_mlx *mlx)
 {
@@ -27,7 +27,7 @@ void	close_btn_event_hover(t_mlx *mlx)
 	{
 		mlx->ins[13]->m_over = false;
 		if (mlx->ins[13]->bg != WHITE)
-		{	
+		{
 			mlx->ins[13]->bg = WHITE;
 			draw_instructions(mlx);
 		}

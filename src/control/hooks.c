@@ -6,11 +6,11 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:27:14 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/18 15:28:18 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:52:45 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 static int	close_window(void *params)
 {
@@ -18,8 +18,9 @@ static int	close_window(void *params)
 
 	mlx = (t_mlx *)params;
 	free_window(mlx, EXIT_SUCCESS);
-	exit (0);
+	exit(0);
 }
+
 int	key_down(int keycode, void *params)
 {
 	t_mlx	*mlx;
@@ -35,10 +36,11 @@ int	key_down(int keycode, void *params)
 static int	no_event(void *data)
 {
 	t_mlx	*mlx;
-	int	mouse_pos;
+	int		mouse_pos;
 
 	mlx = (t_mlx *)data;
-	mouse_pos = mlx_mouse_get_pos(mlx->mlx, mlx->win, &mlx->mouse->x, &mlx->mouse->y);
+	mouse_pos = mlx_mouse_get_pos(mlx->mlx, mlx->win, &mlx->mouse->x,
+			&mlx->mouse->y);
 	if (mlx->ins)
 	{
 		menu_frame_event_hover(mlx);
@@ -64,7 +66,7 @@ void	init_hooks(t_mlx *mlx)
 {
 	mlx_key_hook(mlx->win, key_down, mlx);
 	mlx_loop_hook(mlx->mlx, no_event, mlx);
-	mlx_hook(mlx->win, ON_MOUSEDOWN, 1L<<2, mouse_down, mlx);
-	mlx_hook(mlx->win, ON_MOSEUP, 1L<<3, mouse_up, mlx);
+	mlx_hook(mlx->win, ON_MOUSEDOWN, 1L << 2, mouse_down, mlx);
+	mlx_hook(mlx->win, ON_MOSEUP, 1L << 3, mouse_up, mlx);
 	mlx_hook(mlx->win, ON_DESTROY, 0, close_window, mlx);
 }

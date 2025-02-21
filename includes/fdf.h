@@ -6,15 +6,16 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/19 15:03:12 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:56:58 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "./libft/libft.h"
-# include "./minilibx_linux/mlx.h"
+# include "fdf_strings.h"
+# include "../libft/libft.h"
+# include "../minilibx_linux/mlx.h"
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <math.h>
@@ -35,24 +36,6 @@
 # define MOUSE_RIGHT 2
 # define MOUSE_WHEEL_UP 4
 # define MOUSE_WHEEL_DOWN 5
-
-# define M_42 "42.fdf"
-# define M_FRANCE "France.XXL.fdf"
-# define M_JAPAN "Japan.L.fdf"
-# define M_WORLD "World.fdf"
-# define M_PLAT "plat.fdf"
-# define M_PYRA "pyra.fdf"
-# define M_10_70 "10-70.fdf"
-# define M_20_60 "20-60.fdf"
-# define M_50_4 "50-4.fdf"
-# define M_100_6 "100-6.fdf"
-# define M_BAS_TEST "basictest.fdf"
-# define M_ELEM "elem.fdf"
-# define M_MARS "mars.fdf"
-# define M_PENTEN "pentenegpos.fdf"
-# define M_PNP_FLAT "pnp_flat.fdf"
-# define M_PYLONE "pylone.fdf"
-# define M_PYRAMIDE "pyramide.fdf"
 
 typedef enum e_color
 {
@@ -140,7 +123,6 @@ typedef struct s_camera
 {
 	t_bool		iso;
 	int			zoom;
-	int			z_div;
 	int			x_offset;
 	int			y_offset;
 	int			z_offset;
@@ -217,7 +199,35 @@ void			init_instructions(t_mlx *mlx);
 t_bool			mouse_over_frame(t_mouse *m, t_frame *f);
 void			draw_instructions(t_mlx *mlx);
 
+void			init_ctl_btn(t_mlx *mlx);
+void			init_maps_btn(t_mlx *mlx);
+void			init_maps_data(char **maps);
+void			draw_maps_texts(t_mlx *mlx);
 void			set_selected_map_btn(t_mlx *mlx, int i);
+
+void			view_event_click(t_mlx *mlx, int id, t_fpoint3d n_rt);
+void			rot_event_click(t_mlx *mlx, int id, t_fpoint3d n_rt);
+void			map_event_click(t_mlx *mlx, int id);
+void			color_event_click(t_mlx *mlx, int id, t_point3d n_colors);
+void			view_rot_event(t_mlx *mlx);
+void			map_event(t_mlx *mlx);
+void			color_event(t_mlx *mlx);
+
+void			map_btn_event_hover_14(t_mlx *mlx);
+void			map_btn_event_hover_15(t_mlx *mlx);
+void			map_btn_event_hover_16(t_mlx *mlx);
+void			map_btn_event_hover_17(t_mlx *mlx);
+void			map_btn_event_hover_18(t_mlx *mlx);
+void			map_btn_event_hover_19(t_mlx *mlx);
+void			map_btn_event_hover_20(t_mlx *mlx);
+void			map_btn_event_hover_21(t_mlx *mlx);
+void			map_btn_event_hover_22(t_mlx *mlx);
+void			map_btn_event_hover_23(t_mlx *mlx);
+void			map_btn_event_hover_24(t_mlx *mlx);
+void			map_btn_event_hover_25(t_mlx *mlx);
+void			map_btn_event_hover_26(t_mlx *mlx);
+void			map_btn_event_hover_27(t_mlx *mlx);
+void			map_btn_event_hover_28(t_mlx *mlx);
 
 void			menu_frame_event_hover(t_mlx *mlx);
 void			close_btn_event_hover(t_mlx *mlx);
