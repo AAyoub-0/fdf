@@ -6,16 +6,16 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/21 17:53:58 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 19:04:56 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "fdf_strings.h"
 # include "../libft/libft.h"
 # include "../minilibx_linux/mlx.h"
+# include "fdf_strings.h"
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <math.h>
@@ -25,9 +25,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-#ifndef M_PI
-#define M_PI 3.14159265358979323846
-#endif
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+# endif
 
 # define SCREEN_WIDTH 1920
 # define SCREEN_HEIGHT 1080
@@ -90,11 +90,11 @@ typedef struct s_point2d
 	int			y;
 }				t_point2d;
 
-typedef struct	s_calc_draw
+typedef struct s_calc_draw
 {
 	t_point2d	delta;
 	t_point2d	sign;
-	int			error[2];	
+	int			error[2];
 }				t_calc_draw;
 
 typedef struct s_frame
