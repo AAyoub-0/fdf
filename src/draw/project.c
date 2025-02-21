@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   project.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 21:02:34 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/21 15:06:18 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 23:44:18 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ static void	rotate_point3d(t_point3d *p, t_camera *c)
 {
 	int	tmp_y;
 	int	tmp_x;
-	int	tmp_z;
 
 	tmp_y = p->y;
 	tmp_x = p->x;
-	tmp_z = p->z;
 	p->y = tmp_y * cos(c->r_x) + p->z * sin(c->r_x);
 	p->z = -tmp_y * sin(c->r_x) + p->z * cos(c->r_x);
 	p->x = tmp_x * cos(c->r_y) + p->z * sin(c->r_y);

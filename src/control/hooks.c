@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:27:14 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/21 14:52:45 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 23:44:00 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,9 @@ int	key_down(int keycode, void *params)
 static int	no_event(void *data)
 {
 	t_mlx	*mlx;
-	int		mouse_pos;
 
 	mlx = (t_mlx *)data;
-	mouse_pos = mlx_mouse_get_pos(mlx->mlx, mlx->win, &mlx->mouse->x,
+	mlx_mouse_get_pos(mlx->mlx, mlx->win, &mlx->mouse->x,
 			&mlx->mouse->y);
 	if (mlx->ins)
 	{
