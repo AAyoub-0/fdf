@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:08:16 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/21 14:54:28 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 16:55:24 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,6 @@ void	unit_test_point2d_create(void)
 	free(point);
 }
 
-void	unit_test_point3d_print(void)
-{
-	t_point3d	*point;
-
-	point = init_point3d(1, 2, 3, RED);
-	print_point(point, true);
-	free(point);
-}
-
-void	unit_test_point2d_print(void)
-{
-	t_point2d	*point;
-
-	point = init_point2d(1, 2);
-	print_point(point, false);
-	free(point);
-}
-
 void	unit_test_map_init_map(void)
 {
 	t_map	*map;
@@ -64,57 +46,6 @@ void	unit_test_map_init_map(void)
 	else
 		ft_putendl_fd("Map creation test: \033[0;31mKO\033[0m", 2);
 	free_map(map);
-}
-
-void	unit_test_map_parse_map_wrong_fd(void)
-{
-	t_map	*map;
-
-	map = init_map();
-	if (parse_map(map, 0) == false)
-		ft_putendl_fd("Map parsing test: \033[0;32mOK\033[0m", 2);
-	else
-		ft_putendl_fd("Map parsing test: \033[0;31mKO\033[0m", 2);
-	free_map(map);
-}
-
-void	print_map(t_map *map)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < map->height)
-	{
-		j = 0;
-		while (j < map->width)
-		{
-			print_point(&map->pts_3d[i][j], true);
-			j++;
-		}
-		i++;
-	}
-}
-
-void	unit_test_map_parse_map_good_fd(void)
-{
-	t_map	*map;
-	int	fd;
-
-	fd = open("maps/42.fdf", O_RDONLY);
-	if (fd <= 0)
-	{
-		perror("Error");
-		return ;
-	}
-	map = init_map();
-	if (parse_map(map, fd) == true)
-		ft_putendl_fd("Map parsing test: \033[0;32mOK\033[0m", 2);
-	else
-		ft_putendl_fd("Map parsing test: \033[0;31mKO\033[0m", 2);
-	// print_map(map);
-	free_map(map);
-	close(fd);
 }
 
 void	unit_test_window_open_window(void)
@@ -154,7 +85,7 @@ void	unit_test_draw_draw_map(void)
 	mlx = init_window("Fdf - 42");
 	mlx->map = init_map();
 	int fd = open("maps/42.fdf", O_RDONLY);
-	parse_map(mlx->map, fd);
+	parse_map(mlx, fd);
 	
 	init_hooks(mlx);
 	draw_map(mlx);
@@ -201,8 +132,6 @@ void	exec_tests(void)
 	
 	// map tests
 	// unit_test_map_init_map();
-	// unit_test_map_parse_map_wrong_fd();
-	// unit_test_map_parse_map_good_fd();
 
 	// window tests
 	// unit_test_window_open_window();

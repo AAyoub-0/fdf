@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 13:16:42 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/21 14:52:45 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 15:06:32 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_frame	*init_frame(t_point2d coor, int width, int height, t_color bg)
 {
-	t_frame *frame;
+	t_frame	*frame;
 
 	frame = malloc(sizeof(t_frame));
 	if (!frame)
@@ -32,8 +32,8 @@ t_frame	*init_frame(t_point2d coor, int width, int height, t_color bg)
 
 void	draw_frame(t_mlx *mlx, t_frame *frame)
 {
-	t_point2d s_coor;
-	t_point2d e_coor;
+	t_point2d	s_coor;
+	t_point2d	e_coor;
 
 	e_coor = frame->coord;
 	s_coor.x = frame->coord.x;
@@ -49,7 +49,7 @@ void	draw_frame(t_mlx *mlx, t_frame *frame)
 t_bool	mouse_over_frame(t_mouse *m, t_frame *f)
 {
 	return (m->x >= f->coord.x && m->x <= f->coord.x + f->width
-				&& m->y >= f->coord.y && m->y <= f->height + f->coord.y);
+		&& m->y >= f->coord.y && m->y <= f->height + f->coord.y);
 }
 
 void	menu_frame_event_hover(t_mlx *mlx)

@@ -6,7 +6,7 @@
 #    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/01 20:15:38 by aayoub            #+#    #+#              #
-#    Updated: 2025/02/21 14:53:44 by aboumall         ###   ########.fr        #
+#    Updated: 2025/02/21 16:53:40 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,12 +48,12 @@ CLICK_SRC	=	click.c click_utils.c
 HOVER_SRC	=	close_ins_hv.c	colors_hv.c map_hv.c \
 				map_hv_fr.c map_hv_sr.c map_hv_tr.c \
 				project_hv.c rotation_hv.c view_hv.c
-WINDOW_SRC	=	window.c
 INSTRU_SRC	=	instruction.c instruction_utils.c
+WINDOW_SRC	=	window.c
 MAP_SRC		=	map.c map_utils.c
 DRAW_SRC	=	point.c project.c \
 				draw.c color.c \
-				frame.c
+				frame.c draw_utils.c
 SRC_SRC 	= 	test.c utils.c main.c
 
 LIBFT 		= 	$(addprefix $(LIBFT_DIR)/, $(LIBFT_A))

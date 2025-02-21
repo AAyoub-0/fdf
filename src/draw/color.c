@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 17:05:40 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/21 14:52:45 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 15:06:42 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static uint32_t	interpolate_colors(t_color *c_rgb, double rt)
 {
-	t_point3d s_rgb;
-	t_point3d e_rgb;
-	t_point3d f_rgb;
+	t_point3d	s_rgb;
+	t_point3d	e_rgb;
+	t_point3d	f_rgb;
 
 	s_rgb.x = (c_rgb[0] >> 16) & 0xFF;
 	s_rgb.y = (c_rgb[0] >> 8) & 0xFF;
@@ -30,18 +30,19 @@ static uint32_t	interpolate_colors(t_color *c_rgb, double rt)
 	return ((f_rgb.x << 16) | (f_rgb.y << 8) | f_rgb.z);
 }
 
-uint32_t	get_gradient_color(t_map *map, int step, t_point2d delta, t_point2d p3d_z)
+uint32_t	get_gradient_color(t_map *map, int step, t_point2d delta,
+		t_point2d p3d_z)
 {
-	double rt;
-	t_color   c_rgb[2];
-	int total_steps;
-	int	z;
-	
+	double	rt;
+	t_color	c_rgb[2];
+	int		total_steps;
+	int		z;
+
 	total_steps = fmax(delta.x, delta.y);
 	z = (int)((p3d_z.x * (total_steps - step) + p3d_z.y * step) / total_steps);
 	if (z == map->z_min)
 		return (map->c_min);
-    if (z == map->z_max)
+	if (z == map->z_max)
 		return (map->c_max);
 	if (z <= map->z_mid)
 	{

@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:01:48 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/21 14:52:45 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:00:51 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,27 +52,21 @@ t_mlx	*init_window(char *name)
 	t_mlx	*mlx;
 
 	mlx = malloc(sizeof(t_mlx));
-	if (!mlx)
-		return (NULL);
+	exit_if(!mlx, mlx, EXIT_FAILURE);
 	mlx->mlx = mlx_init();
-	if (!mlx->mlx)
-		return (NULL);
+	exit_if(!mlx->mlx, mlx, EXIT_FAILURE);
 	mlx->win = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, name);
-	if (!mlx->win)
-		return (NULL);
+	exit_if(!mlx->win, mlx, EXIT_FAILURE);
 	mlx->img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	if (!mlx->img)
-		return (NULL);
-	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bpp, &mlx->line_len, &mlx->endian);
-	if (!mlx->addr)
-		return (NULL);
+	exit_if(!mlx->img, mlx, EXIT_FAILURE);
+	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bpp, &mlx->line_len,
+			&mlx->endian);
+	exit_if(!mlx->addr, mlx, EXIT_FAILURE);
 	mlx->map = NULL;
 	mlx->camera = init_camera();
-	if (!mlx->camera)
-		return (NULL);
+	exit_if(!mlx->camera, mlx, EXIT_FAILURE);
 	mlx->mouse = init_mouse();
-	if (!mlx->mouse)
-		return (NULL);
+	exit_if(!mlx->mouse, mlx, EXIT_FAILURE);
 	return (mlx);
 }
 

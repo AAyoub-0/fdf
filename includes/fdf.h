@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/21 14:56:58 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 16:49:25 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,13 @@ typedef struct s_point2d
 	int			y;
 }				t_point2d;
 
+typedef struct	s_calc_draw
+{
+	t_point2d	delta;
+	t_point2d	sign;
+	int			error[2];	
+}				t_calc_draw;
+
 typedef struct s_frame
 {
 	void		*data;
@@ -158,7 +165,6 @@ typedef struct s_mlx
 	t_frame		**ins;
 }				t_mlx;
 
-void			print_point(void *p, t_bool is3d);
 t_point3d		*init_point3d(int x, int y, int z, t_color color);
 t_point2d		*init_point2d(int x, int y);
 t_bool			free_points3d(t_point3d **point, size_t size);
@@ -169,7 +175,7 @@ t_point2d		project_point3d(t_point3d p3d, t_map *map, t_camera *c);
 t_map			*init_map(void);
 void			set_z_max_min(t_map *map, int z);
 int				get_map_width(char *line);
-t_bool			parse_map(t_map *map, int fd);
+t_bool			parse_map(t_mlx *mlx, int fd);
 void			open_map(t_mlx *mlx, char *file);
 int				free_map(t_map *map);
 
@@ -180,6 +186,8 @@ void			draw_line(t_mlx *mlx, t_point2d p0, t_point2d p1,
 					t_point2d p3d_coor);
 void			draw_line_simple(t_mlx *mlx, t_point2d p0, t_point2d p1,
 					t_color color);
+void			set_errors(t_calc_draw *calc, t_point2d *p0, t_point2d *p1);
+void			draw_vectors(t_mlx *mlx, t_point2d *p3d_z, t_point2d *i);
 int				draw_map(t_mlx *mlx);
 
 t_mlx			*init_window(char *color_btn_event_hovername);

@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 13:46:02 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/21 14:53:07 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 16:35:22 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,21 @@ void	set_z_max_min(t_map *map, int z)
 	map->z_mid = (map->z_max + map->z_min) / 2;
 }
 
-int  get_map_width(char *line)
+int	get_map_width(char *line)
 {
-    int     width;
+	int	width;
 
-    width = 0;
-    while (*line)
-    {
-        if (ft_isdigit(*line))
-        {
-            width++;
-            while (ft_isdigit(*line))
-                line++;
-        }
-        else
-            line++;
-    }
-    return (width);
+	width = 0;
+	while (*line)
+	{
+		if (ft_isdigit(*line))
+		{
+			width++;
+			while (ft_isdigit(*line))
+				line++;
+		}
+		else
+			line++;
+	}
+	return (width);
 }
