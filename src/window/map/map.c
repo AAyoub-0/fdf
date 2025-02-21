@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:20:33 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/21 18:07:59 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/22 00:01:38 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,12 @@ void	open_map(t_mlx *mlx, char *file)
 	close(mlx->map->fd);
 	if (mlx->map->z_max > mlx->camera->z_offset * 3)
 		mlx->camera->z_offset = mlx->map->z_max * 0.4;
+	else
+		mlx->camera->z_offset = mlx->map->z_max * 0.2;
 	if (mlx->map->width * mlx->map->height > SCREEN_HEIGHT * SCREEN_WIDTH)
 		mlx->camera->zoom = 1;
+	else
+		mlx->camera->zoom = SCREEN_WIDTH / mlx->map->width * 0.4;
 }
 
 static t_bool	fill_map(t_map *map, char *line, int y)
