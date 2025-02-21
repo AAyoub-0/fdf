@@ -6,13 +6,13 @@
 #    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/01 20:15:38 by aayoub            #+#    #+#              #
-#    Updated: 2025/02/21 18:05:30 by aboumall         ###   ########.fr        #
+#    Updated: 2025/02/21 18:39:08 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	= fdf
 
-HEAD 	= includes/fdf.h
+HEAD 	= includes/fdf.h includes/fdf_strings.h
 LIBFT_A = libft.a
 
 CC 		= cc
@@ -22,13 +22,13 @@ CFLAGS 	= -Werror -Wextra -Wall -Iincludes
 UNAME 	:= $(shell uname)
 
 ifeq ($(UNAME), Darwin)
-    MLX_DIR = ./minilibx
-    MLX = $(MLX_DIR)/libmlx.a
-    MLX_FLAGS = -framework OpenGL -framework AppKit -O3
+	MLX_DIR = ./minilibx
+	MLX = $(MLX_DIR)/libmlx.a
+	MLX_FLAGS = -framework OpenGL -framework AppKit -O3
 else
-    MLX_DIR = ./minilibx_linux
-    MLX = $(MLX_DIR)/libmlx.a
-    MLX_FLAGS = -lX11 -lXext -lm -lGL -lz -O3
+	MLX_DIR = ./minilibx_linux
+	MLX = $(MLX_DIR)/libmlx.a
+	MLX_FLAGS = -lX11 -lXext -lm -lGL -lz -O3
 endif
 
 LIBFT_DIR 	= 	libft
@@ -69,9 +69,9 @@ SRC 		= 	$(addprefix $(SRC_DIR)/, $(SRC_SRC)) 			\
 				
 OBJ 		= 	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-all: $(NAME)
+all: mlx_lib lib $(NAME)
 
-$(NAME): $(OBJ) $(HEAD) $(LIBFT) $(MLX) $(SRC)
+$(NAME): $(OBJ) $(HEAD) $(SRC)
 	$(CC) $(OBJ) $(CFLAGS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEAD) Makefile | $(OBJ_DIR)
@@ -81,13 +81,23 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEAD) Makefile | $(OBJ_DIR)
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-$(LIBFT):
-	@echo "Making libft..."
-	@$(MAKE) -C $(LIBFT_DIR) > /dev/null
+lib:
+	@echo "Checking libft..."
+	@if $(MAKE) -C $(LIBFT_DIR) -q; then \
+		echo "Libft is already up to date!"; \
+	else \
+		echo "Making libft..."; \
+		$(MAKE) -C $(LIBFT_DIR) > /dev/null; \
+	fi
 
-$(MLX):
-	@echo "Making mlx lib..."
-	@$(MAKE) -C $(MLX_DIR) > /dev/null
+mlx_lib:
+	@echo "Checking mlx lib..."
+	@if $(MAKE) -C $(MLX_DIR) -q; then \
+		echo "Mlx lib is already up to date!"; \
+	else \
+		echo "Making mlx lib..."; \
+		$(MAKE) -C $(MLX_DIR) > /dev/null; \
+	fi
 
 clean:
 	@echo "Cleaning object files..."
@@ -103,4 +113,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re libft mlx obj
+relink_libs:
+	
+
+.PHONY: all clean fclean re lib mlx_lib
