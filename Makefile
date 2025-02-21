@@ -6,7 +6,7 @@
 #    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/01 20:15:38 by aayoub            #+#    #+#              #
-#    Updated: 2025/02/21 16:53:40 by aboumall         ###   ########.fr        #
+#    Updated: 2025/02/21 17:55:10 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIBFT_A = libft.a
 
 CC 		= cc
 
-CFLAGS 	= -g -Iincludes
+CFLAGS 	= -Werror -Wextra -Wall -Iincludes
 
 UNAME 	:= $(shell uname)
 

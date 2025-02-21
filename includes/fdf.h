@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/21 16:49:25 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:53:58 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,6 @@ typedef struct s_mlx
 t_point3d		*init_point3d(int x, int y, int z, t_color color);
 t_point2d		*init_point2d(int x, int y);
 t_bool			free_points3d(t_point3d **point, size_t size);
-t_bool			free_points2d(t_point2d **point, size_t size);
 
 t_point2d		project_point3d(t_point3d p3d, t_map *map, t_camera *c);
 
@@ -186,7 +185,7 @@ void			draw_line(t_mlx *mlx, t_point2d p0, t_point2d p1,
 					t_point2d p3d_coor);
 void			draw_line_simple(t_mlx *mlx, t_point2d p0, t_point2d p1,
 					t_color color);
-void			set_errors(t_calc_draw *calc, t_point2d *p0, t_point2d *p1);
+void			set_errors(t_calc_draw *calc, t_point2d *p0);
 void			draw_vectors(t_mlx *mlx, t_point2d *p3d_z, t_point2d *i);
 int				draw_map(t_mlx *mlx);
 

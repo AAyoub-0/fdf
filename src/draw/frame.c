@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 13:16:42 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/21 15:06:32 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:06:40 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ t_bool	free_frames(t_frame **frame)
 	int	i;
 
 	i = 0;
+	if (!frame)
+		return (false);
 	while (frame[i])
 	{
 		if (frame[i]->data)

@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:33:20 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/21 15:55:39 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:53:23 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,28 +40,12 @@ t_point2d	*init_point2d(int x, int y)
 
 t_bool	free_points3d(t_point3d **point, size_t size)
 {
-	int	i;
+	size_t	i;
 
 	if (!point)
 		return (false);
 	i = 0;
 	while (i < size - 1)
-	{
-		free(point[i]);
-		i++;
-	}
-	free(point);
-	return (true);
-}
-
-t_bool	free_points2d(t_point2d **point, size_t size)
-{
-	int	i;
-
-	if (!point)
-		return (false);
-	i = 0;
-	while (i < size)
 	{
 		free(point[i]);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 21:36:13 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/21 16:32:52 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:54:34 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	draw_line(t_mlx *mlx, t_point2d p0, t_point2d p1, t_point2d p3d_z)
 	{
 		ft_put_pixel(mlx, p0.x, p0.y, get_gradient_color(mlx->map, step,
 				calc.delta, p3d_z));
-		set_errors(&calc, &p0, &p1);
+		set_errors(&calc, &p0);
 		step++;
 	}
 }
@@ -70,7 +70,7 @@ void	draw_line_simple(t_mlx *mlx, t_point2d p0, t_point2d p1, t_color color)
 	while (p0.x != p1.x || p0.y != p1.y)
 	{
 		ft_put_pixel(mlx, p0.x, p0.y, color);
-		set_errors(&calc, &p0, &p1);
+		set_errors(&calc, &p0);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:01:48 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/21 17:00:51 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:55:48 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,25 @@ static t_mouse	*init_mouse(void)
 	return (mouse);
 }
 
+static void	set_null(t_mlx *mlx)
+{
+	mlx->mlx = NULL;
+	mlx->win = NULL;
+	mlx->img = NULL;
+	mlx->addr = NULL;
+	mlx->map = NULL;
+	mlx->camera = NULL;
+	mlx->mouse = NULL;
+	mlx->ins = NULL;
+}
+
 t_mlx	*init_window(char *name)
 {
 	t_mlx	*mlx;
 
 	mlx = malloc(sizeof(t_mlx));
 	exit_if(!mlx, mlx, EXIT_FAILURE);
+	set_null(mlx);
 	mlx->mlx = mlx_init();
 	exit_if(!mlx->mlx, mlx, EXIT_FAILURE);
 	mlx->win = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, name);
@@ -72,10 +85,14 @@ t_mlx	*init_window(char *name)
 
 int	free_window(t_mlx *mlx, int fd_out)
 {
+	if (!mlx)
+		return (fd_out);
 	mlx_destroy_window(mlx->mlx, mlx->win);
 	mlx_destroy_image(mlx->mlx, mlx->img);
-	free(mlx->camera);
-	free(mlx->mouse);
+	if (mlx->camera)
+		free(mlx->camera);
+	if (mlx->mouse)
+		free(mlx->mouse);
 	free_frames(mlx->ins);
 	free_map(mlx->map);
 	mlx_destroy_display(mlx->mlx);

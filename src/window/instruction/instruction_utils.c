@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:26:26 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/21 14:53:07 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:52:54 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	init_maps_btn(t_mlx *mlx)
 {
 	int		i;
 	int		y;
-	t_color	color;
 	char	*maps[18];
 
 	i = 14;

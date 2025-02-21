@@ -6,13 +6,13 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 16:11:14 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/21 16:31:45 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:53:41 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	set_errors(t_calc_draw *calc, t_point2d *p0, t_point2d *p1)
+void	set_errors(t_calc_draw *calc, t_point2d *p0)
 {
 	(*calc).error[1] = (*calc).error[0] * 2;
 	if ((*calc).error[1] > -(*calc).delta.y)
