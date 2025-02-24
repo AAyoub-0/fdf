@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 11:44:23 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/21 14:53:07 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/24 15:19:02 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	map_event(t_mlx *mlx)
 
 void	color_event(t_mlx *mlx)
 {
-	color_event_click(mlx, 31, (t_point3d){WHITE, YELLOW, MAGENTA, 0});
-	color_event_click(mlx, 32, (t_point3d){CYAN, BROWN_OV, GREEN, 0});
-	color_event_click(mlx, 33, (t_point3d){GREEN_OV, BROWN_OV, BROWN, 0});
+	color_event_click(mlx, 31, (t_point3d){WHITE, YELLOW, MAGENTA});
+	color_event_click(mlx, 32, (t_point3d){CYAN, BROWN_OV, GREEN});
+	color_event_click(mlx, 33, (t_point3d){GREEN_OV, BROWN_OV, BROWN});
 }

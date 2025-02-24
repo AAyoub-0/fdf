@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:27:14 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/21 23:44:00 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/02/24 17:30:15 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ static int	no_event(void *data)
 	t_mlx	*mlx;
 
 	mlx = (t_mlx *)data;
-	mlx_mouse_get_pos(mlx->mlx, mlx->win, &mlx->mouse->x,
-			&mlx->mouse->y);
+	mlx_mouse_get_pos(mlx->mlx, mlx->win, &mlx->mouse->x, &mlx->mouse->y);
 	if (mlx->ins)
 	{
 		menu_frame_event_hover(mlx);

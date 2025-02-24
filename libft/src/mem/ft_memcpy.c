@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 15:08:31 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/30 18:41:38 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/02/24 17:36:00 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	unsigned char	*c_src;
 
 	if (!dest || !src)
-    	return (NULL);
+		return (NULL);
 	i = 0;
 	c_dest = (unsigned char *)dest;
 	c_src = (unsigned char *)src;

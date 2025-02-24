@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:06:07 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/21 15:02:30 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:22:54 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 void	init_instructions(t_mlx *mlx)
 {
 	mlx->ins = ft_calloc(35, sizeof(t_frame *));
-	exit_if(!mlx->ins, mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins, mlx, EXIT_FAILURE, NULL);
 	mlx->ins[0] = init_frame((t_point2d){10, 10}, 30, 35, WHITE);
-	exit_if(!mlx->ins[0], mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins[0], mlx, EXIT_FAILURE, NULL);
 	mlx->ins[13] = init_frame((t_point2d){350, 20}, 60, 20, WHITE);
-	exit_if(!mlx->ins[13], mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins[13], mlx, EXIT_FAILURE, NULL);
 	mlx->ins[1] = init_frame((t_point2d){0, 0}, SCREEN_WIDTH * 0.23,
 			SCREEN_HEIGHT, WHITE);
-	exit_if(!mlx->ins[1], mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins[1], mlx, EXIT_FAILURE, NULL);
 	mlx->ins[31] = init_frame((t_point2d){20, 925}, 120, 45, ORANGE);
-	exit_if(!mlx->ins[31], mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins[31], mlx, EXIT_FAILURE, NULL);
 	mlx->ins[32] = init_frame((t_point2d){155, 925}, 120, 45, ORANGE);
-	exit_if(!mlx->ins[32], mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins[32], mlx, EXIT_FAILURE, NULL);
 	mlx->ins[33] = init_frame((t_point2d){290, 925}, 120, 45, ORANGE);
-	exit_if(!mlx->ins[33], mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins[33], mlx, EXIT_FAILURE, NULL);
 	init_ctl_btn(mlx);
 	init_maps_btn(mlx);
 }
@@ -42,18 +42,9 @@ static void	draw_menu_icon(t_mlx *mlx)
 	f0 = init_frame((t_point2d){10, 10}, 30, 5, WHITE);
 	exit_if(!f0, mlx, EXIT_FAILURE);
 	f1 = init_frame((t_point2d){10, 20}, 30, 5, WHITE);
-	if (!f1)
-	{
-		free(f0);
-		exit_if(true, mlx, EXIT_FAILURE);
-	}
+	exit_if(!f1, mlx, EXIT_FAILURE, f0, NULL);
 	f2 = init_frame((t_point2d){10, 30}, 30, 5, WHITE);
-	if (!f2)
-	{
-		free(f0);
-		free(f1);
-		exit_if(true, mlx, EXIT_FAILURE);
-	}
+	exit_if(!f2, mlx, EXIT_FAILURE, f0, f1, NULL);
 	draw_frame(mlx, f0);
 	draw_frame(mlx, f1);
 	draw_frame(mlx, f2);

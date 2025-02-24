@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:20:33 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/22 00:01:38 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/02/24 17:34:34 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	open_map(t_mlx *mlx, char *file)
 	if (mlx->map)
 		free_map(mlx->map);
 	mlx->map = init_map();
-	exit_if(!mlx->map, mlx, EXIT_FAILURE);
+	exit_if(!mlx->map, mlx, EXIT_FAILURE, NULL);
 	mlx->map->fd = open(file, O_RDONLY);
-	exit_if(mlx->map->fd <= 0, mlx, EXIT_FAILURE);
+	exit_if(mlx->map->fd <= 0, mlx, EXIT_FAILURE, NULL);
 	mlx->map->file = ft_strdup(file);
-	exit_if(!mlx->map->file, mlx, EXIT_FAILURE);
+	exit_if(!mlx->map->file, mlx, EXIT_FAILURE, NULL);
 	parse_map(mlx, mlx->map->fd);
 	close(mlx->map->fd);
 	if (mlx->map->z_max > mlx->camera->z_offset * 3)
@@ -56,18 +56,20 @@ void	open_map(t_mlx *mlx, char *file)
 		mlx->camera->zoom = SCREEN_WIDTH / mlx->map->width * 0.4;
 }
 
-static t_bool	fill_map(t_map *map, char *line, int y)
+t_bool	fill_map(t_map *map, char *line, int y)
 {
 	int			x;
+	int			error;
 	t_point3d	*tmp;
 
 	x = 0;
+	error = 0;
 	while (*line)
 	{
 		if (ft_isdigit(*line))
 		{
-			tmp = init_point3d(x, y, ft_atoi(line), WHITE);
-			if (!tmp)
+			tmp = init_point3d(x, y, ft_atoi_error(line, &error));
+			if (!tmp || error)
 				return (false);
 			set_z_max_min(map, tmp->z);
 			map->pts_3d[y][x] = *tmp;
@@ -82,40 +84,29 @@ static t_bool	fill_map(t_map *map, char *line, int y)
 	return (true);
 }
 
-t_bool	parse_map(t_mlx *mlx, int fd)
+void	parse_map(t_mlx *mlx, int fd)
 {
 	char	*line;
 
 	line = NULL;
-	mlx->map->pts_3d = malloc(sizeof(t_point3d *));
-	if (!mlx->map->pts_3d)
-		return (false);
+	mlx->map->pts_3d = ft_calloc(1, sizeof(t_point3d *));
+	exit_if(!mlx->map->pts_3d, mlx, EXIT_FAILURE, NULL);
 	while (get_next_line(fd, &line) >= 0 && *line != '\0')
 	{
 		if (mlx->map->width == 0)
 			mlx->map->width = get_map_width(line);
-		mlx->map->pts_3d = ft_realloc(mlx->map->pts_3d, sizeof(t_point3d *)
-				* (mlx->map->height), sizeof(t_point3d *) * (mlx->map->height
-					+ 1));
-		if (!mlx->map->pts_3d)
-			return (free_map(mlx->map), free(line), false);
-		mlx->map->pts_3d[mlx->map->height] = malloc(sizeof(t_point3d)
-				* mlx->map->width);
-		if (!mlx->map->pts_3d[mlx->map->height])
-			return (free_map(mlx->map), free(line), false);
-		if (!fill_map(mlx->map, line, mlx->map->height))
-			return (free_map(mlx->map), free(line), false);
+		parse_map_line(mlx, line);
 		mlx->map->height++;
 		free(line);
 	}
-	return (free(line), true);
+	free(line);
 }
 
 int	free_map(t_map *map)
 {
 	if (!map)
 		return (0);
-	free_points3d(map->pts_3d, map->height + 1);
+	free_points3d(map->pts_3d, map->height);
 	if (map->file)
 		free(map->file);
 	free(map);

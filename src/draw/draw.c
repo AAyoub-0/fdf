@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 21:36:13 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/21 17:54:34 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:08:42 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	draw_line(t_mlx *mlx, t_point2d p0, t_point2d p1, t_point2d p3d_z)
 	int			step;
 
 	step = 0;
-	calc.delta.x = abs(p1.x - p0.x);
-	calc.delta.y = abs(p1.y - p0.y);
+	calc.delta.x = ft_abs(p1.x - p0.x);
+	calc.delta.y = ft_abs(p1.y - p0.y);
 	calc.sign = get_sign(p0, p1);
 	calc.error[0] = calc.delta.x - calc.delta.y;
 	while (p0.x != p1.x || p0.y != p1.y)
@@ -63,8 +63,8 @@ void	draw_line_simple(t_mlx *mlx, t_point2d p0, t_point2d p1, t_color color)
 {
 	t_calc_draw	calc;
 
-	calc.delta.x = abs(p1.x - p0.x);
-	calc.delta.y = abs(p1.y - p0.y);
+	calc.delta.x = ft_abs(p1.x - p0.x);
+	calc.delta.y = ft_abs(p1.y - p0.y);
 	calc.sign = get_sign(p0, p1);
 	calc.error[0] = calc.delta.x - calc.delta.y;
 	while (p0.x != p1.x || p0.y != p1.y)

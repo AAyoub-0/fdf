@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:27:51 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/15 13:15:57 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:35:46 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,12 @@ int	ft_atoi(const char *nptr)
 	return (result * sign);
 }
 
-int	ft_atoi_cursor(char *nptr, int *cursor, int *error)
+void	ft_set_error(int *err)
+{
+	*err = 1;
+}
+
+int	ft_atoi_error(char *nptr, int *error)
 {
 	ssize_t	result;
 	int		i;
@@ -68,19 +73,20 @@ int	ft_atoi_cursor(char *nptr, int *cursor, int *error)
 	sign = 1;
 	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
 		i++;
-    if (nptr[i] == '-')
-        sign *= -1;
-    i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (nptr[i] == '-')
+			sign *= -1;
+		if (!is_valid(nptr[i + 1]))
+			return (ft_set_error(error), EXIT_FAILURE);
+		i++;
+	}
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-        if (is_toolarge(result, nptr[i]) <= 0)
-        {
-            (*error) = 1;
-			return (0);
-        }
+		if (is_toolarge(result, nptr[i]) <= 0)
+			return (ft_set_error(error), EXIT_FAILURE);
 		result = result * 10 + nptr[i] - '0';
 		i++;
 	}
-    (*cursor) = (*cursor) + i;
 	return (result * sign);
 }

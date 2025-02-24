@@ -6,12 +6,14 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:55:38 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/21 19:05:26 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 19:41:27 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_STRINGS_H
 # define FDF_STRINGS_H
+
+# define FDF_EXT ".fdf"
 
 # define M_42 "42.fdf"
 # define M_FRANCE "France.XXL.fdf"

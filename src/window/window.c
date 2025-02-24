@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:01:48 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/21 17:55:48 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:12:33 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,24 +62,29 @@ static void	set_null(t_mlx *mlx)
 t_mlx	*init_window(char *name)
 {
 	t_mlx	*mlx;
+	char	*full_name;
 
 	mlx = malloc(sizeof(t_mlx));
-	exit_if(!mlx, mlx, EXIT_FAILURE);
+	exit_if(!mlx, mlx, EXIT_FAILURE, NULL);
 	set_null(mlx);
+	full_name = ft_strjoin("Fdf - ", name);
+	exit_if(!full_name, mlx, EXIT_FAILURE, NULL);
+	free(name);
 	mlx->mlx = mlx_init();
-	exit_if(!mlx->mlx, mlx, EXIT_FAILURE);
-	mlx->win = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, name);
-	exit_if(!mlx->win, mlx, EXIT_FAILURE);
+	exit_if(!mlx->mlx, mlx, EXIT_FAILURE, full_name, NULL);
+	mlx->win = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, full_name);
+	exit_if(!mlx->win, mlx, EXIT_FAILURE, full_name, NULL);
+	free(full_name);
 	mlx->img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	exit_if(!mlx->img, mlx, EXIT_FAILURE);
+	exit_if(!mlx->img, mlx, EXIT_FAILURE, NULL);
 	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bpp, &mlx->line_len,
 			&mlx->endian);
-	exit_if(!mlx->addr, mlx, EXIT_FAILURE);
+	exit_if(!mlx->addr, mlx, EXIT_FAILURE, NULL);
 	mlx->map = NULL;
 	mlx->camera = init_camera();
-	exit_if(!mlx->camera, mlx, EXIT_FAILURE);
+	exit_if(!mlx->camera, mlx, EXIT_FAILURE, NULL);
 	mlx->mouse = init_mouse();
-	exit_if(!mlx->mouse, mlx, EXIT_FAILURE);
+	exit_if(!mlx->mouse, mlx, EXIT_FAILURE, NULL);
 	return (mlx);
 }
 

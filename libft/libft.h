@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:26:45 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/17 17:17:57 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:36:35 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ typedef struct s_list
 }					t_list;
 typedef enum e_bool
 {
-    false = 0,
-    true = 1,
+	false = 0,
+	true = 1,
 	null = -1
-}           t_bool;
+}					t_bool;
 
 int					ft_tolower(int c);
 int					ft_toupper(int c);
@@ -41,11 +41,13 @@ int					ft_isdigit(int c);
 int					ft_isprint(int c);
 int					ft_lstsize(t_list *lst);
 int					ft_atoi(const char *nptr);
-int					ft_atoi_cursor(char *nptr, int *cursor, int *error);
+int					ft_atoi_error(char *nptr, int *error);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 t_bool				ft_strcmp(char *s1, char *s2);
 size_t				ft_strlen(const char *tab);
+size_t				ft_str_char_dist_f(char *str, char c);
+size_t				ft_str_char_dist_l(char *str, char c);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 t_list				*ft_lstlast(t_list *lst);
@@ -55,6 +57,7 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 char				*ft_strnstr(const char *big, const char *little,
 						size_t len);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
+char				*ft_better_substr(char *s, int start, int len);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_strjoin(char const *s1, char const *s2);
@@ -73,7 +76,7 @@ void				*ft_memchr(const void *s, int c, size_t n);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				*ft_calloc(size_t nmemb, size_t size);
-void 				*ft_realloc(void *ptr, size_t old_size, size_t size);
+void				*ft_realloc(void *ptr, size_t old_size, size_t size);
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putendl_fd(char *s, int fd);

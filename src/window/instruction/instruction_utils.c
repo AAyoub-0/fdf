@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:26:26 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/21 17:52:54 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/21 20:05:05 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,27 @@
 void	init_ctl_btn(t_mlx *mlx)
 {
 	mlx->ins[2] = init_frame((t_point2d){20, 80}, 120, 45, RED);
-	exit_if(!mlx->ins[2], mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins[2], mlx, EXIT_FAILURE, NULL);
 	mlx->ins[3] = init_frame((t_point2d){155, 80}, 120, 45, RED);
-	exit_if(!mlx->ins[3], mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins[3], mlx, EXIT_FAILURE, NULL);
 	mlx->ins[4] = init_frame((t_point2d){290, 80}, 120, 45, RED);
-	exit_if(!mlx->ins[4], mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins[4], mlx, EXIT_FAILURE, NULL);
 	mlx->ins[5] = init_frame((t_point2d){20, 140}, 120, 45, RED);
-	exit_if(!mlx->ins[5], mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins[5], mlx, EXIT_FAILURE, NULL);
 	mlx->ins[6] = init_frame((t_point2d){155, 140}, 120, 45, RED);
-	exit_if(!mlx->ins[6], mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins[6], mlx, EXIT_FAILURE, NULL);
 	mlx->ins[7] = init_frame((t_point2d){20, 240}, 120, 45, BLUE);
-	exit_if(!mlx->ins[7], mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins[7], mlx, EXIT_FAILURE, NULL);
 	mlx->ins[8] = init_frame((t_point2d){155, 240}, 120, 45, BLUE);
-	exit_if(!mlx->ins[8], mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins[8], mlx, EXIT_FAILURE, NULL);
 	mlx->ins[9] = init_frame((t_point2d){290, 240}, 120, 45, BLUE);
-	exit_if(!mlx->ins[9], mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins[9], mlx, EXIT_FAILURE, NULL);
 	mlx->ins[10] = init_frame((t_point2d){20, 340}, 120, 45, GREEN);
-	exit_if(!mlx->ins[10], mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins[10], mlx, EXIT_FAILURE, NULL);
 	mlx->ins[11] = init_frame((t_point2d){155, 340}, 120, 45, GREEN);
-	exit_if(!mlx->ins[11], mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins[11], mlx, EXIT_FAILURE, NULL);
 	mlx->ins[12] = init_frame((t_point2d){290, 340}, 120, 45, WHITE);
-	exit_if(!mlx->ins[12], mlx, EXIT_FAILURE);
+	exit_if(!mlx->ins[12], mlx, EXIT_FAILURE, NULL);
 }
 
 void	init_maps_data(char **maps)

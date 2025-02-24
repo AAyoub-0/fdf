@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 12:40:16 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/15 13:15:57 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:35:28 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,22 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	ft_strlcpy(dst, s + start, d_size);
 	return (dst);
+}
+
+char	*ft_better_substr(char *s, int start, int len)
+{
+	char	*result;
+	int		i;
+
+	result = ft_calloc(len + 1, sizeof(char));
+	if (!result)
+		return (NULL);
+	i = 0;
+	while (s[start] && start < len)
+	{
+		result[i] = s[start];
+		start++;
+		i++;
+	}
+	return (result);
 }

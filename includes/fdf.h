@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/21 19:04:56 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:34:28 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <math.h>
-# include <stddef.h>
-# include <stdint.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
@@ -74,7 +69,6 @@ typedef struct s_point3d
 	int			x;
 	int			y;
 	int			z;
-	t_color		color;
 }				t_point3d;
 
 typedef struct s_fpoint3d
@@ -161,20 +155,22 @@ typedef struct s_mlx
 	t_map		*map;
 	t_camera	*camera;
 	t_mouse		*mouse;
-	t_bool		show_ins;
 	t_frame		**ins;
+	t_bool		show_ins;
 }				t_mlx;
 
-t_point3d		*init_point3d(int x, int y, int z, t_color color);
+t_point3d		*init_point3d(int x, int y, int z);
 t_point2d		*init_point2d(int x, int y);
 t_bool			free_points3d(t_point3d **point, size_t size);
 
 t_point2d		project_point3d(t_point3d p3d, t_map *map, t_camera *c);
 
 t_map			*init_map(void);
+t_bool			check_extension(char *file);
+char			*sub_argv(char *av);
 void			set_z_max_min(t_map *map, int z);
 int				get_map_width(char *line);
-t_bool			parse_map(t_mlx *mlx, int fd);
+void			parse_map(t_mlx *mlx, int fd);
 void			open_map(t_mlx *mlx, char *file);
 int				free_map(t_map *map);
 
@@ -187,6 +183,8 @@ void			draw_line_simple(t_mlx *mlx, t_point2d p0, t_point2d p1,
 					t_color color);
 void			set_errors(t_calc_draw *calc, t_point2d *p0);
 void			draw_vectors(t_mlx *mlx, t_point2d *p3d_z, t_point2d *i);
+t_bool			fill_map(t_map *map, char *line, int y);
+void			parse_map_line(t_mlx *mlx, char *line);
 int				draw_map(t_mlx *mlx);
 
 t_mlx			*init_window(char *color_btn_event_hovername);
@@ -248,7 +246,8 @@ void			proj_event_hover(t_mlx *mlx);
 void			map_btn_event_hover(t_mlx *mlx);
 void			color_btn_event_hover(t_mlx *mlx);
 
-void			exit_if(t_bool cond, t_mlx *mlx, int fd_out);
+void			exit_if(t_bool cond, t_mlx *mlx, int fd_out, ...);
+int				ft_abs(int n);
 
 void			exec_tests(void);
 
