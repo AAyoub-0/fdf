@@ -6,7 +6,7 @@
 #    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/01 20:15:38 by aayoub            #+#    #+#              #
-#    Updated: 2025/02/25 14:37:40 by aboumall         ###   ########.fr        #
+#    Updated: 2025/02/25 14:40:16 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,11 @@ UNAME 	:= $(shell uname)
 ifeq ($(UNAME), Darwin)
 	MLX_DIR = ./minilibx
 	MLX = $(MLX_DIR)/libmlx.a
-	MLX_FLAGS = -framework OpenGL -framework AppKit -O3
+	MLX_FLAGS = -framework OpenGL -framework AppKit
 else
 	MLX_DIR = ./minilibx_linux
 	MLX = $(MLX_DIR)/libmlx.a
-	MLX_FLAGS = -lX11 -lXext -lm -lGL -lz -O3
+	MLX_FLAGS = -lX11 -lXext -lm -lGL -lz
 endif
 
 LIBFT_DIR 	= 	libft
