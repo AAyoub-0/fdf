@@ -6,17 +6,19 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:27:51 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/25 13:42:45 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/25 14:52:08 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-static int	is_toolarge(long int result, int n)
+static int	is_toolarge(ssize_t result, char next_digit)
 {
-	if (result > (LONG_MAX - (n - '0')) / 10)
-		return (-1);
-	if (-result > (LONG_MAX - (n - '0')) / 10)
+	if (result > INT_MAX / 10 || (result == INT_MAX / 10 && (next_digit
+				- '0') > INT_MAX % 10))
+		return (0);
+	if (result < INT_MIN / 10 || (result == INT_MIN / 10
+			&& (next_digit - '0') > -(INT_MIN % 10)))
 		return (0);
 	return (1);
 }

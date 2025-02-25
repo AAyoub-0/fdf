@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:20:33 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/25 14:29:15 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/25 14:50:05 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,9 @@ void	parse_map(t_mlx *mlx, int fd)
 	{
 		if (mlx->map->width == 0)
 			mlx->map->width = get_map_width(line);
+		else
+			exit_if(get_map_width(line) != mlx->map->width, mlx, EXIT_FAILURE,
+				line, NULL);
 		parse_map_line(mlx, line);
 		mlx->map->height++;
 		free(line);
