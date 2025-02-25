@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 13:46:02 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/24 17:30:01 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/25 14:04:05 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,23 @@ void	parse_map_line(t_mlx *mlx, char *line)
 		mlx->map->height++;
 		exit_if(true, mlx, EXIT_FAILURE, line, NULL);
 	}
+}
+
+inline t_bool	fill_map_point(t_map **map, char *line, int x, int y)
+{
+	t_point3d	*tmp;
+	int			z;
+	int			error;
+
+	error = 0;
+	z = ft_atoi_error(line, &error);
+	if (error)
+		return (false);
+	tmp = init_point3d(x, y, z);
+	if (!tmp)
+		return (false);
+	set_z_max_min(*map, tmp->z);
+	(*map)->pts_3d[y][x] = *tmp;
+	free(tmp);
+	return (true);
 }

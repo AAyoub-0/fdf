@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 21:36:13 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/24 17:08:42 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/25 13:13:34 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,5 @@ int	draw_map(t_mlx *mlx)
 		}
 		i.y++;
 	}
-	mlx->map->need_update = false;
 	return (0);
 }

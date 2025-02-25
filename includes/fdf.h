@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:08:18 by aayoub            #+#    #+#             */
-/*   Updated: 2025/02/24 17:34:28 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/25 14:03:25 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <math.h>
+
+# ifndef FDF_BONUS
+#  define FDF_BONUS 0
+# endif
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
@@ -109,7 +113,6 @@ typedef struct s_map
 	t_color		c_max;
 	t_color		c_mid;
 	t_color		c_min;
-	t_bool		need_update;
 	int			width;
 	int			height;
 	int			z_min;
@@ -157,6 +160,7 @@ typedef struct s_mlx
 	t_mouse		*mouse;
 	t_frame		**ins;
 	t_bool		show_ins;
+	t_bool		bonus;
 }				t_mlx;
 
 t_point3d		*init_point3d(int x, int y, int z);
@@ -183,6 +187,7 @@ void			draw_line_simple(t_mlx *mlx, t_point2d p0, t_point2d p1,
 					t_color color);
 void			set_errors(t_calc_draw *calc, t_point2d *p0);
 void			draw_vectors(t_mlx *mlx, t_point2d *p3d_z, t_point2d *i);
+t_bool			fill_map_point(t_map **map, char *line, int x, int y);
 t_bool			fill_map(t_map *map, char *line, int y);
 void			parse_map_line(t_mlx *mlx, char *line);
 int				draw_map(t_mlx *mlx);

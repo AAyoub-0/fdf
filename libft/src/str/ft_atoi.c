@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:27:51 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/24 17:35:46 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/25 13:42:45 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	is_toolarge(long int result, int n)
 
 static int	is_valid(int n)
 {
-	if (n == '-' || n == '+' || !ft_isdigit(n))
+	if (n == '-')
 		return (0);
 	return (1);
 }
@@ -73,10 +73,9 @@ int	ft_atoi_error(char *nptr, int *error)
 	sign = 1;
 	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
 		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	if (nptr[i] == '-')
 	{
-		if (nptr[i] == '-')
-			sign *= -1;
+		sign *= -1;
 		if (!is_valid(nptr[i + 1]))
 			return (ft_set_error(error), EXIT_FAILURE);
 		i++;

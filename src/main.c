@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:52:33 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/24 18:36:30 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/25 13:39:30 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ int	main(int argc, char **argv)
 	exit_if(!name, NULL, EXIT_FAILURE, NULL);
 	mlx = init_window(name);
 	open_map(mlx, argv[1]);
+	init_instructions(mlx);
 	init_hooks(mlx);
 	mlx->show_ins = false;
+	mlx->bonus = FDF_BONUS;
 	draw_map(mlx);
 	draw_instructions(mlx);
 	mlx_loop(mlx->mlx);

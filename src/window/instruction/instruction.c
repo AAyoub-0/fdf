@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:06:07 by aboumall          #+#    #+#             */
-/*   Updated: 2025/02/25 13:03:44 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/25 13:19:29 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,11 @@ void	draw_instructions(t_mlx *mlx)
 {
 	int	i;
 
+	if (!mlx->bonus)
+	{
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
+		return ;
+	}
 	if (!mlx->show_ins)
 	{
 		draw_menu_icon(mlx);

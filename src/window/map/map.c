@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:20:33 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/24 17:34:34 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/25 14:29:15 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_map	*init_map(void)
 	map->c_max = MAGENTA;
 	map->c_mid = YELLOW;
 	map->c_min = WHITE;
-	map->need_update = true;
 	map->fd = -1;
 	map->file = NULL;
 	return (map);
@@ -49,33 +48,26 @@ void	open_map(t_mlx *mlx, char *file)
 	if (mlx->map->z_max > mlx->camera->z_offset * 3)
 		mlx->camera->z_offset = mlx->map->z_max * 0.4;
 	else
-		mlx->camera->z_offset = mlx->map->z_max * 0.2;
+		mlx->camera->z_offset = mlx->map->z_max;
 	if (mlx->map->width * mlx->map->height > SCREEN_HEIGHT * SCREEN_WIDTH)
 		mlx->camera->zoom = 1;
 	else
-		mlx->camera->zoom = SCREEN_WIDTH / mlx->map->width * 0.4;
+		mlx->camera->zoom = SCREEN_WIDTH / mlx->map->width * 0.5;
 }
 
 t_bool	fill_map(t_map *map, char *line, int y)
 {
-	int			x;
-	int			error;
-	t_point3d	*tmp;
+	int	x;
 
 	x = 0;
-	error = 0;
 	while (*line)
 	{
-		if (ft_isdigit(*line))
+		if (ft_isdigit(*line) || *line == '-')
 		{
-			tmp = init_point3d(x, y, ft_atoi_error(line, &error));
-			if (!tmp || error)
+			if (!fill_map_point(&map, line, x, y))
 				return (false);
-			set_z_max_min(map, tmp->z);
-			map->pts_3d[y][x] = *tmp;
-			free(tmp);
 			x++;
-			while (ft_isdigit(*line))
+			while (ft_isdigit(*line) || *line == '-')
 				line++;
 		}
 		else

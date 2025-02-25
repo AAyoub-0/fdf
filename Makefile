@@ -6,7 +6,7 @@
 #    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/01 20:15:38 by aayoub            #+#    #+#              #
-#    Updated: 2025/02/24 18:32:18 by aboumall         ###   ########.fr        #
+#    Updated: 2025/02/25 14:32:30 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,9 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEAD) Makefile | $(OBJ_DIR)
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
+bonus: CFLAGS += -D FDF_BONUS=1
+bonus: re
+
 lib:
 	@echo "Checking libft..."
 	@if $(MAKE) -C $(LIBFT_DIR) -q; then \
@@ -113,4 +116,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re lib mlx_lib
+.PHONY: all clean fclean re lib mlx_lib bonus
