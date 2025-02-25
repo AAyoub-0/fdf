@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:52:33 by ayoub             #+#    #+#             */
-/*   Updated: 2025/02/24 17:37:10 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/02/24 18:36:30 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	main(int argc, char **argv)
 	mlx = init_window(name);
 	open_map(mlx, argv[1]);
 	init_hooks(mlx);
-	init_instructions(mlx);
 	mlx->show_ins = false;
 	draw_map(mlx);
 	draw_instructions(mlx);
